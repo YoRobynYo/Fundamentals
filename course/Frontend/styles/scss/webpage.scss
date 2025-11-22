@@ -259,7 +259,7 @@ em {
 .code-block {
   /* --- Base styles for ALL code blocks --- */
   background-color: #F8F9FA;
-  color: #343A40;
+  color: #5A7D8A;
   font-family: 'Inter', sans-serif;
   padding: 20px;
   /* The new, generous padding */
@@ -457,6 +457,23 @@ em {
   }
 }
 
+.reset-button {
+  // Inherit styles from a base button class if you have one, or copy them:
+  background-color: #ff6b6b; // A nice soft red
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin: 0 5px;
+
+  &:hover {
+    background-color: #ee5253; // A darker red on hover
+  }
+}
+
+
 /* --- CONTROL PANELS --- */
 .control-panel {
   background-color: #d1d8e0;
@@ -516,4 +533,31 @@ em {
   box-sizing: border-box;
   font-size: 1.1em;
   resize: vertical;
+}
+
+// This is the new, pure CSS placeholder
+.code-block:empty::before,
+.code-block.placeholder::before {
+  content: attr(data-placeholder); // Read the text from the data-placeholder attribute
+  color: #5A7D8A !important; // Use the LIGHT GREY color for the placeholder
+  font-style: italic;
+  pointer-events: none; // Make sure the text is not clickable
+}
+
+// Style for the new example code blocks 
+pre.code-example {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 1em 0;
+  white-space: pre-wrap; // Ensures long lines wrap
+  font-family: 'Courier New', Courier, monospace; // A good font for code
+  margin-left: 80px;
+}
+
+// Style for the comments inside the example
+pre.code-example .code-comment {
+  color: #008000; // A nice green color for comments
+  font-style: italic;
 }

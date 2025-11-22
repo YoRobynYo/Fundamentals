@@ -24,10 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+
     // =================================================================
     // PART 1: THE DATA
     // =================================================================
-    const exerciseData = {
+    
+		const exerciseData = {
         variables: {
             1: {
                 hints: [
@@ -103,7 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // =================================================================
     // PART 2: THE FUNCTIONS
     // =================================================================
-    function showHint(section, number) {
+    
+		function showHint(section, number) {
         const data = exerciseData[section][number];
         if (!data) {
             console.error("Hint Error: No data found for this exercise.");
@@ -147,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        const userCode = codeBox.innerText;
+				const userCode = codeBox.textContent;
         output.textContent = 'Running your code...\n\n';
         
         const oldLog = console.log;
@@ -172,8 +175,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+		// =================================================================
+    // === Add The resetExercise FUNCTION ===
+    // =================================================================
+    
+		function resetExercise(section, number) {
+        const codeBox = document.getElementById(`${section}-ex${number}`);
+        const hintDiv = document.getElementById(`${section}-hint${number}`);
+        const output = document.getElementById(`${section}-output${number}`);
+        const answerDiv = document.getElementById(`${section}-answer${number}`);
+
+        if (codeBox) {
+						codeBox.textContent = ''; 
+						codeBox.classList.add('placeholder'); // Add this line
+				}
+        if (hintDiv) {
+            hintDiv.innerHTML = '';
+        }
+        if (output) {
+            output.textContent = '';
+        }
+        if (answerDiv) {
+            answerDiv.textContent = '';
+            answerDiv.classList.remove('show');
+        }
+        
+        if (hintProgress[section] && hintProgress[section][number]) {
+            hintProgress[section][number] = 0;
+        }
+    }
+
     // ======================================================
-    // === Part 4: Event Listeners for Exercise Buttons ===
+    // === Part 3: Event Listeners for Exercise Buttons ===
     // ======================================================
     document.querySelectorAll('.hint-button').forEach(button => {
         button.addEventListener('click', () => {
@@ -188,6 +221,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const section = button.dataset.section;
             const exNumber = button.dataset.ex; 
             runCode(section, exNumber);
+        });
+    });
+
+		document.querySelectorAll('.reset-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const section = button.dataset.section;
+            const exNumber = button.dataset.ex;
+            resetExercise(section, exNumber);
         });
     });
 });

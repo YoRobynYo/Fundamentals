@@ -67,6 +67,31 @@ body {
   border-radius: 1px;
 }
 
+.start-button {
+  display: inline-block;
+  opacity: 1;
+  position: relative;
+  z-index: 10;
+  background-color: #ffffff;
+  color: #0984e3;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.start-button:hover {
+  background-color: transparent;
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
 /* --- FADE-IN ANIMATIONS --- */
 @keyframes fadeInDown {
   from {
@@ -217,7 +242,7 @@ em {
 .code-block {
   /* --- Base styles for ALL code blocks --- */
   background-color: #F8F9FA;
-  color: #343A40;
+  color: #5A7D8A;
   font-family: "Inter", sans-serif;
   padding: 20px;
   /* The new, generous padding */
@@ -272,6 +297,32 @@ em {
 .helper-box {
   background-color: #e8f5ff;
   border-left: 6px solid #3399ff;
+}
+.helper-box h3 {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: left;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+.helper-box h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #34495e;
+  text-align: left;
+  padding-left: 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.helper-box p {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.helper-box ol {
+  padding-left: 25px;
+  margin-left: 0;
 }
 
 .ending-box {
@@ -362,6 +413,20 @@ em {
   box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
 }
 
+.reset-button {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin: 0 5px;
+}
+.reset-button:hover {
+  background-color: #ee5253;
+}
+
 /* --- CONTROL PANELS --- */
 .control-panel {
   background-color: #d1d8e0;
@@ -418,6 +483,30 @@ em {
   box-sizing: border-box;
   font-size: 1.1em;
   resize: vertical;
+}
+
+.code-block:empty::before,
+.code-block.placeholder::before {
+  content: attr(data-placeholder);
+  color: #5A7D8A !important;
+  font-style: italic;
+  pointer-events: none;
+}
+
+pre.code-example {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 1em 0;
+  white-space: pre-wrap;
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 80px;
+}
+
+pre.code-example .code-comment {
+  color: #008000;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=webpage.css.map */
