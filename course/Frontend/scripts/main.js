@@ -30,41 +30,41 @@ document.addEventListener('DOMContentLoaded', function() {
     // =================================================================
     
 		const exerciseData = {
-        variables: {
-            1: {
-                hints: [
-                    "Start by creating a variable for the batch number. For example: `let batchNumber = 1;`",
-                    "Next, create a variable for the flavor, like `let popcornFlavor = 'Caramel';`",
-                    "Finally, create a variable for the number of bags ready.",
-                    "Use a template literal (`) to combine them all in a `console.log`."
-                ],
-                answer: "let batchNumber = 1;\nlet popcornFlavor = \"Caramel\";\nlet bagsReady = 50;\nconsole.log(`Batch ${batchNumber}: ${bagsReady} bags of ${popcornFlavor} popcorn are ready!`);"
-            },
-            2: {
-                hints: [
-                    "Create a variable for `conveyorSpeed` and give it a number value.",
-                    "Create a variable for `machineStatus` and give it a text value, like 'ON' or 'OFF'.",
-                    "Use a template literal (`) and `console.log` to print the status message."
-                ],
-                answer: "let conveyorSpeed = 5;\nlet machineStatus = \"ON\";\nconsole.log(`Conveyor speed is ${conveyorSpeed} m/s. Machine status: ${machineStatus}.`);"
-            },
-            3: {
-                hints: [
-                    "Create a variable named `saltLevel` and set it to a percentage, like `95`.",
-                    "Create another variable named `sugarLevel` and set it to a different percentage.",
-                    "Use a template literal to report the levels, like `Salt: 95%, Sugar: 80%`."
-                ],
-                answer: "let saltLevel = 95;\nlet sugarLevel = 80;\nconsole.log(`Ingredient Levels Report - Salt: ${saltLevel}%, Sugar: ${sugarLevel}%.`);"
-            },
+						variables: {
+						1: { // This one remains the same as your version
+								hints: [
+										"Start by creating a variable for the batch number. For example: `let batchNumber = 1;`",
+										"Next, create a variable for the flavor, like `let popcornFlavor = 'Caramel';`",
+										"Finally, create a variable for the number of bags ready.",
+										"Use a template literal (`) to combine them all in a `console.log`."
+								],
+								answer: "let batchNumber = 1;\nlet popcornFlavor = \"Caramel\";\nlet bagsReady = 50;\nconsole.log(`Batch ${batchNumber}: ${bagsReady} bags of ${popcornFlavor} popcorn are ready!`);"
+						},
+						2: { // UPDATED Exercise 2
+								hints: [
+										"First, create a variable named `conveyorSpeed` and give it a text value, like `\"Medium\"`.",
+										"Next, create a variable named `machineStatus` and set its value to `\"ON\"`.",
+										"Use `console.log()` with a template literal (`) to print the full status report."
+								],
+								answer: "let conveyorSpeed = \"Medium\";\nlet machineStatus = \"ON\";\nconsole.log(`Conveyor speed is: ${conveyorSpeed}. Machine status is: ${machineStatus}.`);"
+						},
+						3: { // New "Label Printing Task"
+								hints: [
+										"Create a variable named `totalLabels`.",
+										"Set it equal to the math problem: `5 + 10 + 12 + 4 + 2`.",
+										"Create a second variable, `labelStatus`, and set it to `\"Ready\"`.",
+										"Use `console.log()` to print the values of your two new variables."
+								],
+								answer: "let totalLabels = 5 + 10 + 12 + 4 + 2;\nlet labelPrinterStatus = \"Ready\";\nconsole.log(`Total labels to print: ${totalLabels}. Printer status: ${labelStatus}.`);"
+						},
             4: {
-                hints: [
-                    "Create a variable for the `workerName`.",
-                    "Create a variable for the `stationNumber`.",
-                    "Create a variable for `bagsPacked` by that worker.",
-                    "Combine them all into a single report using a template literal and `console.log`."
-                ],
-                answer: "let workerName = \"Maria\";\nlet stationNumber = 3;\nlet bagsPacked = 120;\nconsole.log(`Station ${stationNumber} Report: ${workerName} has packed ${bagsPacked} bags.`);"
-            },
+								hints: [
+										"For values that should not change, it's best practice to use `const`. Create `MINIMUM_SALT_LEVEL` and `MAXIMUM_SALT_LEVEL` this way.",
+										"Next, create the `currentSaltLevel` variable and set it to `92`.", // <-- The new, simpler hint
+										"Use `console.log()` and a template literal (`) to create the final report string, showing all three values."
+								],
+								answer: "const MINIMUM_SALT_LEVEL = 85;\nconst MAXIMUM_SALT_LEVEL = 95;\nconst currentSaltLevel = 92;\nconsole.log(`Salt Level Check - Min: ${MINIMUM_SALT_LEVEL}%, Max: ${MAXIMUM_SALT_LEVEL}%, Current: ${currentSaltLevel}%.`);"
+						},
             5: {
                 hints: [
                     "This is a test of the factory's emergency broadcast system.",
@@ -75,14 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 answer: "console.log(`Factory closing in 5 minutes!`);"
             },
             6: {
-                hints: [
-                    "First, create a variable `minutesLeft` and set it to `5`.",
-                    "Now, use `console.log` and a template literal (`) to create the broadcast message.",
-                    "This time, use the `${...}` placeholder to put your `minutesLeft` variable inside the message.",
-                    "The final code should look like: `console.log(`Factory closing in ${minutesLeft} minutes!`);`"
-                ],
-                answer: "let minutesLeft = 5;\nconsole.log(`Factory closing in ${minutesLeft} minutes!`);"
-            }
+						hints: [
+								"First, create a variable named `popperStatus` using `let` and set its initial value to `\"Warming Up\"`.",
+								"Right after that, use `console.log()` to print the initial status.",
+								"On a new line, update the `popperStatus` variable to its new value: `\"Popping Corn\"`. Remember not to use the word `let` this time!",
+								"Finally, use another `console.log()` to print the new, updated status."
+						],
+						answer: "let popperStatus = \"Warming Up\";\nconsole.log(`Machine status: ${popperStatus}...`);\npopperStatus = \"Popping Corn\";\nconsole.log(`Update! Machine status is now: ${popperStatus}!`);"
+				},
         },
         loops: {
             1: { hints: ["Use a for loop that runs 3 times."], answer: "for(let i=1;i<=3;i++){\n  console.log(\"Checking bag...\");\n}" },

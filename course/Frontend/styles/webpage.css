@@ -238,6 +238,21 @@ em {
   color: #555;
 }
 
+.demonstration-box {
+  background-color: #F7F9F9;
+  border: 1px solid #EAEDED;
+  border-radius: 8px;
+  padding: 20px 25px;
+  margin-bottom: 50px;
+}
+
+.code-output-comment {
+  display: block;
+  margin-top: 15px;
+  color: #27ae60;
+  font-style: italic;
+}
+
 /* --- CODE BLOCKS --- */
 .code-block {
   /* --- Base styles for ALL code blocks --- */
@@ -247,8 +262,7 @@ em {
   padding: 20px;
   /* The new, generous padding */
   border-radius: 8px;
-  margin: 2.5rem 50px;
-  /* The new margin to align with paragraphs */
+  margin: 2.5rem 50px 20px 50px;
   border: 1px solid #E9ECEF;
   overflow-x: auto;
   font-size: 1.1em;
@@ -334,6 +348,8 @@ em {
 .hint,
 .answer {
   margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
   padding: 10px;
   background-color: #e8f5ff;
   border-left: 4px solid #3399ff;
@@ -367,8 +383,8 @@ em {
 /* --- EXERCISE BUTTONS --- */
 .exercise-buttons {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 20px;
+  margin: 50px;
 }
 .exercise-buttons button {
   padding: 8px 16px;
@@ -421,7 +437,6 @@ em {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
-  margin: 0 5px;
 }
 .reset-button:hover {
   background-color: #ee5253;
@@ -507,6 +522,17 @@ pre.code-example {
 pre.code-example .code-comment {
   color: #008000;
   font-style: italic;
+}
+
+.exercise-box .code-label {
+  display: block;
+  font-style: italic;
+  color: #5A7D8A;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  margin-top: 40px;
+  margin-bottom: -30px;
+  margin-left: 50px;
 }
 
 /*# sourceMappingURL=webpage.css.map */

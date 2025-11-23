@@ -255,6 +255,22 @@ em {
   color: #555;
 }
 
+.demonstration-box {
+  background-color: #F7F9F9;
+  border: 1px solid #EAEDED;
+  border-radius: 8px;
+  padding: 20px 25px;
+  margin-bottom: 50px;
+}
+
+.code-output-comment {
+  display: block; // Makes it take up its own line
+  margin-top: 15px; // Adds some space after the code
+  color: #27ae60; // A nice green color to indicate a successful output
+  font-style: italic;
+}
+
+
 /* --- CODE BLOCKS --- */
 .code-block {
   /* --- Base styles for ALL code blocks --- */
@@ -264,8 +280,8 @@ em {
   padding: 20px;
   /* The new, generous padding */
   border-radius: 8px;
-  margin: 2.5rem 50px;
-  /* The new margin to align with paragraphs */
+  margin: 2.5rem 50px 20px 50px;
+  // Sets top margin to align with page flow, side margins for centering, and bottom margin for spacing.
   border: 1px solid #E9ECEF;
   overflow-x: auto;
   font-size: 1.1em;
@@ -370,6 +386,8 @@ em {
 .hint,
 .answer {
   margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
   padding: 10px;
   background-color: #e8f5ff;
   border-left: 4px solid #3399ff;
@@ -405,8 +423,8 @@ em {
 /* --- EXERCISE BUTTONS --- */
 .exercise-buttons {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 20px;
+  margin: 50px;
 
   button {
     padding: 8px 16px;
@@ -466,13 +484,11 @@ em {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
-  margin: 0 5px;
 
   &:hover {
     background-color: #ee5253; // A darker red on hover
   }
 }
-
 
 /* --- CONTROL PANELS --- */
 .control-panel {
@@ -560,4 +576,15 @@ pre.code-example {
 pre.code-example .code-comment {
   color: #008000; // A nice green color for comments
   font-style: italic;
+}
+
+.exercise-box .code-label {
+  display: block; // Keep this
+  font-style: italic; // Keep this
+  color: #5A7D8A; // Keep this
+  font-family: "Inter", sans-serif; // Keep this
+  font-size: 1rem; // Keep this
+  margin-top: 40px;
+  margin-bottom: -30px;
+  margin-left: 50px;
 }
