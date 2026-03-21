@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 5                         █ -->
+<!-- █  // Loops                                     █ -->
+<!-- █  // Counting items at the Popcorn Factory!    █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="loops-module">
+  <h2 class="module-title">Module 5: Loops 🔁</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: What is a Loop? -->
+  <div class="helper-box">
+    <h3 class="box-title">🔁 What is a Loop? 🔁</h3>
+
+    <p>Imagine you are standing at the production line and need to check every single bag
+      of popcorn as it passes by. Bag 1, bag 2, bag 3 ... if there are 100 bags, you would
+      have to write 100 separate lines of code! That would take forever.</p>
+
+    <p>A <strong>loop</strong> is a special instruction that tells the computer to repeat
+      a task over and over — as many times as you need. Instead of writing the same code
+      100 times, you write it once inside a loop and the computer does the rest!</p>
+
+    <h4 class="sub-title">Loops Are Everywhere</h4>
+
+    <p>You already use loops in real life without thinking about it:</p>
+
+    <ul class="indented-list">
+      <li>Brushing your teeth — you brush back and forth many times</li>
+      <li>Counting children in class — "1, 2, 3, 4, 5 ..."</li>
+      <li>Stacking boxes — you pick up one box, stack it, and repeat</li>
+      <li>The factory line — items move past and get counted one by one</li>
+    </ul>
+
+    <p>In coding, a loop does exactly the same thing — it repeats an action a specific
+      number of times so you do not have to write it out over and over!</p>
+
+    <p class="note">💡 <strong>Remember:</strong> Loops save time and reduce mistakes.
+      If you need to do something more than once, a loop is almost always the answer!</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: The Structure of a FOR Loop -->
+  <div class="helper-box">
+    <h3 class="box-title">🏗️ The Structure of a FOR Loop 🏗️</h3>
+
+    <p>The most common type of loop for counting is called a <strong>FOR loop</strong>.
+      It has three parts that work together to control how many times the loop runs.</p>
+
+    <h4 class="sub-title">The Three Parts:</h4>
+
+    <ul class="indented-list">
+      <li><strong>Where to start</strong> — the number you begin counting from</li>
+      <li><strong>Where to stop</strong> — the number you count up to</li>
+      <li><strong>The counter</strong> — a variable that tracks which repetition you are on</li>
+    </ul>
+
+    <h4 class="sub-title">Here is how we write a FOR loop in pseudocode:</h4>
+
+    <div class="code-block">
+      FOR "item number" FROM 1 TO 5 DO<br>
+      &nbsp;&nbsp;PRINT "Checking item", "item number"<br>
+      END FOR
+    </div>
+
+    <p><strong>What this does:</strong></p>
+    <ul class="indented-list">
+      <li>Starts counting at 1</li>
+      <li>Runs the code inside the loop</li>
+      <li>Adds 1 to the counter automatically</li>
+      <li>Repeats until the counter reaches 5</li>
+    </ul>
+
+    <p><strong>Output:</strong></p>
+    <p class="output">Checking item 1<br>
+      Checking item 2<br>
+      Checking item 3<br>
+      Checking item 4<br>
+      Checking item 5</p>
+
+    <p>Five lines of output from just three lines of code! That is the power of a loop.</p>
+
+    <p class="note">💡 <strong>Remember:</strong> The FOR loop automatically adds 1 to the
+      counter each time. You do not need to tell it to count up — it does that for you!</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: Using the Counter Variable -->
+  <div class="helper-box">
+    <h3 class="box-title">🔢 Using the Counter Variable 🔢</h3>
+
+    <p>The counter variable inside a loop is incredibly useful. It keeps track of which
+      repetition you are on — and you can use it in your code!</p>
+
+    <h4 class="sub-title">The Counter Changes Automatically</h4>
+
+    <p>Each time the loop runs, the counter increases by 1 on its own:</p>
+
+    <div class="code-block">
+      FOR "day number" FROM 1 TO 5 DO<br>
+      &nbsp;&nbsp;PRINT "Day", "day number"<br>
+      END FOR
+    </div>
+
+    <p><strong>Output:</strong></p>
+    <p class="output">Day 1<br>
+      Day 2<br>
+      Day 3<br>
+      Day 4<br>
+      Day 5</p>
+
+    <h4 class="sub-title">You Can Use the Counter in Calculations</h4>
+
+    <p>Because the counter is just a variable, you can use it to calculate other things.
+      For example, if each day you earn points equal to the day number:</p>
+
+    <div class="code-block">
+      FOR "day number" FROM 1 TO 3 DO<br>
+      &nbsp;&nbsp;SET "points earned" = "day number" * 10<br>
+      &nbsp;&nbsp;PRINT "Day", "day number", "— earned", "points earned", "points"<br>
+      END FOR
+    </div>
+
+    <p><strong>Output:</strong></p>
+    <p class="output">Day 1 — earned 10 points<br>
+      Day 2 — earned 20 points<br>
+      Day 3 — earned 30 points</p>
+
+    <p class="note">💡 <strong>Remember:</strong> The counter variable is the heart of a
+      loop. Use it to number things, calculate values, or track progress!</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: Tracking Totals with Loops -->
+  <div class="helper-box">
+    <h3 class="box-title">📊 Tracking Totals with Loops 📊</h3>
+
+    <p>One of the most powerful things you can do with a loop is keep a running total.
+      You create a variable <strong>before</strong> the loop starts, then add to it
+      <strong>inside</strong> the loop each time it runs.</p>
+
+    <h4 class="sub-title">How It Works:</h4>
+
+    <div class="code-block">
+      SET "total points" = 0<br>
+      FOR "day number" FROM 1 TO 5 DO<br>
+      &nbsp;&nbsp;SET "total points" = "total points" + 10<br>
+      &nbsp;&nbsp;PRINT "Day", "day number", "— Total:", "total points"<br>
+      END FOR
+    </div>
+
+    <p><strong>Output:</strong></p>
+    <p class="output">Day 1 — Total: 10<br>
+      Day 2 — Total: 20<br>
+      Day 3 — Total: 30<br>
+      Day 4 — Total: 40<br>
+      Day 5 — Total: 50</p>
+
+    <h4 class="sub-title">The Pattern:</h4>
+
+    <ul class="indented-list">
+      <li><strong>Before the loop:</strong> create the total variable and set it to 0</li>
+      <li><strong>Inside the loop:</strong> add to the total each time</li>
+      <li><strong>After the loop:</strong> the total variable holds the final answer</li>
+    </ul>
+
+    <p>This is how the factory tracks inventory — counting items one by one and keeping
+      a running total of everything that passes through!</p>
+
+    <p>This month we are counting all kinds of supplies at the Popcorn Factory — bags,
+      corn boxes, oil containers, flavor packets, and salt containers. Loops will help us
+      count everything quickly and accurately!<br><br>
+      Let's get started with our first exercise!</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 5: Loops Part 1 — Exercises 🔁</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Counting Bags on the Production Line 📦   █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Counting Bags on the Production Line 📦</h3>
+
+    <p>Welcome to the production line! Bags of popcorn are moving past on a conveyor belt,
+      and we need to check each one as it goes by. Instead of counting them by hand, let's
+      use a loop to count them automatically!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Counting the First 5 Bags</h4>
+
+    <p>We need to check the first 5 bags on the production line. Each bag should be counted
+      and marked as ready. Let's use a loop to do this automatically.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>5</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "bag number" that counts from <code>1</code> to <code>"number of bags"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message showing which bag is being checked.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the bags on the production line:
+        <div class="code-example">
+          <code>
+            SET "number of bags" = 5<br>
+            FOR "bag number" FROM 1 TO "number of bags" DO<br>
+            &nbsp;&nbsp;PRINT "Bag", "bag number", "is ready"<br>
+            END FOR
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="loops-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint1-part-a"></p>
+    <pre class="output-block" id="loops-output1-part-a"></pre>
+    <pre class="answer-block" id="loops-answer1-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Counting 10 Bags</h4>
+
+    <p>Great work! The production line is running faster now. We need to check 10 bags
+      instead of 5, and each bag should be marked as passing through on the line.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of bags" and set its value to <code>10</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "bag number" that counts from <code>1</code> to <code>"number of bags"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message showing each bag passing through.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the bags passing through on the line:
+        <div class="code-example">
+          <code>
+            SET "number of bags" = 10<br>
+            FOR "bag number" FROM 1 TO "number of bags" DO<br>
+            &nbsp;&nbsp;PRINT "Bag", "bag number", "passing through"<br>
+            END FOR
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="loops-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint1-part-b"></p>
+    <pre class="output-block" id="loops-output1-part-b"></pre>
+    <pre class="answer-block" id="loops-answer1-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Counting Corn Boxes 🌽                    █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Counting Corn Boxes 🌽</h3>
+
+    <p>Every popcorn machine in the Grand Hall needs a corn box to start production.
+      We need to count and assign a corn box to each machine, one at a time. Let's use
+      a loop to do this quickly!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Corn Boxes for the First 6 Machines</h4>
+
+    <p>We need to deliver corn boxes to the first 6 machines on the production floor.
+      Each machine should receive its corn box and we need to print a message confirming
+      the delivery for each one.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "machine number" that counts from <code>1</code> to <code>6</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message for each machine receiving its corn box.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows which machine number is receiving the corn box.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count corn boxes for machines 1 through 6 in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint2-part-a"></p>
+    <pre class="output-block" id="loops-output2-part-a"></pre>
+    <pre class="answer-block" id="loops-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Corn Boxes for All 10 Machines</h4>
+
+    <p>Excellent! Now the rest of the machines need their corn boxes too. There are 10
+      machines in total in the Grand Hall. Let's assign a corn box to every single one
+      using a loop.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "machine number" that counts from <code>1</code> to <code>10</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message for each machine receiving its corn box.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows all 10 machines receiving their corn boxes.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count corn boxes for all 10 machines in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint2-part-b"></p>
+    <pre class="output-block" id="loops-output2-part-b"></pre>
+    <pre class="answer-block" id="loops-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Counting Oil Containers 🛢️               █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Counting Oil Containers 🛢️</h3>
+
+    <p>Before we can make popcorn, we need oil! The storage area has containers of oil
+      that need to be checked and counted. Then we need to assign them to the production
+      machines. Let's count them up!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Checking Oil Containers in Storage</h4>
+
+    <p>There are 7 oil containers in the storage area that need to be checked and counted
+      for inventory. We need to go through each one and print a confirmation message.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "container number" that counts from <code>1</code> to <code>7</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message checking each oil container.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows all 7 containers being checked.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count oil containers in storage in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint3-part-a"></p>
+    <pre class="output-block" id="loops-output3-part-a"></pre>
+    <pre class="answer-block" id="loops-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Assigning Oil Containers to Machines</h4>
+
+    <p>The inventory check is complete. Now we need to assign oil containers to the
+      production machines. There are 8 machines that need an oil container delivered
+      to them. Let's count the deliveries!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "machine number" that counts from <code>1</code> to <code>8</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message for each machine receiving its oil container.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows all 8 machines receiving oil containers.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to assign oil containers to 8 machines in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint3-part-b"></p>
+    <pre class="output-block" id="loops-output3-part-b"></pre>
+    <pre class="answer-block" id="loops-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Counting Flavor Packets 🍬                █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Counting Flavor Packets 🍬</h3>
+
+    <p>Popcorn is not complete without flavour! The factory has packets of seasoning that
+      need to be counted for inventory, and then each flavour station needs to receive a
+      packet. Let's use loops to count them all!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Counting Flavor Packets on the Shelf</h4>
+
+    <p>There are 5 flavour packets on the inventory shelf that need to be counted and
+      recorded. We need to go through each one and print a message confirming it has been
+      counted.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "packet number" that counts from <code>1</code> to <code>5</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message counting each flavour packet.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows all 5 packets being counted.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count flavour packets on the shelf in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint4-part-a"></p>
+    <pre class="output-block" id="loops-output4-part-a"></pre>
+    <pre class="answer-block" id="loops-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Delivering to Flavor Stations</h4>
+
+    <p>Perfect! The inventory is counted. Now we need to deliver a flavour packet to each
+      flavour station in the factory. There are 9 flavour stations that need a delivery.
+      Let's count the deliveries!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "station number" that counts from <code>1</code> to <code>9</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message for each station receiving its flavour packet.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows all 9 stations receiving their flavour packets.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to deliver flavour packets to all 9 stations in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint4-part-b"></p>
+    <pre class="output-block" id="loops-output4-part-b"></pre>
+    <pre class="answer-block" id="loops-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Counting Salt Containers 🧂               █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Counting Salt Containers 🧂</h3>
+
+    <p>Our final supply to check! Salt is an important ingredient for making delicious
+      popcorn. We need to count the salt containers in the storage area, and then make
+      sure every production machine gets one. Let's finish our inventory check strong!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Counting Salt in Storage</h4>
+
+    <p>There are 4 salt containers in the storage area that need to be counted for the
+      inventory check. We need to go through each one and confirm it has been counted.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "container number" that counts from <code>1</code> to <code>4</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message confirming each salt container has been counted.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows all 4 containers being counted.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count salt containers in storage in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint5-part-a"></p>
+    <pre class="output-block" id="loops-output5-part-a"></pre>
+    <pre class="answer-block" id="loops-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Delivering Salt to All Machines</h4>
+
+    <p>The storage count is done. Now we need to deliver a salt container to every single
+      production machine in the Grand Hall. All 10 machines need salt before production
+      can begin. Let's count the deliveries!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Use a FOR loop with a counter variable named "machine number" that counts from <code>1</code> to <code>10</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, use PRINT to display a message for each machine receiving its salt container.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Make sure the output shows all 10 machines receiving their salt containers.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to deliver salt containers to all 10 machines in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint5-part-b"></p>
+    <pre class="output-block" id="loops-output5-part-b"></pre>
+    <pre class="answer-block" id="loops-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 5 Loops                     █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

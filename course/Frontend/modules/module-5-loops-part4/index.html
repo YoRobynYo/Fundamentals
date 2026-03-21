@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                -->
+<!-- core-value-fundamentals                                    -->
+<!-- Language-Agnostic Edition                                  -->
+<!-- ============================================================ -->
+
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 5                         █ -->
+<!-- █  // Loops Part 4 — Accumulators               █ -->
+<!-- █  // Track the totals!                         █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="loops-module">
+  <h2 class="module-title">Module 5: Loops Part 4 — Accumulators 🏗️</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: What is an Accumulator? -->
+  <div class="helper-box">
+    <h3 class="box-title">🏗️ What is an Accumulator? 🏗️</h3>
+
+    <p>Imagine you have a savings jar at home. Every day you add a few coins to it.
+      After a week, you open the jar and count up the total. The jar has been
+      <strong>accumulating</strong> money over time — collecting a little bit each day!</p>
+
+    <p>In coding, an <strong>accumulator</strong> works the same way. It is a variable
+      that sits OUTSIDE a loop and keeps a running total. Every time the loop runs, it
+      adds a little more to the total — and the accumulator remembers it all!</p>
+
+    <h4 class="sub-title">Why Do We Need Accumulators?</h4>
+
+    <p>Sometimes you need to track a total that builds up over time. For example:</p>
+
+    <ul class="indented-list">
+      <li>How many boxes of corn have arrived this week?</li>
+      <li>How many batches of popcorn have we made today?</li>
+      <li>How much money do we owe our workers?</li>
+      <li>How many defects has the inspector found during their shift?</li>
+    </ul>
+
+    <p>In every case, you need to start at zero, then ADD to the total each time something
+      happens. The accumulator variable does exactly that!</p>
+
+    <p class="note">💡 <strong>Key idea:</strong> An accumulator is a variable created OUTSIDE
+      the loop. The loop updates it every time it runs. This is different from variables that
+      are created inside the loop — those get reset every time!</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: The Accumulator Pattern -->
+  <div class="helper-box">
+    <h3 class="box-title">📐 The Accumulator Pattern 📐</h3>
+
+    <p>Let's look at exactly how the accumulator pattern works. There are three parts:</p>
+
+    <h4 class="sub-title">Part 1: Create the accumulator OUTSIDE the loop</h4>
+    <p>First, you create your accumulator variable and set it to zero. This goes BEFORE
+      the loop starts:</p>
+
+    <div class="code-block">
+      SET "total saved" = 0
+    </div>
+
+    <h4 class="sub-title">Part 2: Update the accumulator INSIDE the loop</h4>
+    <p>Inside the loop, you add to the accumulator every time the loop runs:</p>
+
+    <div class="code-block">
+      SET "total saved" = "total saved" + "coins today"
+    </div>
+
+    <h4 class="sub-title">Part 3: Display the accumulator after each update</h4>
+    <p>After adding to the total, you print the result so you can see the running total
+      growing:</p>
+
+    <div class="code-block">
+      PRINT "Total saved:", "total saved"
+    </div>
+
+    <h4 class="sub-title">Putting It All Together:</h4>
+
+    <div class="code-block">
+      SET "total saved" = 0<br>
+      FOR counter FROM 1 TO 7 DO<br>
+      &nbsp;&nbsp;SET "total saved" = "total saved" + 5<br>
+      &nbsp;&nbsp;PRINT "Day", counter, "Total saved:", "total saved"<br>
+      END FOR
+    </div>
+
+    <p class="output">Output:<br>
+      Day 1 Total saved: 5<br>
+      Day 2 Total saved: 10<br>
+      Day 3 Total saved: 15<br>
+      Day 4 Total saved: 20<br>
+      Day 5 Total saved: 25<br>
+      Day 6 Total saved: 30<br>
+      Day 7 Total saved: 35</p>
+
+    <p class="note">💡 <strong>Notice:</strong> The variable "total saved" is created ONCE
+      outside the loop, then updated over and over inside the loop. That is the accumulator
+      pattern in action!</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: Accumulators at the Factory -->
+  <div class="helper-box">
+    <h3 class="box-title">🏭 Accumulators at the Factory 🏭</h3>
+
+    <p>At the Popcorn Factory, accumulators are used every single day. The factory manager
+      needs to track totals across many areas of the operation:</p>
+
+    <ul class="indented-list">
+      <li><strong>Supplies:</strong> How many boxes of corn have arrived from all deliveries?</li>
+      <li><strong>Production:</strong> How many batches of popcorn have we made in total?</li>
+      <li><strong>Quality:</strong> How many defects has the inspector found today?</li>
+      <li><strong>Payroll:</strong> What is the total amount we need to pay our workers?</li>
+      <li><strong>Usage:</strong> How much salt or oil have we used up this week?</li>
+    </ul>
+
+    <p>In each case, the pattern is the same:</p>
+
+    <ol class="indented-list">
+      <li>Create an accumulator variable and set it to zero</li>
+      <li>Loop through each item (delivery, worker, day, batch, etc.)</li>
+      <li>Add to the accumulator inside the loop</li>
+      <li>Print the running total after each update</li>
+    </ol>
+
+    <p>The accumulator can go UP (adding supplies, production, wages) or DOWN (using up
+      materials from a starting supply). The pattern works the same way either way!</p>
+
+    <p class="note">💡 <strong>Tip:</strong> The variable name should describe what you are
+      tracking — "total wages" tells you exactly what is being accumulated, much better than
+      just calling it "total"!</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: Why Accumulators Matter -->
+  <div class="helper-box">
+    <h3 class="box-title">💡 Why Accumulators Matter 💡</h3>
+
+    <p>Accumulators might seem simple — just adding numbers in a loop. But they are one of
+      the most powerful patterns in all of coding. Here is why:</p>
+
+    <h4 class="sub-title">Real-World Examples:</h4>
+
+    <ul class="indented-list">
+      <li>A shop uses an accumulator to calculate your total bill when you buy several items</li>
+      <li>A fitness tracker uses an accumulator to count your total steps during the day</li>
+      <li>A game uses an accumulator to track your score as you collect points</li>
+      <li>A weather station uses an accumulator to calculate the average temperature over a week</li>
+    </ul>
+
+    <h4 class="sub-title">The Power of the Pattern:</h4>
+
+    <p>Without accumulators, you would have to write a separate line of code for every single
+      item you wanted to total. Ten items? Ten lines. A hundred items? A hundred lines!</p>
+
+    <p>With an accumulator and a loop, it does not matter if you are tracking 10 items or
+      10,000 items — the code stays the same! The loop handles the repetition and the
+      accumulator keeps track of the total. That is the real power of this pattern.</p>
+
+    <p>Now that you understand how accumulators work, let's practise using them at the
+      Popcorn Factory! We will track deliveries, production, quality checks, supplies, and
+      even calculate the payroll. Let's get started! 🍿</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 5: Loops Part 4 — Accumulators — Exercises 🏗️</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Tracking Total Corn Boxes 📊             █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Tracking Total Corn Boxes 📊</h3>
+
+    <p>The supply room has several shelves filled with corn boxes. We need to count how
+      many boxes are on each shelf and keep a running total of everything we find. Let's
+      use an accumulator to track the total!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Counting Corn From the Shelves</h4>
+
+    <p>There are 4 shelves in the supply room, and each shelf holds 5 boxes of corn.
+      We need to go through each shelf, add the boxes to our running total, and print
+      the updated total each time.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total corn boxes" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of shelves" and set its value to <code>4</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "boxes per shelf" and set its value to <code>5</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the total:
+        <div class="code-example">
+          <code>
+            SET "total corn boxes" = 0<br>
+            SET "number of shelves" = 4<br>
+            SET "boxes per shelf" = 5<br>
+            FOR counter FROM 1 TO "number of shelves" DO<br>
+            &nbsp;&nbsp;SET "total corn boxes" = "total corn boxes" + "boxes per shelf"<br>
+            &nbsp;&nbsp;PRINT "Added", "boxes per shelf", "boxes from shelf", counter, "Total now:", "total corn boxes", "boxes"<br>
+            END FOR
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="loops-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint1-part-a"></p>
+    <pre class="output-block" id="loops-output1-part-a"></pre>
+    <pre class="answer-block" id="loops-answer1-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Tracking Oil Container Deliveries</h4>
+
+    <p>Excellent! The corn boxes are all counted. Now we need to track oil containers
+      coming into the factory. The factory is expecting 5 deliveries, and each delivery
+      brings 6 containers of oil. Let's track the running total as each delivery arrives.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total oil containers" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of deliveries" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "containers per delivery" and set its value to <code>6</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the total:
+        <div class="code-example">
+          <code>
+            SET "total oil containers" = 0<br>
+            SET "number of deliveries" = 5<br>
+            SET "containers per delivery" = 6<br>
+            FOR counter FROM 1 TO "number of deliveries" DO<br>
+            &nbsp;&nbsp;SET "total oil containers" = "total oil containers" + "containers per delivery"<br>
+            &nbsp;&nbsp;PRINT "Delivery", counter, "Received", "containers per delivery", "containers Total:", "total oil containers", "containers"<br>
+            END FOR
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="loops-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint1-part-b"></p>
+    <pre class="output-block" id="loops-output1-part-b"></pre>
+    <pre class="answer-block" id="loops-answer1-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Tracking Salt Usage Over Time 🧂         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Tracking Salt Usage Over Time 🧂</h3>
+
+    <p>The factory uses salt packets in its production process. The manager needs to track
+      the total number of packets used over several days and weeks so they know when to
+      reorder supplies.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Daily Salt Usage</h4>
+
+    <p>The factory uses 3 packets of salt each day. The manager wants to track the total
+      used over 5 days. Let's use an accumulator to keep a running total.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total salt used" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of days" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "packets used per day" and set its value to <code>3</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the total salt used each day in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint2-part-a"></p>
+    <pre class="output-block" id="loops-output2-part-a"></pre>
+    <pre class="answer-block" id="loops-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Weekly Flavour Packet Usage</h4>
+
+    <p>Great work on tracking daily salt! Now the flavouring department needs the same kind
+      of tracking. They use 8 packets of flavouring each week and want to know the total
+      used over 4 weeks.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total flavour used" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of weeks" and set its value to <code>4</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "packets used per week" and set its value to <code>8</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the total flavour packets used each week in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint2-part-b"></p>
+    <pre class="output-block" id="loops-output2-part-b"></pre>
+    <pre class="answer-block" id="loops-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Tracking Production Batches 📦           █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Tracking Production Batches 📦</h3>
+
+    <p>The factory manager needs to know the total production output. Every day and every
+      shift, batches of popcorn are completed and bags are packaged. Let's track both!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Daily Batch Production</h4>
+
+    <p>Each day the factory completes 7 batches of popcorn. The manager wants to track the
+      total number of batches completed over 6 days. Let's use an accumulator to keep a
+      running total.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total batches completed" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of days" and set its value to <code>6</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "batches per day" and set its value to <code>7</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the total batches completed each day in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint3-part-a"></p>
+    <pre class="output-block" id="loops-output3-part-a"></pre>
+    <pre class="answer-block" id="loops-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Packaging Bags Across Shifts</h4>
+
+    <p>Excellent tracking on the batches! Now let's look at the packaging line. During each
+      shift, the team packages 10 bags of popcorn. The factory runs 8 shifts and the manager
+      wants to see the running total of bags packaged.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total bags packaged" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of shifts" and set its value to <code>8</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "bags per shift" and set its value to <code>10</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the total bags packaged across each shift in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint3-part-b"></p>
+    <pre class="output-block" id="loops-output3-part-b"></pre>
+    <pre class="answer-block" id="loops-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Quality Control Checks ✅                █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Quality Control Checks ✅</h3>
+
+    <p>The quality control department needs to keep accurate counts of everything they
+      inspect. Let's help them track the total boxes checked during batch inspections and
+      the total defects found during their shift.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Counting Boxes Checked</h4>
+
+    <p>An inspector checks 3 boxes from each batch that comes off the production line.
+      There are 8 batches to inspect and the inspector needs to know the total number of
+      boxes checked by the end.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total boxes checked" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of batches" and set its value to <code>8</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "boxes checked per batch" and set its value to <code>3</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the total boxes checked across all batches in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint4-part-a"></p>
+    <pre class="output-block" id="loops-output4-part-a"></pre>
+    <pre class="answer-block" id="loops-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Counting Defects Found</h4>
+
+    <p>Good work counting the boxes! Now let's track defects. During a 6-hour shift, the
+      inspector finds an average of 2 defects per hour. The factory needs to know the total
+      number of defects found by the end of the shift.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total defects found" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of hours" and set its value to <code>6</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "defects found per hour" and set its value to <code>2</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the total defects found during the shift in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint4-part-b"></p>
+    <pre class="output-block" id="loops-output4-part-b"></pre>
+    <pre class="answer-block" id="loops-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Factory Payroll 💰                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Factory Payroll 💰</h3>
+
+    <p>At the end of each day, the factory manager needs to calculate how much money to pay
+      the workers. Let's use accumulators to track the total wages and the total bonuses
+      paid to the team.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Calculating Total Daily Wages</h4>
+
+    <p>There are 5 workers on the team and each worker earns 100 currency units per day.
+      The manager needs to track the running total of wages as each worker is paid. Print
+      a message after each worker is paid showing the updated total.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total wages" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of workers" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "daily wage per worker" and set its value to <code>100</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total daily wages for the team in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint5-part-a"></p>
+    <pre class="output-block" id="loops-output5-part-a"></pre>
+    <pre class="answer-block" id="loops-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Paying Bonuses to Top Performers</h4>
+
+    <p>Great work on the wages! Now let's calculate bonuses. The factory is rewarding 3
+      high-performing workers with a bonus of 50 currency units each. Track the total bonus
+      paid as each worker receives their reward.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total bonus paid" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of workers" and set its value to <code>3</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "bonus per worker" and set its value to <code>50</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total bonus paid to the high performers in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint5-part-b"></p>
+    <pre class="output-block" id="loops-output5-part-b"></pre>
+    <pre class="answer-block" id="loops-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 5 Loops Part 4               █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 6                         █ -->
+<!-- █  // Pirate Adventure Part 1                   █ -->
+<!-- █  // Review — Conditions & Logical Operators   █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="pirateAdventure-module">
+  <h2 class="module-title">Module 6: Pirate Adventure Part 1 🏴‍☠️</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: Welcome Aboard the Jolly Coder! ⚓ -->
+  <div class="helper-box">
+    <h3 class="box-title">⚓ Welcome Aboard the Jolly Coder! ⚓</h3>
+
+    <p>Ahoy, young coders! Welcome aboard the Jolly Coder — the finest pirate ship
+      on the seven seas! Captain Condition and First Mate Function need your help
+      running the ship. You've learned all about conditions and logical operators
+      in the factory — now it's time to use your skills on the high seas!</p>
+
+    <h4 class="sub-title">Pirate Ship Decisions</h4>
+
+    <p>Every day on a pirate ship involves making decisions — lots of them!
+      Here are some of the things you'll help the crew figure out:</p>
+
+    <ul class="indented-list">
+      <li>IF a storm is coming, THEN batten down the hatches!</li>
+      <li>IF you spot land, THEN shout "Land ho!"</li>
+      <li>ELSE IF you see another ship, THEN raise the flag!</li>
+      <li>ELSE keep sailing straight ahead.</li>
+    </ul>
+
+    <h4 class="sub-title">Your Five Challenges</h4>
+
+    <p>To earn your sea legs, you'll need to solve five ship challenges. Each one
+      tests a different skill you've already learned. Are you ready to prove
+      yourself to Captain Condition? Let's set sail! 🏴‍☠️</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: Pirate Coding Tools — AND, OR, NOT 🏴‍☠️ -->
+  <div class="helper-box">
+    <h3 class="box-title">🏴‍☠️ Pirate Coding Tools — AND, OR, NOT 🏴‍☠️</h3>
+
+    <p>Every pirate captain needs tools for making decisions. You've already learned
+      about three powerful tools — AND, OR, and NOT. Let's see how they work on
+      a pirate ship!</p>
+
+    <h4 class="sub-title">AND — Both Conditions Must Be True</h4>
+
+    <p>Think of AND like needing BOTH a map AND a compass to find treasure.
+      If you're missing either one, you're lost!</p>
+
+    <div class="code-block">
+      SET "has map" = true<br>
+      SET "has compass" = true<br><br>
+      IF "has map" AND "has compass" THEN<br>
+      &nbsp;&nbsp;PRINT "Let's find that treasure!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Need both map and compass first!"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">OR — At Least One Condition Must Be True</h4>
+
+    <p>OR is like spotting land — you might see it with your eyes OR through a
+      telescope. Either way works!</p>
+
+    <div class="code-block">
+      SET "see with eyes" = true<br>
+      SET "see with telescope" = false<br><br>
+      IF "see with eyes" OR "see with telescope" THEN<br>
+      &nbsp;&nbsp;PRINT "Land ho! Head that way!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "No land in sight — keep sailing"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">NOT — The Opposite of the Condition</h4>
+
+    <p>NOT flips things around. If it's NOT stormy weather, we can set sail!</p>
+
+    <div class="code-block">
+      SET "stormy weather" = false<br><br>
+      IF NOT "stormy weather" THEN<br>
+      &nbsp;&nbsp;PRINT "Clear skies — full sails ahead!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Too dangerous — stay in port"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">Using Them Together</h4>
+
+    <p>In real code, you'll often combine AND, OR, and NOT in the same decision.
+      Use parentheses <code>( )</code> to group conditions — just like in maths!</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: ELSE IF — Multiple Choices Like Different Islands 🏝️ -->
+  <div class="helper-box">
+    <h3 class="box-title">🏝️ ELSE IF — Multiple Choices Like Different Islands 🏝️</h3>
+
+    <p>Sometimes you have more than two choices. A treasure map might point to
+      three possible locations — the cave, the palm tree, or the waterfall.
+      That's when we use ELSE IF!</p>
+
+    <h4 class="sub-title">Checking One at a Time</h4>
+
+    <div class="code-block">
+      SET "map clue" = "palm tree"<br><br>
+      IF "map clue" = "cave" THEN<br>
+      &nbsp;&nbsp;PRINT "Search near the caves!"<br>
+      ELSE IF "map clue" = "palm tree" THEN<br>
+      &nbsp;&nbsp;PRINT "Look by the palm trees!"<br>
+      ELSE IF "map clue" = "waterfall" THEN<br>
+      &nbsp;&nbsp;PRINT "Check behind the waterfall!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Clue not recognised — keep searching!"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">How It Works</h4>
+
+    <p>The computer checks each condition in order:</p>
+
+    <ul class="indented-list">
+      <li><strong>First:</strong> Is it the cave? No — move to next</li>
+      <li><strong>Second:</strong> Is it the palm tree? YES — stop and do that!</li>
+      <li>The waterfall and else never get checked because we found our match</li>
+    </ul>
+
+    <p class="note">💡 <strong>Tip:</strong> Order matters! Put your most likely or
+      most important checks first.</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: Comparison Operators on the Ship ⚖️ -->
+  <div class="helper-box">
+    <h3 class="box-title">⚖️ Comparison Operators on the Ship ⚖️</h3>
+
+    <p>Comparison operators help you check values against each other. Here are the
+      ones you'll use on the pirate ship:</p>
+
+    <h4 class="sub-title">The Operators</h4>
+
+    <ul class="indented-list">
+      <li><code>&gt;</code> — Greater than (older than 8?)</li>
+      <li><code>&lt;</code> — Less than (fewer than 3 mistakes?)</li>
+      <li><code>&gt;=</code> — Greater than or equal to (8 or older?)</li>
+      <li><code>&lt;=</code> — Less than or equal to (3 or fewer mistakes?)</li>
+      <li><code>=</code> — Equal to (exactly 10 steps?)</li>
+      <li><code>!=</code> — Not equal to (word is NOT "parrot"?)</li>
+    </ul>
+
+    <h4 class="sub-title">Pirate Ship Examples</h4>
+
+    <div class="code-block">
+      SET "child age" = 9<br>
+      SET "steps from tree" = 10<br>
+      SET "secret word" = "treasure"<br><br>
+      IF "child age" &gt;= 8 THEN<br>
+      &nbsp;&nbsp;PRINT "Old enough to climb the rigging!"<br>
+      END IF<br><br>
+      IF "steps from tree" = 10 THEN<br>
+      &nbsp;&nbsp;PRINT "Exactly at the X — start digging!"<br>
+      END IF<br><br>
+      IF "secret word" != "parrot" THEN<br>
+      &nbsp;&nbsp;PRINT "That's not the password — try again!"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">Key Insight</h4>
+
+    <p>Comparisons give us true or false — perfect for using with AND, OR, and NOT!
+      These are the building blocks for all your pirate decisions.</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- Helper Box 5: Combining It All — Real Pirate Decisions 🎯 -->
+  <div class="helper-box">
+    <h3 class="box-title">🎯 Combining It All — Real Pirate Decisions 🎯</h3>
+
+    <p>Real pirate decisions combine multiple tools. You might need to check age
+      AND permission, OR have a backup plan, AND make sure it's NOT stormy!</p>
+
+    <h4 class="sub-title">A Combined Example</h4>
+
+    <div class="code-block">
+      SET "child age" = 9<br>
+      SET "has permission" = true<br>
+      SET "stormy weather" = false<br><br>
+      IF ("child age" &gt;= 8 AND "has permission") AND NOT "stormy weather" THEN<br>
+      &nbsp;&nbsp;PRINT "All clear — climb aboard, matey!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Not today — check conditions and try again"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">How This Works</h4>
+
+    <p>This checks THREE things at once:</p>
+
+    <ul class="indented-list">
+      <li><strong>Is child age &gt;= 8?</strong> — 9 is — true</li>
+      <li><strong>Does child have permission?</strong> — true</li>
+      <li><strong>Is it NOT stormy?</strong> — false is stormy? No — so NOT stormy is true!</li>
+    </ul>
+
+    <p>All three are true — so we can board! 🏴‍☠️</p>
+
+    <h4 class="sub-title">Parentheses Tip</h4>
+
+    <p>Use parentheses <code>( )</code> to group your conditions, just like in maths.
+      They help the computer understand which checks go together:</p>
+
+    <div class="code-block">
+      IF ("child age" &gt;= 8 AND "has permission") OR "captain says yes" THEN<br>
+      &nbsp;&nbsp;PRINT "You can come aboard!"<br>
+      END IF
+    </div>
+
+    <p>This says: You can board if (you're old enough AND have permission)
+      OR if the captain says yes — even if the other two are false!</p>
+  </div>
+  <!-- End of Helper Box 5 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 6: Pirate Adventure Part 1 — Exercises 🏴‍☠️</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Boarding the Ship ⚓                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Boarding the Ship ⚓</h3>
+
+    <p>Ahoy, young coders! Captain Condition and First Mate Function need your help
+      on their pirate ship! You've learned all about conditions and logical operators —
+      now use your skills to solve five pirate ship challenges and earn your sea legs!</p>
+
+    <p>Let's start at the boarding plank! To come aboard the Jolly Coder, you need to
+      be at least 8 years old AND have a parent's permission. Both conditions must be
+      true before the crew will let anyone on board!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: A Child With Permission</h4>
+
+    <p>A child aged 9 arrives at the ship. They have their parent's permission. Let's
+      check if they meet BOTH requirements to board.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child age" and set its value to <code>9</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "has permission" and set its value to <code>true</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF with AND to check if "child age" is greater than or equal to 8 AND "has permission" is true.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the child can board:
+        <div class="code-example">
+          <code>
+            SET "child age" = 9<br>
+            SET "has permission" = true<br>
+            IF "child age" &gt;= 8 AND "has permission" THEN<br>
+            &nbsp;&nbsp;PRINT "&#x2705; Permission granted — welcome aboard!"<br>
+            ELSE<br>
+            &nbsp;&nbsp;PRINT "&#x1f6ab; Stay on shore — need to be 8 or older with permission!"<br>
+            END IF
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="pirateAdventure-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint1-part-a"></p>
+    <pre class="output-block" id="pirateAdventure-output1-part-a"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer1-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: A Younger Child</h4>
+
+    <p>The plank is quiet for a moment — then another child arrives! This one is only 7
+      years old but does have their parent's permission. Let's check if they can board.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child age" and set its value to <code>7</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "has permission" and set its value to <code>true</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF with AND to check if "child age" is greater than or equal to 8 AND "has permission" is true.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if this younger child can board in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint1-part-b"></p>
+    <pre class="output-block" id="pirateAdventure-output1-part-b"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer1-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Treasure Map Reading 🗺️                   █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Treasure Map Reading 🗺️</h3>
+
+    <p>You've made it aboard! Now Captain Condition hands you a treasure map.
+      The map has three possible locations where the treasure might be buried —
+      the cave, the palm tree, or the waterfall. Use ELSE IF to check each
+      location and find where X marks the spot!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: The Palm Tree Clue</h4>
+
+    <p>The map clue says "palm tree". Let's check through the possible locations
+      and print the correct instruction for where to dig!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "map clue" and set its value to <code>"palm tree"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF and ELSE IF to check if "map clue" equals "cave", "palm tree", or "waterfall".</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;PRINT the matching location message for each check.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to find the treasure location based on the map clue in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint2-part-a"></p>
+    <pre class="output-block" id="pirateAdventure-output2-part-a"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: The Waterfall Clue</h4>
+
+    <p>Ahoy! A different piece of the map has been found! This one points to a
+      different location. Let's check again with the new clue.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "map clue" and set its value to <code>"waterfall"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF and ELSE IF to check if "map clue" equals "cave", "palm tree", or "waterfall".</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;PRINT the matching location message for each check.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to find the treasure location based on the new map clue in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint2-part-b"></p>
+    <pre class="output-block" id="pirateAdventure-output2-part-b"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Crew Member Check 👥                      █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Crew Member Check 👥</h3>
+
+    <p>Welcome aboard, sailor! Now that you're on the ship, Captain Condition wants
+      to know if you're ready to join the crew. Every proper pirate needs BOTH a
+      pirate hat AND a wooden sword. Let's check if you have everything!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: A Fully Equipped Pirate</h4>
+
+    <p>One pirate candidate arrives with both a pirate hat AND a wooden sword. Let's
+      check if they have everything needed to join the crew!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has pirate hat" and set its value to <code>true</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "has wooden sword" and set its value to <code>true</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF with AND to check if BOTH "has pirate hat" AND "has wooden sword" are true.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the pirate can join the crew in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint3-part-a"></p>
+    <pre class="output-block" id="pirateAdventure-output3-part-a"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Missing Equipment</h4>
+
+    <p>Another pirate candidate arrives! They have a pirate hat — but no wooden sword.
+      Let's check if they can still join the crew.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "has pirate hat" and set its value to <code>true</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "has wooden sword" and set its value to <code>false</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF with AND to check if BOTH "has pirate hat" AND "has wooden sword" are true.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if this pirate can join the crew in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint3-part-b"></p>
+    <pre class="output-block" id="pirateAdventure-output3-part-b"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Night Watch Duty 🌙                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Night Watch Duty 🌙</h3>
+
+    <p>It's night time on the Jolly Coder! Someone needs to keep watch for land and
+      other ships. You can see if the moon is bright OR the stars are visible — either
+      one is enough to keep a lookout. Let's use OR to check if you can see!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Moonlit Night</h4>
+
+    <p>The moon is bright tonight, but the stars are hidden behind clouds. Let's check
+      if there's enough light to keep watch!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "moon bright" and set its value to <code>true</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "stars visible" and set its value to <code>false</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF with OR to check if "moon bright" OR "stars visible" is true.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the night watch can see land in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint4-part-a"></p>
+    <pre class="output-block" id="pirateAdventure-output4-part-a"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Pitch Black Night</h4>
+
+    <p>Oh no — it's a cloudy night with no moon and no stars visible at all!
+      Let's check if the night watch can see anything.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "moon bright" and set its value to <code>false</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "stars visible" and set its value to <code>false</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF with OR to check if "moon bright" OR "stars visible" is true.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the night watch can see anything tonight in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint4-part-b"></p>
+    <pre class="output-block" id="pirateAdventure-output4-part-b"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Cannon Firing Time 💥                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Cannon Firing Time 💥</h3>
+
+    <p>The Jolly Coder spots a rival pirate ship in the distance! Time to fire the
+      cannons! But wait — we can only fire if it's NOT stormy weather. Firing cannons
+      in a storm is far too dangerous. Let's use NOT to check if it's safe!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Clear Skies</h4>
+
+    <p>The weather is calm today — no storms in sight. Let's check if it's safe to
+      fire the cannons!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stormy weather" and set its value to <code>false</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF with NOT to check if it is NOT "stormy weather".</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;PRINT a message about whether it's safe to fire.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the cannons are ready to fire in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint5-part-a"></p>
+    <pre class="output-block" id="pirateAdventure-output5-part-a"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Stormy Weather</h4>
+
+    <p>Uh oh — dark clouds are rolling in! The weather has turned stormy. Let's check
+      if it's still safe to fire the cannons.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "stormy weather" and set its value to <code>true</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF with NOT to check if it is NOT "stormy weather".</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;PRINT a message about whether it's safe to fire.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the cannons can fire during the storm in the code block below.</li>
+    </ul>
+
+    <label for="pirateAdventure-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="pirateAdventure-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="pirateAdventure" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="pirateAdventure" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="pirateAdventure" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="pirateAdventure-hint5-part-b"></p>
+    <pre class="output-block" id="pirateAdventure-output5-part-b"></pre>
+    <pre class="answer-block" id="pirateAdventure-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 6 Pirate Adventure Part 1   █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

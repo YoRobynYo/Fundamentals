@@ -1,6 +1,93 @@
 # Starting the Fundamentals Environment
 
-This is a step-by-step checklist to launch the complete Kanbanotion application on your local machine. This guide uses a "decoupled" approach, where the Backend and Frontend run as separate servers.
+Terminal 1: The AI Engine (Ollama Server)
+
+This terminal runs the local AI model that powers the factory's helper. It must be started first.
+
+    Open your first terminal window.
+    Run the following command to start the Ollama server.
+        Troubleshooting: If the application is already running in the background (llama icon in your menu bar), quit it first.
+        To force stop: killall ollama
+        To check ports: lsof -i :11434
+
+Bash
+
+    ollama serve
+
+    You will see log messages as the server starts. Leave this terminal running.
+
+This is the foundation. Without it, the Popcorn Factory has no AI assistant.
+Terminal 2: The Backend (Python/FastAPI Server)
+
+This terminal runs the Python highlight that handles the factory logic, hints, and communication with the AI.
+
+    Open your second terminal window.
+    Navigate to the root directory of your project.
+
+Bash
+
+# Example path - adjust to your actual folder
+cd ~/Live-Builds/popcorn-factory
+
+Activate your Python virtual environment.
+
+Bash
+
+source ./.venv/bin/activate
+
+(You should see (venv) appear at the start of your terminal prompt.)
+Run the command to start the FastAPI/Uvicorn server. This server runs on port 8000.
+
+Bash
+
+    python -m uvicorn course.backend.app.main:app --reload
+
+    (Note: Ensure your backend folder structure matches course/backend/app/main.py)
+    You will see INFO: Uvicorn running on http://127.0.0.1:8000. Leave this terminal running.
+
+This is the application's "brain" and "nervous system."
+Terminal 3: The Frontend (Python HTTP Server)
+
+This terminal serves your HTML, CSS, and JavaScript files (the Popcorn Factory Interface) to your browser.
+
+    Open your third terminal window.
+    Navigate directly into your frontend directory.
+
+Bash
+
+# Update 'popcorn-factory' to your actual folder name
+cd popcorn-factory/frontend
+
+Run the following command to start a simple, dedicated web server for the frontend. This server runs on port 8080.
+
+Bash
+
+    python3 -m http.server 8080
+
+    You will see a message like Serving HTTP on 0.0.0.0 port 8080. Leave this terminal running.
+
+This allows you to see and interact with the Popcorn Factory interface.
+Summary: Your Running Environment
+
+Once you have completed these steps, you will have:
+
+    Terminal 1: Running ollama serve (The AI).
+    Terminal 2: Running uvicorn on port 8000 (The Python Backend).
+    Terminal 3: Running http.server on port 8080 (The Interface).
+    Your Web Browser: Open to http://localhost:8080 to start coding!
+
+Optional: Terminal 4 for Sass
+
+If you are actively styling the factory (changing colors or layout), open a fourth terminal:
+
+    Navigate into your frontend directory.
+    Run the command:
+
+Bash
+
+sass --watch styles/main.scss:styles/main.css
+
+<!-- This is a step-by-step checklist to launch the complete Kanbanotion application on your local machine. This guide uses a "decoupled" approach, where the Backend and Frontend run as separate servers.
 
 You will need **three separate terminal windows** open to run the full application. A fourth is optional for the Sass compiler.
 
@@ -28,7 +115,7 @@ This terminal runs the local AI model that powers Koby's "brain." It must be sta
 
 ### **Terminal 2: The Backend (Python/FastAPI Server)**
 
-This terminal runs the Python code that handles the chat logic, memory, and communication with the AI.
+This terminal runs the Python highlight that handles the chat logic, memory, and communication with the AI.
 
 1.  **Open your second terminal window.**
 2.  Navigate to the root directory of your project (e.g., 
@@ -88,7 +175,7 @@ If you are actively editing your styles, you can open a fourth terminal to run t
     ```
 
 You are now fully operational with a clean, decoupled development environment.
-
+ -->
 
 
 <!-- kanbanotion Project — Setup + Daily Workflow
@@ -163,7 +250,7 @@ Design and technical requirements
 
 Build phases and to-dos
 
-    Push your code to GitHub after each phase.
+    Push your highlight to GitHub after each phase.
 See below for adding and linking github
 
 ✅ Phase 1: Core Website & AI (Done)
@@ -236,7 +323,7 @@ check in Github https://github.com/YoRobynYo/kanbanotion
 
 
 
-original js code for backup 
+original js highlight for backup 
 // js/chat.js
 
 document.addEventListener('DOMContentLoaded', () => {

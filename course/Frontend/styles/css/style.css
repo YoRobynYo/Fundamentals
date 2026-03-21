@@ -1,0 +1,741 @@
+@charset "UTF-8";
+/* ============================ */
+/*       COURSE STYLES          */
+/* ============================ */
+/* ================================= */
+/*  COMPLETE NEW STYLE FEB 21TH  */
+/* ================================= */
+/* ===================== */
+/* :: scss compilier :: */
+/* ===================== */
+/***
+sass --watch /Users/robynmai/fundamentals-course/course/Frontend/styles/scss/webpage.scss:/Users/robynmai/fundamentals-course/course/Frontend/styles/css/style.css
+***/
+/* ==================== */
+/* 1. CSS RESET & BASE  */
+/* ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #2c3e50;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== */
+/* 2. CSS VARIABLES     */
+/* ==================== */
+:root {
+  /* Colors */
+  --primary-blue: #0984e3;
+  --primary-blue-light: #74b9ff;
+  --accent-pink: #e00d53;
+  --accent-orange: #e0970d;
+  --accent-yellow: #ffdd59;
+  --accent-green: #1f9b53;
+  /* Background colors */
+  --bg-helper: #e8f5ff;
+  --bg-exercise: #fff8e1;
+  --bg-ending: #e8f5ee;
+  --bg-code: #f8f9fa;
+  /* Text colors */
+  --text-dark: #2c3e50;
+  --text-medium: #2c3e50;
+  --text-medium-2: #959ea7;
+  --text-light: #ffffff;
+  --heading-color: #727577;
+  /* Borders */
+  --border-blue: #3399ff;
+  --border-yellow: #ffcc00;
+  --border-green: #2ecc71;
+  --border-grey: #e9ecef;
+  /* Spacing - CONSISTENT VALUES */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 2.5rem;
+  --space-xxl: 3rem;
+  /* Borders Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* ==================== */
+/* 3. TYPOGRAPHY        */
+/* ==================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-medium);
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.7rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+p {
+  font-family: "Inter", "Noto Sans", "Montserrat", "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: var(--text-medium-2);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* Heading Classes */
+.module-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  text-align: center;
+  margin: 0;
+  padding: var(--space-md) 0;
+  line-height: 1.2;
+}
+
+.exercises-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: var(--space-md) 0;
+  line-height: 1.2;
+}
+
+.box-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.3;
+}
+
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.3;
+}
+
+.exercise-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.3;
+}
+
+.sub-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: var(--space-md) 0 var(--space-sm) 0;
+  line-height: 1.3;
+}
+
+.sub-title:first-of-type {
+  margin-top: 0;
+}
+
+/* Links & Accents */
+a {
+  color: var(--primary-blue);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-blue-light);
+}
+
+strong {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+em {
+  font-style: italic;
+  color: #555;
+}
+
+/* ==================== */
+/* 4. LAYOUT CONTAINERS */
+/* ==================== */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  /* FIXED: Removed top/bottom padding */
+  background-color: #fff;
+  scroll-margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  /* Handles spacing between children */
+}
+
+/* Fix for flex children width consistency 
+.page>* {
+  min-width: 0;
+  flex-shrink: 0;
+} */
+/* Fix for flex children width consistency */
+.page > .helper-box,
+.page > .exercise-box,
+.page > .ending-box {
+  min-width: 0;
+  flex-shrink: 0;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ==================== */
+/* 5. SPECIAL PAGES     */
+/* ==================== */
+.cover-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+  color: var(--text-light);
+}
+
+.cover-content {
+  align-items: center;
+  text-align: center;
+}
+
+.cover-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 5rem;
+  color: var(--accent-orange);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  animation: fadeInDown 1s ease forwards;
+  opacity: 0;
+}
+
+.cover-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--text-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 3rem;
+  animation: fadeInUp 1.5s ease forwards;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+
+.authors {
+  font-size: 4rem;
+  color: var(--accent-yellow);
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+  display: none;
+  animation: fadeInGlow 1s ease forwards;
+}
+
+.start-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--text-light);
+  color: var(--primary-blue);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  min-width: 200px;
+  padding: var(--space-md) var(--space-xl);
+  border: 2px solid var(--text-light);
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  margin: var(--space-lg) 0;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.start-button:hover {
+  background-color: transparent;
+  color: var(--text-light);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.credits-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  text-align: center;
+}
+
+.credits-content {
+  max-width: 600px;
+}
+
+/* ==================== */
+/* 6. CONTENT BOXES     */
+/* ==================== */
+.helper-box,
+.exercise-box,
+.ending-box {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-lg);
+  margin: var(--space-md) 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.helper-box {
+  background-color: var(--bg-helper);
+  border-left: 4px solid var(--border-blue);
+}
+
+.exercise-box {
+  background-color: var(--bg-exercise);
+  border-left: 4px solid var(--border-yellow);
+}
+
+.ending-box {
+  background-color: var(--bg-ending);
+  border-left: 4px solid var(--border-green);
+}
+
+/* Box content spacing */
+.helper-box > *,
+.exercise-box > *,
+.ending-box > * {
+  margin-bottom: var(--space-md);
+}
+
+.helper-box > :last-child,
+.exercise-box > :last-child,
+.ending-box > :last-child {
+  margin-bottom: 0;
+}
+
+/* ==================== */
+/* 7. CODE & INTERACTIVE */
+/* ==================== */
+code,
+highlight {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 0.9em;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.code-block {
+  background-color: transparent;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-grey);
+  margin: var(--space-md) 0;
+  overflow-x: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 150px;
+}
+
+.code-block[contenteditable=true] {
+  background-color: #ffffff;
+  border: 2px solid #D4E6F1;
+  cursor: text;
+}
+
+.code-block[contenteditable=true]:focus {
+  outline: none;
+  border-color: #5DADE2;
+}
+
+.example-code {
+  background-color: #f8f9fa;
+  font-family: "Inter", "Noto Sans", sans-serif;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: none;
+  margin: var(--space-md) 0;
+  overflow-x: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text-dark);
+}
+
+.code-label {
+  display: block;
+  font-style: italic;
+  color: var(--text-medium);
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1.1rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.exercise-buttons {
+  display: flex;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.exercise-buttons button {
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.exercise-buttons button:active {
+  transform: translateY(0);
+}
+
+.exercise-buttons .run-button {
+  background: rgba(31, 155, 83, 0.6);
+  color: white;
+  border-color: rgba(31, 155, 83, 0.5);
+}
+
+.exercise-buttons .run-button:hover {
+  background: rgba(31, 155, 83, 0.8);
+  border-color: rgba(31, 155, 83, 0.7);
+}
+
+.exercise-buttons .reset-button {
+  background: rgba(255, 107, 107, 0.6);
+  color: white;
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.exercise-buttons .reset-button:hover {
+  background: rgba(255, 107, 107, 0.8);
+  border-color: rgba(255, 107, 107, 0.7);
+}
+
+.exercise-buttons .hint-button {
+  background: rgba(9, 132, 227, 0.6);
+  color: white;
+  border-color: rgba(9, 132, 227, 0.5);
+}
+
+.exercise-buttons .hint-button:hover {
+  background: rgba(9, 132, 227, 0.8);
+  border-color: rgba(9, 132, 227, 0.7);
+}
+
+/* ==================== */
+/* 8. ANIMATIONS        */
+/* ==================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInGlow {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+    text-shadow: 0 0 10px rgba(255, 221, 89, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 20px rgba(255, 221, 89, 0.6), 3px 3px 8px rgba(0, 0, 0, 0.6);
+  }
+}
+/* ==================== */
+/* 9. ROADMAP           */
+/* ==================== */
+.roadmap-container {
+  margin: var(--space-lg) 0;
+}
+
+.roadmap-container .topic-item {
+  margin-bottom: var(--space-md);
+}
+
+.roadmap-container a.scroll-link {
+  display: inline-block;
+  max-width: 700px;
+  color: var(--accent-green);
+  font-weight: 600;
+  font-size: 1.7rem;
+  text-decoration: none;
+  padding: var(--space-md) var(--space-lg);
+  margin: 0;
+  border-radius: var(--radius-md);
+  border-left: 10px solid var(--accent-green);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.roadmap-container a.scroll-link::after {
+  content: " →";
+  opacity: 0.7;
+  margin-left: 15px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.roadmap-container a.scroll-link:hover {
+  color: var(--primary-blue);
+  background: #e1ecff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(14, 99, 235, 0.25);
+}
+
+.roadmap-container a.scroll-link:hover::after {
+  opacity: 1;
+  margin-left: 20px;
+}
+
+/* ==================== */
+/* 10. UTILITIES        */
+/* ==================== */
+.text-center,
+.centered {
+  text-align: center;
+}
+
+/* ==================== */
+/* 11. LISTS            */
+/* ==================== */
+ul,
+ol {
+  padding-left: var(--space-lg);
+  border-left: 3px solid var(--accent-green);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+li {
+  font-family: monospace, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  color: var(--text-medium-2);
+}
+
+.indented-list {
+  margin-left: 0;
+  padding-left: var(--space-xl);
+  border-left: 3px solid var(--accent-green);
+  margin-bottom: var(--space-md);
+}
+
+/* ==================== */
+/* 12. INTRODUCTION BOXES */
+/* ==================== */
+/*
+.introduction-box {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.introduction-box:not(:has(.helper-box)):not(:has(.exercise-box)):not(:has(.ending-box)) {
+  padding: var(--space-lg);
+  background-color: var(--bg-helper);
+  margin: var(--space-md) 0;
+}
+
+.introduction-box p {
+  margin: 0 !important;
+}
+*/
+/* ==================== */
+/* 13. EXERCISE SPECIFIC */
+/* ==================== */
+.hint,
+.output-block,
+.answer-block {
+  margin: var(--space-md) 0;
+  padding: var(--space-md);
+  background-color: #fff9e6;
+  border-left: 4px solid var(--accent-yellow);
+  border-radius: var(--radius-sm);
+  display: none;
+}
+
+.hint:not(:empty),
+.output-block:not(:empty),
+.answer-block:not(:empty) {
+  display: block;
+}
+
+.output-block,
+.answer-block {
+  font-family: "Inter", "Noto Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.9;
+  color: var(--text-medium-2);
+}
+
+.lead-point {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-medium);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+/* ==================== */
+/* 14. IMAGES           */
+/* ==================== */
+.reminder-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== */
+/* 15. RESPONSIVE DESIGN */
+/* ==================== */
+@media (max-width: 768px) {
+  .page {
+    padding: 0 var(--space-md);
+  }
+  .cover-title {
+    font-size: 3rem;
+  }
+  .cover-subtitle {
+    font-size: 1.8rem;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1.2rem;
+  }
+  p {
+    font-size: 1.4rem;
+  }
+  .helper-box,
+  .exercise-box,
+  .ending-box {
+    padding: var(--space-md);
+  }
+}
+@media (max-width: 480px) {
+  .cover-title {
+    font-size: 2.5rem;
+  }
+  .cover-subtitle {
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

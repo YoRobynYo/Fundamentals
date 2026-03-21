@@ -10,1640 +10,281 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
-  <!-- <link rel="stylesheet" href="styles/styles.css"> -->
-  <link rel="stylesheet" href="styles/webpage.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- styles -->
+  <link rel="stylesheet" href="styles/css/style.css">
+
 </head>
+
+<!-- links for the exercises in the browser 
+http://127.0.0.1:5501/course/Frontend/modules/module-1-variables/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-2-operators/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-3-conditions-part1/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-3-conditions-part2/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-3-conditions-part3/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-3-conditions-part4/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-3-conditions-part5/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-4-logical-operators-part1/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-4-logical-operators-part2/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-5-loops-part1/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-5-loops-part2/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-5-loops-part3/index.html
+http://127.0.0.1:5501/course/Frontend/modules/module-5-loops-part4/index.html
+-->
+
+<!-- In the terminal 
+ cd /Users/robynmai/core-value-fundamentals/course/Frontend/ 
+ then we choose the module to add in 
+ eg add the module after the frontend 
+ node build-html.js MODULE-5-LOOPS-PART2
+-->
 
 <body>
 
   <!-- Cover Page -->
-  <div class="page cover-page" id="cover-page-container">
-    <div>
-      <h1 class="cover-title">Let's Learn Some <br />
-        Fundamentals</h1>
+  <section class="cover-section" id="cover-module">
+    <div class="cover-content">
+      <h1 class="cover-title">
+        Let's Learn Some<br>
+        Fundamentals<br>
+        Of Javascript
+      </h1>
       <h2 class="cover-subtitle">Welcome To The Course</h2>
-      <p class="authors">This Course was made by <br>
-        The Pickl3 Family </p>
-
+      <p class="authors" style="display: none;">The Pickl3 Family</p> <!-- CHANGED: removed "Made with ❤️ by" -->
       <a href="#main-content" class="start-button">Start Course</a>
     </div>
-  </div>
-
-  <!-- Introduction to Fundamentals -->
-  <main id="main-content" style="display: none;"></main>
-  <section class="page">
-    <h2 class="page-title">Introduction to <br /> Fundamentals</h2>
-    <p>Imagine each fundamental as a single LEGO brick. At first, it might not look very exciting — just a small,
-      colorful block sitting by itself. But what happens when you add another? And another? Suddenly, you can make a
-      wall… then a little house… then maybe a castle with towers and a drawbridge. Keep going, and you could build
-      rockets, robots, or even entire worlds!</p>
-    <p>That’s what learning the fundamentals is like. Each new idea might seem tiny at first, but when you connect them,
-      they start to form something amazing. These are the basic ideas that almost everything in technology is built on —
-      the patterns, logic, and structure that help us tell computers what to do. They’re the building blocks that turn
-      imagination into creation.</p>
-    <p>Learning these first is like laying a strong foundation before building a treehouse or learning your ABCs before
-      writing a story. Once you understand these pieces, you’ll know not just what to do, but <strong>why it
-        works</strong> — and that’s where the real magic happens.</p>
-    <p>You’ll soon discover that things like variables, loops, and functions are like special tools in your thinking
-      toolbox. They help you give clear instructions, notice patterns, remember important information, and make smart
-      decisions — just like you do when solving puzzles or planning an adventure.</p>
-  </section>
-
-  <!-- What You'll Learn & The Roadmap -->
-  <section class="page">
-    <h2 class="page-title">What You’ll Learn <br /> & The Roadmap 🗺️</h2>
-    <p>In this course, we’ll explore 8 exciting fundamentals, one at a time. Think of each one as a new tool, skill, or
-      superpower you can collect on your journey.</p>
-    <div class="topic-item">
-      <h3> Variables 📦 </h3>
-      <p>Boxes that hold information like names, scores, or true/false answers.</p>
-    </div>
-    <div class="topic-item">
-      <h3>Operators ⚡ </h3>
-      <p>Tools that add, compare, or combine values (like +, -, >, ===).</p>
-    </div>
-    <div class="topic-item">
-      <h3> Conditionals ❓ </h3>
-      <p>Ask questions like “Is it raining?” and do different things based on the answer.</p>
-    </div>
-    <div class="topic-item">
-      <h3>Loops 🔁 </h3>
-      <p>Repeat actions automatically — no need to write the same code 10 times!</p>
-    </div>
-    <div class="topic-item">
-      <h3> Functions 🧩 </h3>
-      <p>Mini-machines that do a task again and again when you call them.</p>
-    </div>
-    <div class="topic-item">
-      <h3> Arrays 📋 </h3>
-      <p>Lists that hold many items in order (like a shopping list or pet collection).</p>
-    </div>
-    <div class="topic-item">
-      <h3> Events ⚡ </h3>
-      <p>Make your program respond when someone clicks, types, or moves the mouse.</p>
-    </div>
-    <div class="topic-item">
-      <h3> Objects 📦 </h3>
-      <p>Smart boxes that hold many properties together (like a car with color, brand, and doors).</p>
-    </div>
-
-    <p>We’re now stepping into a fun adventure full of experiments, discoveries, and “aha!” moments. After learning each
-      fundamental — through hands-on exercises and playful challenges — we’ll start mixing them together to see how they
-      connect. That’s when things get really exciting! You’ll begin to see how these pieces fit and work as one, helping
-      you build, create, and explore even more possibilities.</p>
   </section>
 
 
-  <!-- Page 1: Variables 📦 -->
-  <section class="page">
-    <h2>Variables 📦</h2>
-    <p>Variables are like boxes that store information in our factory. You can put numbers, words, or true/false answers
-      inside them and use them later in your program.</p>
 
-    <h3>Examples</h3>
-    <p>We can make simple boxes using <code>let</code>, <code>const</code>, and <code>var</code> in JavaScript:</p>
-    <ul>
-      <li><code>let</code> – creates a box you can change later.</li>
-      <li><code>const</code> – creates a box that cannot change after you set it.</li>
-      <li><code>var</code> – an old way to make a variable. It is no longer used because it has been replaced by
-        <code>let</code> and <code>const</code>.
-      </li>
-    </ul>
+  <!-- START OF INTRODUCTION -->
 
-    <pre class="code-block"><span class="code-comment">// current batch of popcorn</span>
-let batchNumber = 7;
+  <!-- Module intro-1: Introduction to Fundamentals -->
+  <section class="page" id="introduction-module">
+    <h2 class="module-title">Module 1: Introduction to Fundamentals</h2>
 
-<span class="code-comment">// status of the popcorn machine</span>
-const machineStatus = 'ON';</pre>
+    <article>
+      <p>
+        Imagine each fundamental as a single LEGO brick. At first, it might not look very exciting — just a small,
+        colorful block sitting by itself. But what happens when you add another? And another? Suddenly, you can make a
+        wall… then a little house… then maybe a castle with towers and a drawbridge. Keep going, and you could build
+        rockets, robots, or even entire worlds!<br><br>
 
-    <p>We can also store yes/no answers using <code>true</code> or <code>false</code>:</p>
+        That’s what learning the fundamentals is like. Each new idea might seem tiny at first, but when you connect
+        them, they start to form something amazing. These are the basic ideas that almost everything in technology is
+        built on
+        — the patterns, logic, and structure that help us tell computers what to do. They’re the building blocks that
+        turn
+        imagination into creation.<br><br>
 
-    <pre class="code-block">let isSaltAvailable = true;
-let isSugarAvailable = false;</pre>
+        Learning these first is like laying a strong foundation before building a treehouse or learning your ABCs
+        before writing a story. Once you understand these pieces, you’ll know not just what to do, but <strong>why it
+          works</strong> — and that’s where the real magic happens.<br><br>
 
-    <!-- HELPER BOX: Template Literals -->
-    <div class="helper-box">
-      <h3>💡 A Simpler Fundamental: Template Literals</h3>
-      <p>To combine text and variables, we will learn a simple and modern fundamental called a <strong>Template
-          Literal</strong>. It's easier to read and write than older methods.</p>
-
-      <h4>How It Works: Backticks and Placeholders</h4>
-      <p>There are just two rules:</p>
-      <ol>
-        <li>Start and end the message with a <strong>backtick</strong> (<code>`</code>), not a normal quote.</li>
-        <li>When you want to add a variable, use the placeholder: <code>${...}</code>.</li>
-      </ol>
-
-      <h4>Example:</h4>
-      <pre class="code-block"><span class="code-comment">// Notice the backticks and the ${...} placeholder</span>
-let message = `Batch ${7} is ready.`;
-console.log(message);
-
-<span class="code-comment">// The output will be: Batch 7 is ready.</span></pre>
-    </div>
-
-    <h3>Step-by-Step Guide to See Your Code Work</h3>
-    <ol>
-      <li><strong>Create Variables:</strong> Use <code>let</code> to create the "boxes" for your information.</li>
-      <li><strong>Build a Message:</strong> Use a <strong>Template Literal</strong> (<code>`...${}...`</code>) to write
-        your message and put your variables inside the placeholders.</li>
-      <li><strong>Print to the Console:</strong> To see the result of your code, you must "print" it. We do this by
-        wrapping our message inside <code>console.log()</code>.</li>
-    </ol>
-
-    <h4>What is the Console?</h4>
-    <p>The <strong>console</strong> is like a simple screen where you can see messages from your code. The
-      <code>console.log()</code> command means "show my message on that screen." In our exercises, the "output" box
-      below your code acts as your console.
-    </p>
-
-    <div class="demonstration-box">
-      <h4>Demonstration: Putting It All Together</h4>
-      <pre class="code-block"><span class="code-comment">  // Step 1: Create a variable for the flavor.</span>
-  let flavor = "Caramel";
-
-<span class="code-comment">  // Step 2 & 3: Build a message and print it.</span>
-  console.log(`The flavor of the day is: ${flavor}`);
-
-<span class="code-output-comment">  // This will print "The flavor of the day is: Caramel" to the output!</span></pre>
-
-    </div>
-
-    <div class="helper-box">
-      <h3>💡 The Power of a Variable: Change It Once!</h3>
-      <p><strong>Inside the ${} placeholder, you MUST put the VARIABLE NAME, not the value.</strong></p>
-
-      <h4>Why? Let me show you:</h4>
-      <p>The factory supervisor calls up and tells the machine operator to change the flavor of the production line for
-        the customer.</p>
-
-      <pre class="code-block"><span class="code-comment">// Set the flavor of the day in one place</span>
-  let flavorOfTheDay = "Cheddar Cheese";
-
-  <span class="code-comment">// Now, use that variable in all your messages</span>
-  console.log(`Announcing our new flavor: ${flavorOfTheDay}!`);
-  console.log(`Now serving fresh ${flavorOfTheDay} popcorn!`);
-  console.log(`Get your ${flavorOfTheDay} before it's gone!`);
-
-  <span class="code-comment">// --- LATER IN THE DAY ---</span>
-  <span class="code-comment">// The flavor changes! You only need to edit ONE line.</span>
-  flavorOfTheDay = "Spicy Jalapeño";
-
-  console.log(`Afternoon special: ${flavorOfTheDay}!`);
-  console.log(`Come try our new ${flavorOfTheDay} popcorn!`);</pre>
-
-      <p><strong>See how easy that is?</strong> We changed the flavor in just <strong>one</strong> line, and all the
-        messages updated automatically. That's the power of variables! 🎯</p>
-    </div>
-
-    <h3>Mix It Up Exercises 🧩 </h3>
-
-    <!-- Exercise 1 -->
-    <div class="exercise-box">
-      <h4>1: Popcorn Batch Info</h4>
-      <p>Create variables for <code>batchNumber</code>, <code>popcornFlavor</code>, and <code>bagsReady</code>. Print a
-        message summarizing the batch.</p>
-
-      <label for="variables-ex1" class="code-label">Add Your code in the box below</label>
-      <div class="code-block" data-placeholder="" contenteditable="true" id="variables-ex1"></div>
-
-      <div class="exercise-buttons">
-        <button class="hint-button" data-section="variables" data-ex="1">Hint</button>
-        <button class="run-button" data-section="variables" data-ex="1">Run My Code</button>
-        <button class="reset-button" data-section="variables" data-ex="1">Reset My Code</button>
-      </div>
-
-      <p class="hint" id="variables-hint1"></p>
-      <pre class="output-block" id="variables-output1"></pre>
-      <pre class="answer-block" id="variables-answer1"></pre>
-    </div>
-
-
-    <!-- Exercise 2 -->
-    <div class="exercise-box">
-      <h4>2: Machine Check</h4>
-      <p>The conveyor belt is running at a normal pace and the main machine is switched on. Create two variables,
-        conveyorSpeed and machineStatus, to store this information. Then, print a status report to the console</p>
-
-      <label for="variables-ex2" class="code-label">Add Your code in the box below</label>
-      <div class="code-block" data-placeholder="" contenteditable="true" id="variables-ex2"></div>
-
-      <div class="exercise-buttons">
-        <button class="hint-button" data-section="variables" data-ex="2">Hint</button>
-        <button class="run-button" data-section="variables" data-ex="2">Run My Code</button>
-        <button class="reset-button" data-section="variables" data-ex="2">Reset My Code</button>
-      </div>
-
-      <p class="hint" id="variables-hint2"></p>
-      <pre class="output-block" id="variables-output2"></pre>
-      <pre class="answer-block" id="variables-answer2"></pre>
-    </div>
-
-
-    <!-- Exercise 3 -->
-    <div class="exercise-box">
-      <div class="helper-box">
-        <h3>💡 Variables Can Do Math!</h3>
-        <p>You can ask a variable to hold the answer to a math problem. The computer solves the math first, then stores
-          the final answer in the variable's "box".</p>
-
-        <h4>For example:</h4>
-        <pre class="code-block"><span class="code-comment">// The computer calculates 5 + 3 first...</span>
-  let totalBoxes = 5 + 3;
-
-  <span class="code-comment">// ...so the 'totalBoxes' variable now holds the number 8!</span>
-  console.log(`We have ${total} boxes.`);</pre>
-      </div>
-
-      <h4>3: Label Printing Task</h4>
-      <p>We came to the office and found a new batch of labels needs to be printed. You have several small rolls of
-        labels: one with 5, one with 10, one with 12, one with 4, and one with 2. The labelStatus is currently 'Ready'.
-        Calculate the <code>totalLabels</code> and also create a variable for the <code>labelStatus</code>. Then, print
-        a report.</p>
-
-      <label for="variables-ex3" class="code-label">Add Your code in the box below</label>
-      <div class="code-block" data-placeholder="" contenteditable="true" id="variables-ex3"></div>
-
-      <div class="exercise-buttons">
-        <button class="hint-button" data-section="variables" data-ex="3">Hint</button>
-        <button class="run-button" data-section="variables" data-ex="3">Run My Code</button>
-        <button class="reset-button" data-section="variables" data-ex="3">Reset My Code</button>
-      </div>
-
-      <p class="hint" id="variables-hint3"></p>
-      <pre class="output-block" id="variables-output3"></pre>
-      <pre class="answer-block" id="variables-answer3"></pre>
-    </div>
-
-
-    <!-- Exercise 4 -->
-    <div class="exercise-box">
-      <!-- Helper Box -->
-      <div class="helper-box">
-        <h3>✨ New Fundamental: `const` for Constants</h3>
-        <p> Remember at the begining we showed 3 variables, of the 3 we are only using 2 types in this course, here is
-          the second type.</p>
-        <p>Sometimes, you have a value that should <strong>never change</strong>, like the number of minutes in an hour.
-          For this, we use a new keyword: <code>const</code>.</p>
-        <ul>
-          <li><code>let</code> – Creates a variable "box" whose contents you can change later.</li>
-          <li><code>const</code> – Creates a variable "box" that is locked forever once you set it.</li>
-        </ul>
-        <h4>For example:</h4>
-        <pre class="code-block"><span class="code-comment">// The number of handles on a cup never changes.</span>
-const handles_on_a_cup = one;
-
-<span class="code-comment">// The flavor of the day can change.</span>
-let flavorOfTheDay = "Caramel";</pre>
-        <p>Using <code>const</code> is a way to prevent accidental changes in your code, making it safer!</p>
-      </div>
-
-      <!-- The rest of the exercise follows the helper box -->
-      <h4>4: Quality Control Check</h4>
-      <p>For quality control, we need to define the acceptable salt levels. Declare a constant named
-        <code>MINIMUM_SALT_LEVEL</code> and set it to <code>85</code>. Declare another constant named
-        <code>MAXIMUM_SALT_LEVEL</code> and set it to <code>95</code>. A new batch just came out, and its salt level is
-        <code>92</code>; store this in a variable named <code>currentSaltLevel</code>. Finally, print a report showing
-        all three values.
+        You’ll soon discover that things like variables, loops, and functions are like special tools in your thinking
+        toolbox. They help you give clear instructions, notice patterns, remember important information, and make
+        smart
+        decisions — just like you do when solving puzzles or planning an adventure.
       </p>
-
-      <label for="variables-ex4" class="code-label">Add Your code in the box below</label>
-      <div class="code-block" data-placeholder="" contenteditable="true" id="variables-ex4"></div>
-
-      <div class="exercise-buttons">
-        <button class="hint-button" data-section="variables" data-ex="4">Hint</button>
-        <button class="run-button" data-section="variables" data-ex="4">Run My Code</button>
-        <button class="reset-button" data-section="variables" data-ex="4">Reset My Code</button>
-      </div>
-
-      <p class="hint" id="variables-hint4"></p>
-      <pre class="output-block" id="variables-output4"></pre>
-      <pre class="answer-block" id="variables-answer4"></pre>
-
-    </div>
-    <div class="exercise-box">
+    </article>
+  </section>
+  <!-- End -->
 
 
-      <!-- Exercise 5 -->
-      <div class="exercise-box">
-        <!-- Helper Box for Exercise 5 (Simple Factory Theme) -->
-        <div class="helper-box">
-          <h3>✨ New Skill: Using Variables in Math</h3>
-          <p>You can use variables in your math problems! The computer will use the value inside the variable's "box" to
-            do the calculation.</p>
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start :::                                █ -->
+  <!-- █  // ROAD MAP ::::                            █ -->
+  <!-- █  // Let's see where the links go!!!          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-          <h4>For example:</h4>
-          <pre class="code-block"><span class="code-comment">// We start with a big box of popcorn bags</span>
-  let bagsInBox = 50;
-  let bagsSold = 10;
 
-  <span class="code-comment">// Now, use the VARIABLES to find out what's left</span>
-  let bagsLeft = bagsInBox - bagsSold;
+  <!-- the new roadmap March 20226-->
 
-  <span class="code-comment">// The computer calculates 50 - 10 = 40</span>
-  <span class="code-comment">// The 'bagsLeft' variable now holds the number 40!</span>
-  console.log(`There are ${bagsLeft} bags left in the box.`);</pre>
+  <!-- Module Intro-2: The Roadmap -->
+  <section class="page" id="roadmap-module">
+    <h2 class="module-title">Module 2: What You'll Learn & The Roadmap 🗺️</h2>
+
+    <article>
+      <p>In this course, we'll explore exciting fundamentals, one at a time. Think of each one as a new tool, skill,
+        or superpower you can collect on your journey.</p>
+
+
+      <div class="roadmap-container">
+        <div class="topic-item">
+          <a href="#variables-module" class="scroll-link">1. Variables 📦</a>
+          <p>Variables are like labeled boxes for storing information — numbers, words, or even lists. In the
+            exercises,
+            you'll create your own variables, update them, and see how your program remembers each change. This helps
+            you
+            store and reuse data throughout your code, just like keeping your LEGO bricks organized for building.</p>
         </div>
 
-
-        <h4>5: Daily Inventory Update</h4>
-        <p>Let's do the end-of-day inventory. We started the day with <code>1000</code> bags of popcorn; store this in a
-          variable named <code>bagsAtStartOfDay</code>. Throughout the day, we sold <code>350</code> bags; store this in
-          a variable named <code>bagsSold</code>. Now, calculate the remaining bags by subtracting the sold bags from
-          the starting bags, and store the result in a new variable called <code>bagsAtEndOfDay</code>. Finally, print a
-          report showing only the final count of bags left.</p>
-
-        <label for="variables-ex5" class="code-label">Add Your code in the box below</label>
-        <div class="code-block" data-placeholder="" contenteditable="true" id="variables-ex5"></div>
-
-        <div class="exercise-buttons">
-          <button class="hint-button" data-section="variables" data-ex="5">Hint</button>
-          <button class="run-button" data-section="variables" data-ex="5">Run My Code</button>
-          <button class="reset-button" data-section="variables" data-ex="5">Reset My Code</button>
+        <div class="topic-item">
+          <a href="#operations-module" class="scroll-link">2. Order of Operations 🧮</a>
+          <p>Order of Operations ensures calculations happen in the correct sequence — parentheses first, then
+            multiplication/division, and finally addition/subtraction, all following left-to-right rules. In the
+            exercises, you'll evaluate expressions step by step, use brackets to control outcomes, and practice
+            real-world
+            examples like label rolls, bags per pallet, and averaging production. This builds a solid foundation for
+            solving any calculation in code reliably.</p>
         </div>
 
-        <p class="hint" id="variables-hint5"></p>
-        <pre class="output-block" id="variables-output5"></pre>
-        <pre class="answer-block" id="variables-answer5"></pre>
-      </div>
-
-      <!-- Exercise 6 -->
-      <div class="exercise-box">
-        <!-- Helper Box #1: New Math -->
-        <div class="helper-box">
-          <h3>✨ New Math Skills: Multiply and Divide</h3>
-          <p>You can also use variables to do multiplication (using `*`) and division (using `/`).</p>
-          <pre class="code-block"><span class="code-comment">// Multiplication Example</span>
-  let bagsPerBox = 12;
-  let numberOfBoxes = 10;
-  let totalBags = bagsPerBox * numberOfBoxes; // 12 * 10 = 120
-  console.log(`Total bags: ${totalBags}`);
-
-  <span class="code-comment">// Division Example: Sharing with friends!</span>
-  let totalBagsToShare = 20;
-  let numberOfFriends = 4;
-  let bagsPerFriend = totalBagsToShare / numberOfFriends; // 20 / 4 = 5
-  console.log(`Each friend gets ${bagsPerFriend} bags.`);</pre>
+        <div class="topic-item">
+          <a href="#conditions-1-module" class="scroll-link">3. Conditions Part 1: Basic Comparisons ❓</a>
+          <p>Conditions let your program make decisions by asking "if" questions. Learn about basic comparison
+            operators
+            like greater than (&gt;) and less than (&lt;). Your code checks conditions and decides what to do — your
+            first
+            step in teaching programs to think and make choices!</p>
         </div>
 
-
-
-        <!-- Helper Box #2: The Main Skill -->
-        <div class="helper-box">
-          <h3>✨ New Skill: Updating a Variable</h3>
-          <p>The best thing about variables made with <code>let</code> is that you can change their value later! When
-            you update a variable, you do <strong>not</strong> use the word <code>let</code> again.</p>
-          <pre class="code-block"><span class="code-comment">// Create the variable once with 'let'</span>
-  let status = "Warming Up";
-  console.log(`Status: ${status}`);
-
-  <span class="code-comment">// Later, update it. Notice there is no 'let'!</span>
-  status = "Popping Corn";
-  console.log(`New Status: ${status}`);</pre>
+        <div class="topic-item">
+          <a href="#conditions-2-module" class="scroll-link">4. Conditions Part 2: Equality Checks 🔄</a>
+          <p>Continue building your conditional skills! Part 2 introduces more comparison operators — equal to (===)
+            and
+            not equal to (!==). Learn how to check if values match exactly or are different, giving you more precise
+            ways
+            to make decisions in your code.</p>
         </div>
 
-        <!-- The Final Task -->
-        <h4>6: Tracking the Popcorn Popper</h4>
-        <p>Let's track the status of the main popcorn popper. At the start, its <code>popperStatus</code> is 'Warming
-          Up'. After a while, its status changes to 'Popping Corn'. Create a variable to track the status, and print a
-          report after each change.</p>
-
-        <!-- This is the code that was replaced by the comment -->
-        <label for="variables-ex6" class="code-label">Add Your code in the box below</label>
-        <div class="code-block" data-placeholder="" contenteditable="true" id="variables-ex6"></div>
-
-        <div class="exercise-buttons">
-          <button class="hint-button" data-section="variables" data-ex="6">Hint</button>
-          <button class="run-button" data-section="variables" data-ex="6">Run My Code</button>
-          <button class="reset-button" data-section="variables" data-ex="6">Reset My Code</button>
+        <div class="topic-item">
+          <a href="#conditions-3-module" class="scroll-link">5. Conditions Part 3: <= and>= 🔀</a>
+          <p>Learn about inclusive comparisons with less than or equal to (&lt;=) and greater than or equal to
+            (&gt;=).
+            These operators help you set boundaries and limits in your code, perfect for checking if something is
+            within a
+            safe range or meets minimum requirements.</p>
         </div>
 
-        <p class="hint" id="variables-hint6"></p>
-        <pre class="output-block" id="variables-output6"></pre>
-        <pre class="answer-block" id="variables-answer6"></pre>
-        <!-- End of the replaced code -->
-
-      </div>
-
-
-
-
-
-
-      <!-- Page 2: Loops 🔁 -->
-
-      <section class="page">
-        <h2>Loops 🔁</h2>
-        <p>Loops are the conveyor belts and automated machines in our factory. They are programmed to do the same task
-          over and over, so you don't have to do it manually!</p>
-
-        <h3>Example: Making a Batch of Popcorn</h3>
-        <p>Imagine a machine that has to make exactly 5 bags of popcorn. You can program a loop to do this
-          automatically.
-        </p>
-
-        <div class="helper-box">
-          <h3>💡 How a 'for' loop works</h3>
-          <p>Let's look at the three parts inside the parentheses <code>for ( ... )</code>:</p>
-          <ul>
-            <li><code>let i = 1;</code> — The counter variable, starting at 1.</li>
-            <li><code>i <= 5;</code> — The loop will keep running as long as this is true.</li>
-            <li><code>i++</code> — Increase the counter by 1 after each run.</li>
-          </ul>
+        <div class="topic-item">
+          <a href="#conditions-4-module" class="scroll-link">6. Conditions Part 4: If/Else + Multiple Conditions
+            🏭</a>
+          <p>Ready to handle both outcomes? Learn if/else statements and else if chains. Your code can choose between
+            multiple paths, making smarter, more complete decisions. Practice with classroom scenarios like game
+            access
+            and homework checks.</p>
         </div>
 
-        <div class="helper-box">
-          <h3>💡 Quick Reminder</h3>
-          <p>Remember how we used <code>+</code> to join text and variables? We'll use that again inside loops!</p>
+        <div class="topic-item">
+          <a href="#conditions-5-module" class="scroll-link">7. Conditions Part 5: Else If + Multiple Outcomes 🎓</a>
+          <p>Level up to advanced decision-making! Use else if to handle multiple possible outcomes. Perfect for
+            grading
+            systems, reading levels, and other scenarios where you need more than just two choices.</p>
         </div>
 
-        <div class="code-block"><span class="code-comment">// This loop runs 5 times</span>
-          for (let i = 1; i <= 5; i++) { console.log("Bag " + i + " is ready!"); } </div>
-
-            <h3>Step-by-Step Guide</h3>
-            <ol>
-              <li>Start with <code>for ( ... )</code>.</li>
-              <li>Set up a counter: <code>let i = 0;</code>.</li>
-              <li>Add a condition to stop: e.g., <code>i < 5;</code>.</li>
-              <li>Add a step to update the counter: <code>i++</code>.</li>
-              <li>Place the repeatable job inside <code>{ }</code>.</li>
-            </ol>
-
-            <h3>🧩 Mix It Up Exercises</h3>
-
-            <!-- Exercise 1 -->
-            <div class="exercise-box">
-              <h4>1: Quality Control</h4>
-              <p>Check the first 3 bags on the conveyor belt. Print "Checking bag..." 3 times using a loop.</p>
-
-              <label for="loops-ex1" class="code-label">Add Your code in the box below</label>
-              <div class="code-block" data-placeholder="" contenteditable="true" id="loops-ex1"></div>
-
-              <div class="exercise-buttons">
-                <button class="hint-button" data-section="loops" data-ex="1">Hint</button>
-                <button class="run-button" data-section="loops" data-ex="1">Run My Code</button>
-                <button class="reset-button" data-section="loops" data-ex="1">Reset My Code</button>
-              </div>
-
-              <p class="hint" id="loops-hint1"></p>
-              <pre class="output-block" id="loops-output1"></pre>
-              <pre class="answer-block" id="loops-answer1"></pre>
-            </div>
-
-            <!-- Exercise 2 -->
-            <div class="exercise-box">
-              <h4>2: Shutdown Sequence</h4>
-              <p>At the end of the day, a machine counts down to shut off. Create a loop that counts down from 5 to 1,
-                printing each number.</p>
-
-              <label for="loops-ex2" class="code-label">Add Your code in the box below</label>
-              <div class="code-block" data-placeholder="" contenteditable="true" id="loops-ex2"></div>
-
-              <div class="exercise-buttons">
-                <button class="hint-button" data-section="loops" data-ex="2">Hint</button>
-                <button class="run-button" data-section="loops" data-ex="2">Run My Code</button>
-                <button class="reset-button" data-section="loops" data-ex="2">Reset My Code</button>
-              </div>
-
-              <p class="hint" id="loops-hint2"></p>
-              <pre class="output-block" id="loops-output2"></pre>
-              <pre class="answer-block" id="loops-answer2"></pre>
-            </div>
-
-            <!-- Exercise 3 -->
-            <div class="exercise-box">
-              <h4>3: MegaMix Alarm System</h4>
-              <p>Create a function <code>soundAlarm()</code> that prints "WEE-OO! WEE-OO!". Use a loop to call it 3
-                times.
-              </p>
-
-              <label for="loops-ex3" class="code-label">Add Your code in the box below</label>
-              <div class="code-block" data-placeholder="" contenteditable="true" id="loops-ex3"></div>
-
-              <div class="exercise-buttons">
-                <button class="hint-button" data-section="loops" data-ex="3">Hint</button>
-                <button class="run-button" data-section="loops" data-ex="3">Run My Code</button>
-                <button class="reset-button" data-section="loops" data-ex="3">Reset My Code</button>
-              </div>
-
-              <p class="hint" id="loops-hint3"></p>
-              <pre class="output-block" id="loops-output3"></pre>
-              <pre class="answer-block" id="loops-answer3"></pre>
-            </div>
-
-            <!-- Exercise 4 -->
-            <div class="exercise-box">
-              <h4>4: MegaMix Flavor Batches</h4>
-              <p>Use a nested loop. Outer loop announces a new batch. Inner loop adds three different flavor squirts for
-                each batch.</p>
-
-              <label for="loops-ex4" class="code-label">Add Your code in the box below</label>
-              <div class="code-block" data-placeholder="" contenteditable="true" id="loops-ex4"></div>
-
-              <div class="exercise-buttons">
-                <button class="hint-button" data-section="loops" data-ex="4">Hint</button>
-                <button class="run-button" data-section="loops" data-ex="4">Run My Code</button>
-                <button class="reset-button" data-section="loops" data-ex="4">Reset My Code</button>
-              </div>
-
-              <p class="hint" id="loops-hint4"></p>
-              <pre class="output-block" id="loops-output4"></pre>
-              <pre class="answer-block" id="loops-answer4"></pre>
-            </div>
-
-            <div class="ending-box">
-              <h3>Congratulations! You've completed the MegaMix Loops 🎉</h3>
-              <p>Loops let you repeat actions automatically — a powerful idea that saves time and reduces mistakes. Use
-                loops to count, go through lists, and run factory tasks efficiently.</p>
-            </div>
-      </section>
-
-
-      <!-- Page 3: Functions 🧩 -->
-      <section class="page">
-        <h2>Functions 🧩</h2>
-        <p>Functions are like different stations in a factory. You build each station to do one specific job, and then
-          you
-          can run them in order to get a final product.</p>
-        <p>Imagine a popcorn factory. There's a station for turning on the lights, a station for making the popcorn, and
-          a
-          station for packing it. Each station is a function!</p>
-
-        <h3>Examples from the Factory</h3>
-        <p>A simple station might just turn on the lights. It doesn't need any extra information to do its job.</p>
-        <div class="code-block">
-          function turnOnLights() {
-          console.log("Flick! The factory lights are now on.");
-          }
+        <div class="topic-item">
+          <a href="#logical-1-module" class="scroll-link">8. Logical Operators Part 1: AND (&&) 🔒</a>
+          <p>Learn the AND operator that requires BOTH conditions to be true. Just like needing both a key AND a code
+            to
+            open a safe. Practice with popcorn factory safety checks where multiple conditions must be met.</p>
         </div>
 
-        <p>A more complex station needs instructions. Our popcorn machine needs to know what <strong>flavor</strong> to
-          make. This extra information is called a <strong>parameter</strong>.</p>
-        <div class="code-block">
-          function makePopcorn(flavor) {
-          console.log(`Starting the machine to make ${flavor} popcorn...`);
-          console.log(`🍿 Your ${flavor} popcorn is ready!`);
-          }
+        <div class="topic-item">
+          <a href="#logical-2-module" class="scroll-link">9. Logical Operators Part 2: OR (||) 🚨</a>
+          <p>Master the OR operator where EITHER condition can be true. Like emergency stop buttons — press either one
+            to
+            stop the machine! Learn how to give your code flexible decision-making options.</p>
         </div>
 
-        <h3>Running the Factory</h3>
-        <p>Now, we can run our factory by "calling" each function in order. Notice how we give the
-          <code>makePopcorn</code>
-          function the flavor it needs!
-        </p>
-        <div class="code-block">
-          <span class="code-comment">// A day at the factory:</span>
-          turnOnLights();
-          makePopcorn('caramel');
-          makePopcorn('cheesy');
+        <!-- LOOPS MODULES - READY -->
+        <div class="topic-item">
+          <a href="#loops-part-1-module" class="scroll-link">10. Loops Part 1: Basic Counting 🔁</a>
+          <p>Learn how to make your code repeat automatically! Use for loops to count, track supplies, and avoid
+            writing
+            the same code over and over. Practice with addition and multiplication inside loops. Perfect for counting
+            bags, stickers, and pencils!</p>
         </div>
 
-        <h3>Step-by-Step Guide</h3>
-        <ol>
-          <li>Start with the word <code>function</code> followed by a clear name for your station (e.g.,
-            <code>runMachine</code>).
-          </li>
-          <li>Add parentheses <code>()</code>. If your function needs information, put parameter names inside (e.g.,
-            <code>(flavor)</code>).
-          </li>
-          <li>Write the instructions for your station inside curly brackets <code>{ }</code>.</li>
-          <li>To run your station, "call" it by writing its name with parentheses: <code>runMachine();</code></li>
-        </ol>
-
-        <div class="helper-box">
-          <h3>💡 Complete Example</h3>
-          <p>Here's how all the steps come together:</p>
-          <pre class="code-block"><span class="code-comment">// Step 1-3: Create the function</span>
-function packBag(itemName) {
-  console.log(`Packing ${itemName} into a bag...`);
-  console.log(`✓ ${itemName} bag is sealed and ready!`);
-}
-
-<span class="code-comment">// Step 4: Call the function to use it</span>
-packBag('caramel popcorn');
-packBag('cheddar popcorn');</pre>
+        <div class="topic-item">
+          <a href="#loops-part-2-module" class="scroll-link">11. Loops Part 2: Subtraction & Division ➖➗</a>
+          <p>Take loops further with subtraction and division! Track items decreasing over time and share things
+            equally
+            among groups. Practice with erasers, cookies, pages, and teams. Learn to calculate what's left and how to
+            share fairly!</p>
         </div>
 
-        <h3>🧩 Mix It Up</h3>
-
-        <!-- Exercise 1 -->
-        <div class="exercise-box">
-          <h4>1: The Goodbye Station</h4>
-          <p>Create a function called <code>sayGoodbye</code> that takes a worker's name as a parameter and prints
-            "Goodbye,
-            [name]! See you tomorrow!"</p>
-
-          <label for="functions-ex1" class="code-label">Add Your code in the box below</label>
-          <div class="code-block" data-placeholder="" contenteditable="true" id="functions-ex1"></div>
-
-          <div class="exercise-buttons">
-            <button class="hint-button" data-section="functions" data-ex="1">Hint</button>
-            <button class="run-button" data-section="functions" data-ex="1">Run My Code</button>
-            <button class="reset-button" data-section="functions" data-ex="1">Reset My Code</button>
-          </div>
-
-          <p class="hint" id="functions-hint1"></p>
-          <pre class="output-block" id="functions-output1"></pre>
-          <pre class="answer-block" id="functions-answer1"></pre>
+        <!-- COMING SOON MODULES -->
+        <div class="topic-item">
+          <a href="#loops-part-3-module" class="scroll-link">12. Loops Part 3: Loops + Conditions 🔄❓ (Coming
+            Soon)</a>
+          <p>Combine loops with if statements to make smarter repetitions! Learn to skip items, stop early, or only
+            count
+            certain things. Add the 🟢 GREEN and 🟡 YELLOW paths to your loop toolkit.</p>
         </div>
 
-        <!-- Exercise 2 -->
-        <div class="exercise-box">
-          <h4>2: The Label Station</h4>
-          <p>Create a function called <code>labelBox</code> that takes a destination as a parameter and prints "Box
-            labeled
-            for [destination]".</p>
-
-          <label for="functions-ex2" class="code-label">Add Your code in the box below</label>
-          <div class="code-block" data-placeholder="" contenteditable="true" id="functions-ex2"></div>
-
-          <div class="exercise-buttons">
-            <button class="hint-button" data-section="functions" data-ex="2">Hint</button>
-            <button class="run-button" data-section="functions" data-ex="2">Run My Code</button>
-            <button class="reset-button" data-section="functions" data-ex="2">Reset My Code</button>
-          </div>
-
-          <p class="hint" id="functions-hint2"></p>
-          <pre class="output-block" id="functions-output2"></pre>
-          <pre class="answer-block" id="functions-answer2"></pre>
+        <div class="topic-item">
+          <a href="#pirate-1-module" class="scroll-link">13. Pirate Adventure Part 1: Ship Challenges 🏴‍☠️ (Coming
+            Soon)</a>
+          <p>Join Captain Condition on a pirate adventure! Review everything you've learned about conditions in
+            exciting
+            pirate scenarios. Solve puzzles to board the ship, read treasure maps, and fire cannons!</p>
         </div>
 
-        <!-- Exercise 3 -->
-        <div class="exercise-box">
-          <h4>3: MegaMix - The Baking Station</h4>
-          <p>Create a function called <code>bakeSnack</code> that takes a <code>flavor</code> as a parameter and prints
+        <div class="topic-item">
+          <a href="#pirate-2-module" class="scroll-link">14. Pirate Adventure Part 2: Treasure Hunt 💎 (Coming
+            Soon)</a>
+          <p>The adventure continues on Treasure Island! Combine all your skills to find buried treasure. Solve
+            complex puzzles, navigate jungle paths, and finally unlock the treasure chest!</p>
+        </div>
+
+        <div class="topic-item">
+          <a href="#functions-module" class="scroll-link">15. Functions 🧩 (Coming Soon)</a>
+          <p>Think of a function like a lunchbox recipe: once you write down how to make your favorite sandwich, you
+            don't
+            have to rewrite the steps every time you're hungry. In code, a function saves a set of instructions under
             a
-            message about baking that snack. Call it for at least two different flavors.</p>
-
-          <label for="functions-ex3" class="code-label">Add Your code in the box below</label>
-          <div class="code-block" data-placeholder="" contenteditable="true" id="functions-ex3"></div>
-
-          <div class="exercise-buttons">
-            <button class="hint-button" data-section="functions" data-ex="3">Hint</button>
-            <button class="run-button" data-section="functions" data-ex="3">Run My Code</button>
-            <button class="reset-button" data-section="functions" data-ex="3">Reset My Code</button>
-          </div>
-
-          <p class="hint" id="functions-hint3"></p>
-          <pre class="output-block" id="functions-output3"></pre>
-          <pre class="answer-block" id="functions-answer3"></pre>
+            name, so you can run them again and again with just one word.</p>
         </div>
 
-        <!-- Exercise 4 -->
-        <div class="exercise-box">
-          <h4>4: MegaMix - The Shipping Department</h4>
-          <p>Create a function called <code>shipBatch</code> that takes <code>batchNumber</code> and
-            <code>destination</code> as parameters. Print a message saying the batch is on its way.
+        <div class="topic-item">
+          <a href="#arrays-module" class="scroll-link">16. Arrays 📋 (Coming Soon)</a>
+          <p>An array is like a numbered list that keeps things in order — your top 5 songs, letters in your name, or
+            friends' birthdays. You can ask for item #3, add new items to the end, or count how many you have.</p>
+        </div>
+
+        <div class="topic-item">
+          <a href="#objects-module" class="scroll-link">17. Objects 📦 (Coming Soon)</a>
+          <p>An object is like a profile card that holds different kinds of information about one thing. A robot might
+            have a name, color, battery level, and mood — each with its own label so you can find exactly what you
+            need.
           </p>
-
-          <label for="functions-ex4" class="code-label">Add Your code in the box below</label>
-          <div class="code-block" data-placeholder="" contenteditable="true" id="functions-ex4"></div>
-
-          <div class="exercise-buttons">
-            <button class="hint-button" data-section="functions" data-ex="4">Hint</button>
-            <button class="run-button" data-section="functions" data-ex="4">Run My Code</button>
-            <button class="reset-button" data-section="functions" data-ex="4">Reset My Code</button>
-          </div>
-
-          <p class="hint" id="functions-hint4"></p>
-          <pre class="output-block" id="functions-output4"></pre>
-          <pre class="answer-block" id="functions-answer4"></pre>
         </div>
 
-        <div class="ending-box">
-          <h3>Congratulations! You've completed the MegaMix Functions 🎉</h3>
-          <p>You've learned how to create reusable stations — a powerful way to keep your factory running efficiently.
-            Functions let you build once and use many times, whether you're preparing snacks, packing boxes, or shipping
-            batches.</p>
-        </div>
-      </section>
-
-
-      <!-- Page 4: Conditionals ❓ -->
-      <section class="page">
-        <h2>Conditionals ❓</h2>
-        <p>Conditionals are the sensors and decision-making systems in our factory. They constantly ask questions to
-          ensure
-          everything is running safely and correctly. It's like a sensor asking: "Is the popper hot enough?" If yes,
-          start
-          popping; if no, wait.</p>
-
-        <!-- How it Works -->
-        <div class="helper-box">
-          <h3>💡 How 'if/else' works</h3>
-          <p>The code for making a decision has a special layout. Think of it like a fork in the road.</p>
-          <ul>
-            <li><code>if ( ... )</code> — This is where you ask your question. The question, or "condition," goes inside
-              the
-              parentheses.</li>
-            <li>The first <code>{ ... }</code> — This is the "Yes Path." The code inside these brackets runs only if the
-              answer to your question is true.</li>
-            <li><code>else</code> — This keyword means "otherwise."</li>
-            <li>The second <code>{ ... }</code> — This is the "No Path." The code here runs only if the answer to your
-              question is false.</li>
-          </ul>
+        <div class="topic-item">
+          <a href="#events-module" class="scroll-link">18. Events ⚡ (Coming Soon)</a>
+          <p>Events are how your program listens and responds to what you do — clicking buttons, pressing keys, or
+            moving
+            your mouse. When you play a game or use an app, events make it react instantly to your actions.</p>
         </div>
 
-        <h3>Examples from the Factory</h3>
-        <p>Now that we know the layout, let's see it in action. This sensor checks if the salt level warning light is
-          on.
+        <p>
+          "We're now stepping into a fun adventure full of experiments, discoveries, and 'aha!' moments. After
+          learning
+          each
+          fundamental — through hands-on exercises and playful challenges — we'll start mixing them together to see
+          how
+          they
+          connect. That's when things get really exciting! You'll begin to see how these pieces fit and work as one,
+          helping
+          you build, create, and explore even more possibilities". Let's dive in and start with our first fundamental:
+          Variables.
         </p>
-        <div class="code-block">
-          let isWarningLightOn = true;
-          if (isWarningLightOn) {
-          console.log("ALERT: Check the salt levels immediately!");
-          } else {
-          console.log("All systems normal. The salt level is fine.");
-          }
-        </div>
-        <p>Here, a temperature sensor checks the popcorn popper. The machine will only start if the temperature is over
-          170
-          degrees.</p>
-        <div class="code-block">
-          let popperTemp = 185;
+    </article>
+  </section>
+  <!-- End of roadmap -->
 
-          if (popperTemp > 170) {
-          console.log("Temperature is perfect! Starting the popper.");
-          } else {
-          console.log("Waiting for the popper to heat up...");
-          }
-        </div>
 
-        <h3>Step-by-Step Guide</h3>
-        <ol>
-          <li>Start with <code>if</code> and write your question (the condition) inside <code>( )</code>.</li>
-          <li>Put the "yes" actions inside the first set of curly brackets <code>{ }</code>.</li>
-          <li>Optionally, add <code>else</code> and put the "no" actions in its own <code>{ }</code>.</li>
-        </ol>
 
-        <h3>🧩 Mix It Up Exercises</h3>
 
-        <div class="exercise-box">
-          <h4>1: The Weight Sensor</h4>
-          <p>A bag of popcorn should weigh at least 50 grams. Check if the <code>bagWeight</code> is correct and print a
-            "Pass" or "Fail" message.</p>
-          <div class="code-block"><span class="code-comment">// Your weight sensor code goes here. Let bagWeight =
-              52;</span></div>
-          <button onclick="showHint(1)">Show Hint</button>
-          <div id="hint1" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(1)">Show Answer</button>
-          <div id="answer1" class="code-block" style="display:none;"></div>
-        </div>
+  </main>
 
-        <div class="exercise-box">
-          <h4>2: Rush Order</h4>
-          <p>Check if an order is a "rush" order. If it is, print a special message to the factory floor.</p>
-          <div class="code-block"><span class="code-comment">// Your rush order check goes here. Let orderType =
-              'rush';</span></div>
-          <button onclick="showHint(2)">Show Hint</button>
-          <div id="hint2" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(2)">Show Answer</button>
-          <div id="answer2" class="code-block" style="display:none;"></div>
-        </div>
 
-        <h3>🔥 MegaMix Challenge</h3>
-        <div class="helper-box">
-          <h3>💡 Helpful Reminders:</h3>
-          <ul>
-            <li><code>if</code> asks a question. <code>else</code> is the fallback plan.</li>
-            <li>Use <code>===</code> for checking exact text matches (e.g., <code>orderType === 'rush'</code>).</li>
-            <li>Use <code>></code> (greater than) or <code><</code> (less than) for comparing numbers.</li>
-            <li>The <code>||</code> symbol means "OR" (if this OR that is true).</li>
-          </ul>
-        </div>
-
-        <div class="exercise-box">
-          <h4>MegaMix: The Conveyor Belt Switch</h4>
-          <p>If the conveyor belt speed (<code>beltSpeed</code>) is over 10 OR if the <code>isJammed</code> variable is
-            <code>true</code>, print a "DANGER: Shutting down belt!" message. Otherwise, print "Conveyor belt running
-            smoothly."
-          </p>
-          <div class="helper-box">
-            <p><strong>Hint:</strong> You can combine two questions with "OR" like
-              this:<br><code>if (beltSpeed > 10 || isJammed === true)</code></p>
-          </div>
-          <div class="code-block"><span class="code-comment">// Your conveyor belt safety code goes here.</span></div>
-          <button onclick="showHint(3)">Show Hint</button>
-          <div id="hint3" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(3)">Show Answer</button>
-          <div id="answer3" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed the MegaMix Conditionals 🎉</h3>
-          <p>You’ve learned how to make decisions in your factory code! Conditionals are the "brains" of the factory,
-            helping it respond to sensors, check for quality, and run safely.</p>
-        </div>
-      </section>
-
-
-      <!-- Page 5: Operators - Part 1 ⚡ -->
-      <section class="page">
-        <h2>Operators ⚡</h2>
-        <p>Operators are the special tools in our factory. They help us do math, make comparisons, and check conditions
-          to
-          keep everything running smoothly.</p>
-
-        <h3>Examples from the Factory</h3>
-        <p>We use arithmetic operators to track our inventory. For example, the corn supply in the storage room:</p>
-        <div class="code-block">
-          let cornSupply = 500;
-          let usedCorn = 80;
-          let remainingCorn = cornSupply - usedCorn;
-          console.log("Remaining corn: " + remainingCorn); <span class="code-comment">// Output: Remaining corn:
-            420</span>
-        </div>
-
-        <div class="helper-box">
-          <h3>💡 Multiply & Divide</h3>
-          <p>These operators help with packing crates:</p>
-          <ul>
-            <li><code>*</code> — Multiply (e.g., 12 bags per crate × 10 crates)</li>
-            <li><code>/</code> — Divide (e.g., 120 bags ÷ 12 bags per crate)</li>
-          </ul>
-        </div>
-
-        <div class="code-block">
-          let totalBags = 120;
-          let bagsPerCrate = 12;
-          let cratesFilled = totalBags / bagsPerCrate;
-          console.log("Crates filled: " + cratesFilled); <span class="code-comment">// Output: Crates filled: 10</span>
-        </div>
-
-        <div class="helper-box">
-          <h3>💡 Comparison Operators</h3>
-          <p>These are the factory sensors! They answer yes/no questions:</p>
-          <ul>
-            <li><code>></code> — Is the first value greater than the second?</li>
-            <li><code><</code> — Is the first value less than the second?</li>
-            <li><code>===</code> — Is the first value exactly equal to the second?</li>
-          </ul>
-        </div>
-
-        <div class="code-block">
-          let popperTemp = 185;
-          let isHotEnough = popperTemp > 170;
-          console.log("Is the popper ready? " + isHotEnough); <span class="code-comment">// Output: true</span>
-        </div>
-
-        <div class="helper-box">
-          <h3>💡 Quick Reminder: Concatenation</h3>
-          <p>The <code>+</code> operator can join text and variables, like labeling crates:</p>
-        </div>
-
-        <div class="code-block">
-          let batchID = "A-102";
-          let status = "complete";
-          let report = "Batch #" + batchID + " is " + status + ".";
-          console.log(report); <span class="code-comment">// Output: Batch #A-102 is complete.</span>
-        </div>
-
-        <h3>🧩 Mix It Up Practice Exercises</h3>
-
-        <div class="exercise-box">
-          <h4>1: The Boiler Room</h4>
-          <p>The boiler must be less than 100 degrees. Check `boilerTemp = 95` using <code><</code> and print the
-            result.
-          </p>
-          <div class="code-block"><span class="code-comment">// Your boiler check code goes here.</span></div>
-          <button onclick="showHint(1)">Show Hint</button>
-          <div id="hint1" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(1)">Show Answer</button>
-          <div id="answer1" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>2: Corn Storage</h4>
-          <p>We need 500 bags of corn, but only have 180. Use <code>-</code> to find how many more are needed.</p>
-          <div class="code-block"><span class="code-comment">// Your corn calculation code goes here.</span></div>
-          <button onclick="showHint(2)">Show Hint</button>
-          <div id="hint2" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(2)">Show Answer</button>
-          <div id="answer2" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>3: Pallet Check</h4>
-          <p>A full pallet has 48 crates. Check if `cratesOnPallet = 48` using <code>===</code>.</p>
-          <div class="code-block"><span class="code-comment">// Your pallet check code goes here.</span></div>
-          <button onclick="showHint(3)">Show Hint</button>
-          <div id="hint3" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(3)">Show Answer</button>
-          <div id="answer3" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>4: Ticket Sales</h4>
-          <p>Sold 5 tickets at $4 each. Use <code>*</code> to calculate total sales.</p>
-          <div class="code-block"><span class="code-comment">// Your sales calculation code goes here.</span></div>
-          <button onclick="showHint(4)">Show Hint</button>
-          <div id="hint4" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(4)">Show Answer</button>
-          <div id="answer4" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>5: Break Room</h4>
-          <p>Share 12 popcorn balls among 4 workers. Use <code>/</code> to find how many each gets.</p>
-          <div class="code-block"><span class="code-comment">// Your break-time calculation code goes here.</span></div>
-          <button onclick="showHint(5)">Show Hint</button>
-          <div id="hint5" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(5)">Show Answer</button>
-          <div id="answer5" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="helper-box">
-          <h3>💡 Tools Learned</h3>
-          <ul>
-            <li>Arithmetic Operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></li>
-            <li>Comparison Operators: <code>></code>, <code><</code>, <code>===</code></li>
-            <li>Concatenation: <code>+</code> for text and variables</li>
-          </ul>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed the Operators 🎉</h3>
-          <p>You've learned how the factory uses tools and sensors to check, calculate, and report everything
-            accurately.
-          </p>
-        </div>
-      </section>
-
-
-      <!-- Page 6: Operators - Part 2 ⚡ -->
-      <section class="page">
-        <h2>Operators - Part 2 ⚡</h2>
-        <p>We're now in the 'Advanced Operations' department, where the factory's smartest tools and fastest shortcuts
-          are
-          kept. Let's start at the end of the conveyor belt.</p>
-
-        <h3>The Bag Counter: The 'Increment' Operator</h3>
-        <p>At the end of the belt, there's a digital counter. Every time a finished bag passes the sensor, the count
-          needs
-          to go up by exactly one.</p>
-
-        <div class="helper-box">
-          <h3>💡 New Shortcut: The 'Add One' Button (++)</h3>
-          <p>The <strong>increment operator</strong> (<code>++</code>) is the ultimate shortcut for adding exactly 1 to
-            a
-            variable's current value. This is the same tool we saw inside our <code>for</code> loops!</p>
-        </div>
-
-        <div class="code-block">
-          let bagsMadeThisHour = 0;
-
-          bagsMadeThisHour++; <span class="code-comment">// A bag passes the sensor. The count is now 1.</span>
-          bagsMadeThisHour++; <span class="code-comment">// Another bag passes. The count is now 2.</span>
-
-          console.log(bagsMadeThisHour + " bags have been made."); <span class="code-comment">// Output: 2 bags have
-            been
-            made.</span>
-        </div>
-
-        <h3>The Control Room: Smart Switches</h3>
-        <p>These "smart switches" let us combine multiple true/false questions to make one single, smart decision for
-          our
-          factory's safety and alert systems.</p>
-
-        <div class="helper-box">
-          <h3>💡 Smart Switch 1: The 'OR' Operator (||)</h3>
-          <p>The <strong>OR</strong> operator (<code>||</code>) is for alerts. It checks if <strong>at least
-              one</strong>
-            thing is true. The whole thing is <code>true</code> if the left side is true, OR if the right side is true
-            (or
-            if both are).</p>
-        </div>
-
-        <p>The factory alarm should sound if the boiler pressure is too high OR if the belt is jammed.</p>
-        <div class="code-block">
-          let pressure = 210;
-          let isBeltJammed = false;
-          if (pressure > 200 || isBeltJammed) {
-          console.log("WEE-OO! WEE-OO! Factory Alert!");
-          } else {
-          console.log("All systems are running smoothly.");
-          }
-        </div>
-
-        <div class="helper-box">
-          <h3>💡 Smart Switch 2: The 'AND' Operator (&&)</h3>
-          <p>The <strong>AND</strong> operator (<code>&&</code>) is for safety. It checks if two things are <strong>both
-              true</strong> at the same time. The whole thing is only <code>true</code> if the condition on the left AND
-            the
-            condition on the right are true.</p>
-        </div>
-
-        <p>For our main popper to start, the power must be on AND the safety hatch must be closed.</p>
-        <div class="code-block">
-          let powerIsOn = true;
-          let isHatchClosed = false; <span class="code-comment">// Oh no, someone left it open!</span>
-          if (powerIsOn && isHatchClosed) {
-          console.log("All safety checks passed. Starting the machine!");
-          } else {
-          console.log("DANGER: Cannot start machine. A check failed.");
-          }
-        </div>
-
-        <div class="helper-box">
-          <h3>Tools We've Learned in Part 2</h3>
-          <ul>
-            <li><strong>Increment Operator:</strong> <code>++</code> for adding one.</li>
-            <li><strong>Logical Operators:</strong> <code>||</code> (OR) and <code>&&</code> (AND) for making smart
-              decisions.</li>
-          </ul>
-        </div>
-
-        <h3>🧩 Mix It Up Exercises</h3>
-
-        <div class="exercise-box">
-          <h4>Practice 1: Count the Bags</h4>
-          <p>Use the increment operator (<code>++</code>) to increase <code>bagsMadeThisHour</code> by 3 and print the
-            result.</p>
-          <div class="code-block"><span class="code-comment">// Your code goes here.</span></div>
-          <button onclick="showHint(1)">Show Hint</button>
-          <div id="hint1" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(1)">Show Answer</button>
-          <div id="answer1" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>Practice 2: The Alarm Check</h4>
-          <p>Sound the factory alarm if the boiler pressure is over 200 OR if the belt is jammed. Otherwise, print "All
-            systems normal."</p>
-          <div class="code-block"><span class="code-comment">// Your alarm logic code goes here.</span></div>
-          <button onclick="showHint(2)">Show Hint</button>
-          <div id="hint2" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(2)">Show Answer</button>
-          <div id="answer2" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>Practice 3: The Safety Hatch</h4>
-          <p>Start the main popper only if the power is on AND the safety hatch is closed. Otherwise, print a warning
-            message.</p>
-          <div class="code-block"><span class="code-comment">// Your safety check code goes here.</span></div>
-          <button onclick="showHint(3)">Show Hint</button>
-          <div id="hint3" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(3)">Show Answer</button>
-          <div id="answer3" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed the MegaMix Operators Part -2 🎉</h3>
-          <p>You’ve learned how to use the factory's essential tools! From basic math to smart switches and handy
-            shortcuts,
-            operators let you calculate inventory, check sensors, and create status reports—the core actions for any
-            smart
-            program.</p>
-        </div>
-      </section>
-
-
-      <!-- Page 7: Events - Introduction ⚡ -->
-      <section class="page">
-        <h2>Events - Introduction ⚡</h2>
-        <p>Welcome to the Main Control Room! Look at all these cool buttons on the control panel! Go on, try to click
-          them... nothing happens. Why not?</p>
-        <p>Because we haven't "plugged them in" yet! Buttons alone can't do anything—they need instructions from
-          JavaScript.
-          To wire them up, we use <code>addEventListener</code>.</p>
-
-        <div class="helper-box">
-          <h3>💡 How to Wire Up a Button</h3>
-          <p>Wiring a button takes three steps:</p>
-          <ol>
-            <li><strong>Get the Button:</strong> Grab the button from the HTML using
-              <code>document.getElementById()</code>
-              or another DOM selector.
-            </li>
-            <li><strong>Listen for a Click:</strong> Tell your button to "listen" for a <code>'click'</code> event.</li>
-            <li><strong>Give it a Job:</strong> Define a function that runs when the button is clicked.</li>
-          </ol>
-          <p>Think of it like wiring a real button in the factory: connect the wire, attach the signal, and tell the
-            machine
-            what to do.</p>
-        </div>
-
-        <h3>Example: Main Power Button</h3>
-        <p>Click the MAIN POWER button below. The status screen should change from "OFFLINE" to "ONLINE".</p>
-
-        <div class="control-panel">
-          <div class="control-panel-item">
-            <button id="mainPowerBtn" class="control-button">MAIN POWER</button>
-          </div>
-          <div class="control-panel-item">
-            <div id="statusScreen" class="status-screen status-offline">SYSTEMS OFFLINE</div>
-          </div>
-        </div>
-
-        <div class="helper-box">
-          <h3>💡 Behind the Scenes</h3>
-          <p>The wiring code might look like this:</p>
-          <div class="code-block">
-            const mainPowerBtn = document.getElementById('mainPowerBtn');<br>
-            const statusScreen = document.getElementById('statusScreen');<br><br>
-            mainPowerBtn.addEventListener('click', function() {<br>
-            &nbsp;&nbsp;statusScreen.textContent = 'SYSTEMS ONLINE';<br>
-            &nbsp;&nbsp;statusScreen.classList.remove('status-offline');<br>
-            &nbsp;&nbsp;statusScreen.classList.add('status-online');<br>
-            });
-          </div>
-        </div>
-
-        <h3>🧩 Mix It Up: Event Buttons</h3>
-
-        <div class="exercise-box">
-          <h4>1: Lights On / Off</h4>
-          <p>Add two buttons: "LIGHTS ON" and "LIGHTS OFF". Clicking them should change the background color of the
-            control
-            panel or page.</p>
-          <div class="code-block"><span class="code-comment">// Your LIGHTS ON/OFF code goes here</span></div>
-          <button onclick="showHint(1)">Show Hint</button>
-          <div id="hint1" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(1)">Show Answer</button>
-          <div id="answer1" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>2: Warning Lights</h4>
-          <p>Add three buttons for warning levels: "LOW", "MEDIUM", "HIGH". Clicking each changes the background color
-            of a
-            status screen: green, yellow, or red.</p>
-          <div class="code-block"><span class="code-comment">// Your warning light buttons code goes here</span></div>
-          <button onclick="showHint(2)">Show Hint</button>
-          <div id="hint2" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(2)">Show Answer</button>
-          <div id="answer2" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed the Event Wiring Section Part 1 🎉</h3>
-          <p>Buttons do nothing on their own—they need instructions. Now your buttons can make machines respond, lights
-            can
-            turn on, alarms can sound, and the factory comes to life!</p>
-        </div>
-      </section>
-
-
-      <!-- Page 7: Events - Part 2 ⚡ -->
-      <section class="page">
-        <h2>Events - Part 2 ⚡</h2>
-        <p>Now it is your turn to become the Factory Electrician! You will write the code that makes the factory respond
-          to
-          button clicks and actions. This is where our machines finally come to life.</p>
-
-        <h3>🧩 Mix It Up - Your Turn to Wire!</h3>
-        <p>For each task, type your JavaScript code into the text box and click the "Run My Code" button. Open the
-          console
-          in your browser to see your messages from the factory.</p>
-
-        <div class="exercise-box">
-          <h4>1: The Emergency Stop Button</h4>
-          <p>On the control panel below is a big red emergency stop button. Its HTML <code>id</code> is
-            <code>"emergencyStopBtn"</code>. Write JavaScript code that prints <strong>"DANGER! ALL SYSTEMS
-              STOPPED!"</strong> to the console when you click it.
-          </p>
-          <div class="control-panel" style="margin-top: 1rem;">
-            <div class="control-panel-item">
-              <button id="emergencyStopBtn" class="control-button" style="background-color: #fc5c65;">EMERGENCY
-                STOP</button>
-            </div>
-          </div>
-          <textarea id="codeInput1" class="code-input" placeholder="// Your JavaScript code goes here..."></textarea>
-          <button id="runButton1" class="run-button">Run My Code</button>
-          <button onclick="showHint(1)">Show Hint</button>
-          <div id="hint1" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(1)">Show Answer</button>
-          <div id="answer1" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>2: The Conveyor Start Button</h4>
-          <p>This green button starts the conveyor belt. Its HTML <code>id</code> is <code>"startConveyorBtn"</code>.
-            Write
-            JavaScript code that prints <strong>"Conveyor belt started!"</strong> when clicked.</p>
-          <div class="control-panel" style="margin-top: 1rem;">
-            <div class="control-panel-item">
-              <button id="startConveyorBtn" class="control-button" style="background-color: #55efc4;">START
-                CONVEYOR</button>
-            </div>
-          </div>
-          <textarea id="codeInput2" class="code-input" placeholder="// Your JavaScript code goes here..."></textarea>
-          <button id="runButton2" class="run-button">Run My Code</button>
-          <button onclick="showHint(2)">Show Hint</button>
-          <div id="hint2" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(2)">Show Answer</button>
-          <div id="answer2" class="code-block" style="display:none;"></div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>3: The Batch Complete Signal</h4>
-          <p>When a batch is finished, the factory lights should blink. The button to trigger this is
-            <code>"batchCompleteBtn"</code>. Write JavaScript code that prints <strong>"Batch completed! Lights
-              blinking!"</strong> when clicked.
-          </p>
-          <div class="control-panel" style="margin-top: 1rem;">
-            <div class="control-panel-item">
-              <button id="batchCompleteBtn" class="control-button" style="background-color: #ffeaa7;">BATCH
-                COMPLETE</button>
-            </div>
-          </div>
-          <textarea id="codeInput3" class="code-input" placeholder="// Your JavaScript code goes here..."></textarea>
-          <button id="runButton3" class="run-button">Run My Code</button>
-          <button onclick="showHint(3)">Show Hint</button>
-          <div id="hint3" class="helper-box" style="display:none;"></div>
-          <button onclick="showAnswer(3)">Show Answer</button>
-          <div id="answer3" class="code-block" style="display:none;"></div>
-        </div>
-
-        <h3>🔥 MegaMix Challenge: Master Factory Lever 🔥</h3>
-        <p>The Master Factory Lever has two actions: one for hovering your mouse and one for clicking. Your task is to
-          read
-          the code and answer the questions below in your own words.</p>
-        <div class="control-panel" style="margin-top: 1rem;">
-          <div class="control-panel-item">
-            <button id="masterLever" class="control-button" style="background-color: #4b6584;">MASTER FACTORY
-              LEVER</button>
-          </div>
-        </div>
-
-        <div class="code-block">
-          <span class="code-comment">// This is the code that powers the Master Lever.</span>
-          const masterLever = document.getElementById('masterLever');
-          masterLever.addEventListener('mouseover', function() {
-          console.log("MAIN POWER ENGAGED. READY.");
-          });
-          masterLever.addEventListener('click', function() {
-          console.log("CLUNK! The whole factory roars to life!");
-          });
-        </div>
-
-        <div class="exercise-box">
-          <h4>Your Detective Task</h4>
-          <p>Read the code above and answer these questions in your own words:</p>
-          <ol>
-            <li>What happens when you hover your mouse over the Master Lever?</li>
-            <li>What happens when you click the Master Lever?</li>
-          </ol>
-          <p>Try hovering and clicking the real lever above to see if your answers are correct!</p>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed the Event Wiring Section Part 2 🎉</h3>
-          <p>You are now the lead Factory Officer! You have learned to wire buttons and controls so that your factory
-            responds to your instructions. The machines are finally alive, and you have the power to make the factory
-            work
-            safely and efficiently.</p>
-        </div>
-      </section>
-
-
-      <!-- Page 8: Arrays 📋 Part 1 -->
-      <section class="page">
-        <h2>Arrays 📋 Part 1</h2>
-        <p>In our factory, we need to work with lists of things. An <strong>array</strong> is a special variable that
-          can
-          hold a whole list in one place. But what makes arrays truly powerful is that we can change and organize them!
-        </p>
-
-        <h3>The Messy Staff List</h3>
-        <p>Let's join the supervisor at the start of the day. The new digital check-in system has created a list of all
-          the
-          staff who have arrived, but it's a mess! Many names are lowercase, and they are in a completely random order.
-        </p>
-        <div class="code-block">
-          let staffList = [
-          "oliver", "Grace", "liam", "Ava", "noah", "Isabella", "ethan",
-          "Sophia", "mason", "Mia", "lucas", "Charlotte", "james",
-          "Amelia", "benjamin", "Harper", "william", "Evelyn", "logan",
-          "Abigail", "alexander", "Emily", "michael", "Elizabeth", "daniel",
-          "Sofia", "henry", "Avery", "jacob", "Ella"
-          ];
-        </div>
-        <p>With 30 names, fixing this by hand would take forever. Luckily, our array fundamental has some helpers.</p>
-
-        <h3>Fixing an Item by Index</h3>
-        <p>First, let's see how to fix just one name. We can get an item from the list using its index number (remember,
-          the
-          first item is at index <code>[0]</code>) and replace it with a new value.</p>
-        <div class="helper-box">
-          <h3>💡 How to Change an Item in a List</h3>
-          <p>To change an item, just put its index on the left side of an equals sign!</p>
-          <div class="code-block">listName[index] = "New Value";</div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>Practice 1: Fix the First Staff Name</h4>
-          <p>Let's fix the very first name on the list, "oliver".</p>
-          <div class="code-block">
-            <span class="code-comment">// The first item is at index 0</span>
-            staffList[0] = "Oliver";
-            console.log(staffList[0]); <span class="code-comment">// Output: "Oliver"</span>
-          </div>
-        </div>
-
-        <h3>A Special Helper from the JavaScript Family</h3>
-        <p>Now for the real magic. While we are learning the core fundamentals, the JavaScript language gives us some
-          special "helper tools" that can do powerful jobs for us in one step. These tools are called
-          <strong>methods</strong>.
-        </p>
-
-        <div class="helper-box">
-          <h3>💡 What is the '.sort()' Method?</h3>
-          <p>A method is like a mini-function that is already built into an array by JavaScript. You can think of it
-            like
-            a
-            special button that only arrays have.</p>
-          <p>The <code>.sort()</code> method is the "auto-organize" button. The dot <code>.</code> connects the tool to
-            our
-            list, and the parentheses <code>()</code> tell the tool to "run now!"</p>
-          <p>So, <code>staffList.sort()</code> means: "Hey, staff list! Run your built-in sort tool right now!"</p>
-        </div>
-
-        <div class="exercise-box">
-          <h4>Practice 2: Organize the Staff List</h4>
-          <p>Perfect! By borrowing this special helper tool from the JavaScript family, we can make our fundamental
-            array
-            even more powerful and organize a huge, messy list instantly.</p>
-          <div class="code-block">
-            <span class="code-comment">// Imagine we've fixed all the capitalization...</span>
-            staffList.sort();
-            console.log(staffList);
-            <span class="code-comment">// Output will be the full list of 30 names, perfectly sorted!</span>
-          </div>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed Arrays Part 1 🎉</h3>
-          <p>You’ve learned how to access, change, and organize lists in your factory. Arrays let you manage staff,
-            inventory, and all sorts of lists with ease!</p>
-        </div>
-      </section>
-
-
-      <!-- Page 9: Arrays 📋 -->
-      <section class="page">
-        <h2>Arrays 📋 Part 2</h2>
-        <p>Now it's your turn to work with some lists from around the factory. Use the tools you've learned to find the
-          information you need!</p>
-
-        <div class="helper-box">
-          <h3>🛠️ Your Array Toolkit</h3>
-          <p>Here are the main tools you'll need for these tasks:</p>
-          <ul>
-            <li>To get an item by its position: <code>listName[index]</code></li>
-            <li>To count all items in a list: <code>listName.length</code></li>
-            <li>To change an item in a list: <code>listName[index] = "New Value"</code></li>
-            <li>To sort a whole list automatically: <code>listName.sort()</code></li>
-          </ul>
-        </div>
-
-        <div class="exercise-box">
-          <h4>Practice 1: The Supervisor's Overwhelming Checklist</h4>
-          <p>The supervisor has a massive digital checklist, but the system that generated it is buggy. It's completely
-            out
-            of list order and many items have capitalization errors. Look at this huge, messy list!</p>
-          <div class="code-block">
-            let supervisorsChecklist = [
-            "calibrate bag sealer", "check fire extinguishers", "Clean main floor",
-            "inspect conveyor belt #1", "restock salt bins", "file safety reports",
-            "Test emergency stop buttons", "empty trash receptacles", "check inventory levels",
-            "Organize tool shed", "wipe down control panel", "inspect forklift tires",
-            "charge communication radios", "restock first aid kits", "clean the break room",
-            "Update training manuals", "check lighting in warehouse", "lubricate machine parts",
-            "sort incoming mail", "prepare shipping manifest", "Inspect conveyor belt #2",
-            "calibrate weight sensors", "mop the storage room", "restock sugar bins",
-            "review security footage", "test the fire alarm", "Clean office windows",
-            "organize safety gear", "check expiration dates", "water the office plants",
-            "File daily production logs", "inspect loading dock doors", "empty recycling bins",
-            "restock coffee station", "check all emergency exits", "sanitize high-touch surfaces",
-            "Prepare for afternoon shift", "print new warning signs", "check email for orders",
-            "archive old reports"
-            ];
-          </div>
-
-          <p>The supervisor just needs to know what the <strong>25th task</strong> on this messy list is. Your job is to
-            get
-            this one item from the array and print it to the console.</p>
-          <div class="helper-box">
-            <p><strong>💡 Hint:</strong> Remember that arrays start counting from 0! To get the 25th item, you will need
-              to
-              use the index <code>[24]</code>.</p>
-          </div>
-
-          <div class="code-block">
-            <span class="code-comment">// Your code goes here. Get the item at index 24 from the list.</span>
-          </div>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed Arrays Part 2 🎉</h3>
-          <p>You’ve practiced retrieving specific items from lists in your factory. Arrays let you quickly access,
-            organize,
-            and check your staff, tasks, and inventory!</p>
-        </div>
-      </section>
-
-
-      <!-- Page 9: Arrays 📋 -->
-      <section class="page">
-        <h2>Arrays 📋 Part 3</h2>
-
-        <div class="exercise-box">
-          <h4>Step 1: Counting the Flavor Inventory 🧩🧩</h4>
-          <p>The storage manager has a big problem… the popcorn flavor powders are stacked everywhere, and nobody knows
-            how
-            many different flavors we actually have! Use the <code>.length</code> tool to count how many flavor types
-            there
-            are and print the number to the console.</p>
-
-          <div class="code-block">let flavorInventory = [
-            "Caramel", "Cheddar", "Sour Cream", "BBQ", "Butter Blast",
-            "Salt & Vinegar", "Spicy Jalapeño", "Sweet Chili", "Parmesan",
-            "Honey Mustard", "Cinnamon Sugar", "Ranch", "Truffle Butter",
-            "Chocolate Drizzle", "Maple Crunch", "Garlic Herb"
-            ];</div>
-
-          <div class="helper-box">
-            <h4>💡 Reminder: Using <code>.length</code></h4>
-            <p>The <code>.length</code> property counts everything in the list from start to finish.</p>
-            <div class="code-block">console.log(flavorInventory.length);</div>
-          </div>
-
-          <div class="code-block">
-            <span class="code-comment">// Your code goes here. Use .length and print the result!</span>
-          </div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>Step 2: MegaMix Challenge - Organizing the Shipping Manifest 🔥</h4>
-          <p>The new intern accidentally jumbled the entire list of cities for today’s shipping routes. Some names are
-            lowercase, some are uppercase, and a few are misspelled. Fix the errors AND organize the entire list
-            alphabetically.</p>
-
-          <div class="code-block">let shippingManifest = [
-            "tokyo", "Berlin", "sydny", "New york", "paris", "ROME",
-            "cape town", "madrd", "Toronto", "mosCOW", "dubAi", "Lima",
-            "seOUL", "viena", "Delhi", "bAngkok", "Los angeles", "jakrta",
-            "hong kong", "naiRobi", "sao paolo", "vancuver", "mexiCo city",
-            "singpore", "bUenos aires", "manla", "zurIch", "athns", "cairo"
-            ];</div>
-
-          <div class="helper-box">
-            <h4>🕵️ Fixing the Errors</h4>
-            <p>Use these skills:</p>
-            <ul>
-              <li>Fix spelling and capitalization using: <code>shippingManifest[index] = "Correct Value"</code></li>
-              <li>Sort the entire list after corrections using: <code>shippingManifest.sort()</code></li>
-              <li>Print the clean list to the console</li>
-            </ul>
-          </div>
-
-          <ol>
-            <li>Find 5 obvious incorrect or misspelled cities and fix them using index assignments.</li>
-            <li>Sort the entire list alphabetically using <code>.sort()</code>.</li>
-            <li>Print the final, clean, alphabetical manifest to the console.</li>
-          </ol>
-
-          <div class="code-block">
-            <span class="code-comment">// Your MegaMix solution code goes here!</span>
-          </div>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed the MegaMix Arrays 🎉</h3>
-          <p>You’ve learned how to organize, count, and repair the factory’s data lists! Arrays let you tidy messy
-            information, sort huge inventories, and access the exact item you need—powerful tools for any smart program.
-          </p>
-        </div>
-      </section>
-
-
-      <!-- Page 9: Objects 📦 -->
-      <section class="page">
-        <h2>Objects 📦</h2>
-        <p>An <strong>object</strong> is like the supervisor's backpack! While an array is a simple list, an object is a
-          special container with labeled compartments. Each compartment has a name (a <strong>property</strong>) and
-          holds
-          something useful (a <strong>value</strong>). Objects help us keep related information organized in one place.
-        </p>
-
-        <h3>Example: The Supervisor's Backpack</h3>
-        <p>Let's build a supervisor's backpack with compartments for their keys, clipboard, and walkie-talkie.</p>
-
-        <div class="helper-box">
-          <h4>💡 How to Build an Object</h4>
-          <p>We create an object using curly braces <code>{ }</code>. Inside, we list the properties and their values,
-            separated by a colon <code>:</code>.</p>
-          <div class="code-block">
-            let objectName = {
-            propertyName1: "value1",
-            propertyName2: "value2"
-            };
-          </div>
-        </div>
-
-        <div class="code-block">
-          let supervisorBackpack = {
-          keys: "Warehouse keys",
-          clipboard: "Daily checklist",
-          walkieTalkie: "Channel 5",
-          hasSafetyGoggles: true
-          };
-        </div>
-
-        <h3>Peeking Inside a Compartment</h3>
-        <p>To see what's inside a specific compartment, we use "dot notation."</p>
-
-        <div class="helper-box">
-          <h4>💡 Using a Dot (.) to Access Properties</h4>
-          <p>The dot (<code>.</code>) lets you connect the object's name to the property you want to see. Think of it as
-            peeking into a labeled compartment.</p>
-          <div class="code-block">
-            objectName.propertyName
-          </div>
-        </div>
-
-        <div class="code-block">
-          // Let's see what's in the 'keys' compartment
-          console.log(supervisorBackpack.keys); // Output: Warehouse keys
-
-          // Let's check if the supervisor has goggles
-          console.log(supervisorBackpack.hasSafetyGoggles); // Output: true
-        </div>
-
-        <h3>Adding a New Compartment</h3>
-        <p>What if the supervisor wants to add snacks to their backpack? We can add a new property at any time!</p>
-        <div class="code-block">
-          // Add a new 'snacks' compartment
-          supervisorBackpack.snacks = "An apple";
-          console.log(supervisorBackpack.snacks); // Output: An apple
-        </div>
-
-        <h3>🧩 Mix It Up Practice Exercises</h3>
-
-        <div class="exercise-box">
-          <h4>Practice 1: The Tool Box</h4>
-          <p>Create an object called <code>toolBox</code>. Give it three properties: <code>hammer</code>,
-            <code>screwdriver</code>, and <code>tapeMeasure</code>. Put a string value in each one (e.g., "Claw
-            hammer").
-            Then, print the value of the <code>screwdriver</code> property to the console.
-          </p>
-          <div class="code-block">
-            // Your toolbox object goes here
-          </div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>Practice 2: The First Aid Kit</h4>
-          <p>Create an object called <code>firstAidKit</code>. Add a property called <code>bandages</code> with a number
-            value (e.g., <code>20</code>). Then, add a new property called <code>hasOintment</code> and set it to
-            <code>true</code>.
-          </p>
-          <div class="code-block">
-            // Your first aid kit object goes here
-          </div>
-        </div>
-
-        <div class="exercise-box">
-          <h4>🔥 MegaMix Challenge: A Backpack with a List!</h4>
-          <p>An object's property can hold any type of value—even an array. Let's give our supervisor a list of snacks.
-            Use
-            <code>.push()</code> to add a new snack, then print the full list and one specific snack to the console.
-          </p>
-          <div class="helper-box">
-            <h4>💡 A New Array Tool: The '.push()' Method</h4>
-            <p>The <code>.push()</code> method is a special tool for arrays. It lets you add a new item to the very end
-              of
-              the list.</p>
-          </div>
-          <div class="code-block">
-            // Give the backpack a list of snacks
-            supervisorBackpack.snacks = ["granola bar", "apple"];
-
-            // Add one more snack to the list
-            supervisorBackpack.snacks.push("banana");
-
-            // See the whole list of snacks
-            console.log(supervisorBackpack.snacks); // Output: ["granola bar", "apple", "banana"]
-
-            // See just the second snack
-            console.log(supervisorBackpack.snacks[1]); // Output: apple
-          </div>
-        </div>
-
-        <div class="ending-box">
-          <h3>Congratulations! You’ve completed the MegaMix Objects 🎉</h3>
-          <p>You’ve learned how to organize related information into neat "backpacks"! Objects are essential for
-            building
-            complex programs by keeping everything tidy and easy to find.</p>
-        </div>
-      </section>
-      </main>
-
-
-      <script src="scripts/main.js"></script>
-
+  <script src="scripts/main.js"></script>
+  <script src="scripts/scroll.js"></script>
+  <script src="scripts/coverPage-transition.js"></script>
 </body>
 
 </html>

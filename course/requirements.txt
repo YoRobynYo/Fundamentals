@@ -72,7 +72,7 @@ propcache==0.3.2
 psutil==7.1.0
 psycopg2-binary==2.9.10
 pyasn1==0.6.1
-pycodestyle==2.14.0
+pyhighlightstyle==2.14.0
 pycparser==2.23
 pydantic==2.11.9
 pydantic-settings==2.11.0

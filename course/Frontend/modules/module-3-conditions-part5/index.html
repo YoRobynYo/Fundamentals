@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 3 Conditions Part 5       █ -->
+<!-- █  // Else If                                   █ -->
+<!-- █  // Multiple flavour checks!                  █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="conditions-module">
+  <h2 class="module-title">Module 3: Conditions Part 5 ❓</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: When You Have More Than Two Options -->
+  <div class="helper-box">
+    <h3 class="box-title">🍿 When You Have More Than Two Options 🍿</h3>
+
+    <p>Welcome to the Ingredients Room at the Popcorn Factory! This is where we figure out
+      which ingredients to grab based on the flavour someone ordered. The assistant explains:
+      "We don't just make plain and buttery popcorn — we have LOTS of flavours!"</p>
+
+    <h4 class="sub-title">Remember IF and ELSE?</h4>
+
+    <p>In our last lesson, we learned how to check between two options using IF and ELSE.
+      It works great when there are only two choices:</p>
+
+    <div class="code-block">
+      SET "flavour order" = "plain"<br><br>
+      IF "flavour order" = "plain" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn only"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and butter"<br>
+      END IF
+    </div>
+    <p class="output">Output: Get: Corn only</p>
+
+    <p>This works perfectly for two flavours. But what happens when a customer orders
+      "salty"? Or "cheese"? Or "caramel"? We can't just lump ALL those flavours into the
+      ELSE part — they each need different ingredients!</p>
+
+    <h4 class="sub-title">The Problem with Too Many IF Statements</h4>
+
+    <p>You might think: "Why not just write lots of separate IF statements?" Let's try:</p>
+
+    <div class="code-block">
+      SET "flavour order" = "cheese"<br><br>
+      IF "flavour order" = "plain" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn only"<br>
+      END IF<br><br>
+      IF "flavour order" = "buttery" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and butter"<br>
+      END IF<br><br>
+      IF "flavour order" = "cheese" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and cheese powder"<br>
+      END IF
+    </div>
+
+    <p>This works, but it's messy. The computer has to check EVERY single IF, even after
+      it already found the answer. There is a better way — and it's called an <strong>ELSE IF
+        chain</strong>!</p>
+
+    <p class="note">💡 <strong>Key idea:</strong> When you have more than two options,
+      you need a way to check through several possibilities — one after another — until
+      you find the right answer!</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: The ELSE IF Chain -->
+  <div class="helper-box">
+    <h3 class="box-title">✨ The ELSE IF Chain ✨</h3>
+
+    <p>An <strong>ELSE IF chain</strong> lets you check through many different options,
+      one at a time, in order. As soon as one matches, the computer runs that code and
+      skips everything else. It's like a line of doors — you try each one until you find
+      the one that opens!</p>
+
+    <h4 class="sub-title">The Structure:</h4>
+
+    <div class="code-block">
+      IF [first condition] THEN<br>
+      &nbsp;&nbsp;[do this if first condition is true]<br>
+      ELSE IF [second condition] THEN<br>
+      &nbsp;&nbsp;[do this if second condition is true]<br>
+      ELSE IF [third condition] THEN<br>
+      &nbsp;&nbsp;[do this if third condition is true]<br>
+      ELSE<br>
+      &nbsp;&nbsp;[do this if NONE of the above are true]<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">How It Works — Step by Step:</h4>
+
+    <ul class="indented-list">
+      <li><strong>First:</strong> The computer checks the IF condition. Is it true? If yes, it runs that code and STOPS.</li>
+      <li><strong>Second:</strong> If the first was false, it checks the first ELSE IF. Is this one true? If yes, it runs that code and STOPS.</li>
+      <li><strong>Third:</strong> It keeps going down the chain, checking each ELSE IF in order.</li>
+      <li><strong>Last:</strong> If NONE of the conditions are true, it runs whatever is in the ELSE part.</li>
+    </ul>
+
+    <h4 class="sub-title">Let's See It in Action:</h4>
+
+    <div class="code-block">
+      SET "flavour order" = "buttery"<br><br>
+      IF "flavour order" = "plain" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn only"<br>
+      ELSE IF "flavour order" = "buttery" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and butter"<br>
+      ELSE IF "flavour order" = "salty" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and salt"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Unknown flavour"<br>
+      END IF
+    </div>
+    <p class="output">Output: Get: Corn and butter</p>
+
+    <p>Here's what happened: The computer checked "plain" — no match. Then it checked
+      "buttery" — MATCH! It printed the ingredients and stopped. It never even looked at
+      "salty" because it already found the answer.</p>
+
+    <p class="note">💡 <strong>Important:</strong> The computer stops as soon as it finds
+      a match. It does NOT check the rest of the chain!</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: Check Order Matters! -->
+  <div class="helper-box">
+    <h3 class="box-title">🔍 Check Order Matters! 🔍</h3>
+
+    <p>Here is something really important about ELSE IF chains: the order you put your
+      conditions in matters. The computer always checks from top to bottom, and it stops at
+      the first match it finds.</p>
+
+    <h4 class="sub-title">Think of It Like a Queue at the Factory</h4>
+
+    <p>Imagine three workers standing in line to grab ingredients. The first worker checks
+      if they know the flavour. If yes, they grab the bag and go. If not, the second worker
+      tries. The third worker only gets a chance if both workers before them didn't match.</p>
+
+    <h4 class="sub-title">Why Order Matters — An Example:</h4>
+
+    <p>Let's say you want to check if a flavour is premium or not. Watch what happens if
+      we put the checks in the wrong order:</p>
+
+    <div class="code-block">
+      SET "flavour order" = "chocolate"<br><br>
+      IF "flavour order" = "chocolate" THEN<br>
+      &nbsp;&nbsp;PRINT "This is a chocolate flavour"<br>
+      ELSE IF "flavour order" = "chocolate" OR "flavour order" = "caramel" THEN<br>
+      &nbsp;&nbsp;PRINT "This is a premium flavour"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Regular flavour"<br>
+      END IF
+    </div>
+
+    <p>The first check catches "chocolate" — so it never reaches the second check that
+      would have said "premium." The computer stopped too early!</p>
+
+    <h4 class="sub-title">The Rule:</h4>
+
+    <p>Always put your <strong>most specific checks first</strong> and your
+      <strong>more general checks later</strong>. Think about which situations need to be
+      caught before others.</p>
+
+    <p>For our popcorn flavours, we check each specific flavour one at a time — that way
+      each flavour gets exactly the right ingredients!</p>
+
+    <p class="note">💡 <strong>Tip:</strong> Before writing your ELSE IF chain, list out
+      all the possibilities and think about the best order to check them!</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: The Default Case — Catching Everything Else -->
+  <div class="helper-box">
+    <h3 class="box-title">📦 The Default Case — Catching Everything Else 📦</h3>
+
+    <p>What happens when someone orders a flavour we have never heard of? Or types it
+      wrong? That's where the final <strong>ELSE</strong> comes in — it's called the
+      <strong>default case</strong>.</p>
+
+    <h4 class="sub-title">The Safety Net</h4>
+
+    <p>The ELSE at the end of an ELSE IF chain is like a safety net. If NONE of the
+      specific conditions above it matched, the ELSE catches everything that's left.</p>
+
+    <div class="code-block">
+      SET "flavour order" = "rainbow"<br><br>
+      IF "flavour order" = "plain" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn only"<br>
+      ELSE IF "flavour order" = "buttery" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and butter"<br>
+      ELSE IF "flavour order" = "salty" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and salt"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Unknown flavour — please check the menu!"<br>
+      END IF
+    </div>
+    <p class="output">Output: Unknown flavour — please check the menu!</p>
+
+    <h4 class="sub-title">When to Use ELSE</h4>
+
+    <ul class="indented-list">
+      <li><strong>Use ELSE</strong> when you want to handle any situation that doesn't match your specific checks — like wrong input, unknown options, or errors</li>
+      <li><strong>Skip ELSE</strong> when you only care about certain specific options and don't need to do anything for the rest</li>
+    </ul>
+
+    <h4 class="sub-title">In These Exercises:</h4>
+
+    <p>In Part A, you will check for two specific flavours — plain and buttery. In Part B,
+      you will add a third flavour — salty. Each check gives the correct ingredients for
+      that flavour. The ELSE catches anything that isn't one of your known flavours!</p>
+
+    <p class="note">💡 <strong>Think of it this way:</strong> IF and ELSE IF catch the
+      specific things you know about. ELSE catches everything else — the surprises,
+      the mistakes, and the unknowns!</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- Helper Box 5: Building a Flavour Checker — Putting It All Together -->
+  <div class="helper-box">
+    <h3 class="box-title">🎯 Building a Flavour Checker — Putting It All Together 🎯</h3>
+
+    <p>Now let's build a complete flavour checker for the Ingredients Room! This is exactly
+      what you will be doing in the exercises. The assistant needs a system that takes a
+      flavour order and tells the worker exactly which ingredients to grab.</p>
+
+    <h4 class="sub-title">Starting Simple — Two Flavours (Part A):</h4>
+
+    <div class="code-block">
+      SET "flavour order" = "plain"<br><br>
+      IF "flavour order" = "plain" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn only"<br>
+      ELSE IF "flavour order" = "buttery" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and butter"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Unknown flavour"<br>
+      END IF
+    </div>
+    <p class="output">Output: Get: Corn only</p>
+
+    <h4 class="sub-title">Adding More Flavours (Part B):</h4>
+
+    <p>Now let's add "salty" to the list. We just add another ELSE IF before the ELSE:</p>
+
+    <div class="code-block">
+      SET "flavour order" = "salty"<br><br>
+      IF "flavour order" = "plain" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn only"<br>
+      ELSE IF "flavour order" = "buttery" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and butter"<br>
+      ELSE IF "flavour order" = "salty" THEN<br>
+      &nbsp;&nbsp;PRINT "Get: Corn and salt"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "Unknown flavour"<br>
+      END IF
+    </div>
+    <p class="output">Output: Get: Corn and salt</p>
+
+    <h4 class="sub-title">The Pattern You Will Use:</h4>
+
+    <p>In every exercise, you will follow this same pattern:</p>
+
+    <ul class="indented-list">
+      <li><strong>Part A:</strong> Check for two flavours — an IF and one ELSE IF, plus an ELSE for unknown flavours</li>
+      <li><strong>Part B:</strong> Add a third flavour — one more ELSE IF inserted before the ELSE</li>
+    </ul>
+
+    <h4 class="sub-title">Quick Checklist Before You Start:</h4>
+
+    <ul class="indented-list">
+      <li>SET your variable with the flavour name</li>
+      <li>Write IF for the first flavour, then ELSE IF for each additional flavour</li>
+      <li>Each check PRINTs the correct ingredients</li>
+      <li>End with ELSE for any unknown flavours</li>
+      <li>Don't forget END IF at the end!</li>
+    </ul>
+
+    <p>The Ingredients Room has many sections — basic flavours, sweet flavours, savoury
+      flavours, premium flavours, and even ice cream flavours! Each section uses the same
+      ELSE IF pattern, just with different flavour names and ingredients. You'll get lots
+      of practise building these chains. Let's get started!</p>
+  </div>
+  <!-- End of Helper Box 5 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 3: Conditions Part 5 — Exercises ❓</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Basic Flavours 🍿                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Basic Flavours 🍿</h3>
+
+    <p>Welcome to the Ingredients Room! Today you are helping the assistant figure out which ingredients to grab based on the flavour a customer orders. Let's start with the two most popular basic flavours — plain and buttery!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Plain or Buttery</h4>
+
+    <p>A customer walks up and orders a flavour. We need to check if they ordered "plain" or "buttery" so we can grab the correct ingredients. If the flavour is "plain", we only need corn. If the flavour is "buttery", we need corn and butter. We also need to handle any unknown flavours.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "flavour order" and set its value to <code>"plain"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF to check if "flavour order" equals <code>"plain"</code>. If it does, PRINT <code>"Get: Corn only"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use ELSE IF to check if "flavour order" equals <code>"buttery"</code>. If it does, PRINT <code>"Get: Corn and butter"</code>. Use ELSE for anything else — PRINT <code>"Unknown flavour"</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed:
+        <div class="code-example">
+          <code>SET "flavour order" = "plain"<br><br>IF "flavour order" = "plain" THEN<br>&nbsp;&nbsp;PRINT "Get: Corn only"<br>ELSE IF "flavour order" = "buttery" THEN<br>&nbsp;&nbsp;PRINT "Get: Corn and butter"<br>ELSE<br>&nbsp;&nbsp;PRINT "Unknown flavour"<br>END IF</code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="conditions-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint1-part-a"></p>
+    <pre class="output-block" id="conditions-output1-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer1-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Adding the Salty Option</h4>
+
+    <p>Great work! Now a customer wants to order "salty" — but we do not check for that flavour yet. Let's add a third option to our chain!</p>
+
+    <p>We still have plain and buttery, but now we also need to check for "salty". If the flavour is "salty", we need corn and salt. The ELSE still catches anything else as an unknown flavour.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Change the value of "flavour order" to <code>"salty"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Keep the IF check for <code>"plain"</code> — PRINT <code>"Get: Corn only"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Keep the first ELSE IF for <code>"buttery"</code> — PRINT <code>"Get: Corn and butter"</code>. Add a new ELSE IF for <code>"salty"</code> — PRINT <code>"Get: Corn and salt"</code>. Keep the ELSE for unknown flavours.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for salty in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint1-part-b"></p>
+    <pre class="output-block" id="conditions-output1-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer1-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Sweet Flavours 🍬                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Sweet Flavours 🍬</h3>
+
+    <p>Now you are moving to the sweet section of the Ingredients Room! Customers love sweet popcorn, and each sweet flavour needs different ingredients. Let's check which ones to grab!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Sweet or Butterscotch</h4>
+
+    <p>A customer is ordering from the sweet section. If the flavour is "sweet", we need corn and sugar. If the flavour is "butterscotch", we need corn and butterscotch. Anything else is an unknown sweet flavour.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sweet flavour" and set its value to <code>"sweet"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF to check if "sweet flavour" equals <code>"sweet"</code>. If it does, PRINT <code>"Get: Corn and sugar"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use ELSE IF to check if "sweet flavour" equals <code>"butterscotch"</code>. If it does, PRINT <code>"Get: Corn and butterscotch"</code>. Use ELSE for unknown sweet flavours — PRINT <code>"Unknown sweet flavour"</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for sweet or butterscotch in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint2-part-a"></p>
+    <pre class="output-block" id="conditions-output2-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Adding Toffee</h4>
+
+    <p>Excellent! Now a customer wants "toffee" — another sweet flavour we need to add! If the flavour is "toffee", we need corn, butter, and toffee pieces. Let's add it to the chain!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Change the value of "sweet flavour" to <code>"toffee"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Keep the IF check for <code>"sweet"</code> — PRINT <code>"Get: Corn and sugar"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Keep the first ELSE IF for <code>"butterscotch"</code>. Add a new ELSE IF for <code>"toffee"</code> — PRINT <code>"Get: Corn, butter, and toffee pieces"</code>. Keep the ELSE for unknown sweet flavours.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for toffee in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint2-part-b"></p>
+    <pre class="output-block" id="conditions-output2-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Savoury Flavours 🧀                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Savoury Flavours 🧀</h3>
+
+    <p>Time to visit the cheese and spice section! Customers who love savoury popcorn come here for bold, tasty flavours. Let's check which ingredients are needed!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Cheese or Chili</h4>
+
+    <p>A customer is ordering from the savoury section. If the flavour is "cheese", we need corn and cheese powder. If the flavour is "chili", we need corn and chili spice. Anything else is an unknown savoury flavour.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "savoury flavour" and set its value to <code>"cheese"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF to check if "savoury flavour" equals <code>"cheese"</code>. If it does, PRINT <code>"Get: Corn and cheese powder"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use ELSE IF to check if "savoury flavour" equals <code>"chili"</code>. If it does, PRINT <code>"Get: Corn and chili spice"</code>. Use ELSE for unknown savoury flavours — PRINT <code>"Unknown savoury flavour"</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for cheese or chili in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint3-part-a"></p>
+    <pre class="output-block" id="conditions-output3-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Adding BBQ</h4>
+
+    <p>Great! Now a customer wants "BBQ" — a smoky, tangy savoury flavour. If the flavour is "BBQ", we need corn and BBQ seasoning. Let's add it to the chain!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Change the value of "savoury flavour" to <code>"BBQ"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Keep the IF check for <code>"cheese"</code> — PRINT <code>"Get: Corn and cheese powder"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Keep the first ELSE IF for <code>"chili"</code>. Add a new ELSE IF for <code>"BBQ"</code> — PRINT <code>"Get: Corn and BBQ seasoning"</code>. Keep the ELSE for unknown savoury flavours.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for BBQ in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint3-part-b"></p>
+    <pre class="output-block" id="conditions-output3-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Special Flavours 🍫                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Special Flavours 🍫</h3>
+
+    <p>Now you are in the premium section of the Ingredients Room! These special flavours have richer ingredients and need careful checking. Let's make sure we grab exactly the right things!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Caramel or Chocolate</h4>
+
+    <p>A customer is ordering a premium flavour. If the flavour is "caramel", we need corn, butter, and caramel sauce. If the flavour is "chocolate", we need corn and melted chocolate. Anything else is an unknown premium flavour.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "premium flavour" and set its value to <code>"caramel"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF to check if "premium flavour" equals <code>"caramel"</code>. If it does, PRINT <code>"Get: Corn, butter, and caramel sauce"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use ELSE IF to check if "premium flavour" equals <code>"chocolate"</code>. If it does, PRINT <code>"Get: Corn and melted chocolate"</code>. Use ELSE for unknown premium flavours — PRINT <code>"Unknown premium flavour"</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for caramel or chocolate in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint4-part-a"></p>
+    <pre class="output-block" id="conditions-output4-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Adding Chocolate Nuts</h4>
+
+    <p>Wonderful! Now a customer wants "chocolate nuts" — a special premium flavour with extra toppings. If the flavour is "chocolate nuts", we need corn, melted chocolate, and peanuts. Let's add it to the chain!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Change the value of "premium flavour" to <code>"chocolate nuts"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Keep the IF check for <code>"caramel"</code> — PRINT <code>"Get: Corn, butter, and caramel sauce"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Keep the first ELSE IF for <code>"chocolate"</code>. Add a new ELSE IF for <code>"chocolate nuts"</code> — PRINT <code>"Get: Corn, melted chocolate, and peanuts"</code>. Keep the ELSE for unknown premium flavours.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for chocolate nuts in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint4-part-b"></p>
+    <pre class="output-block" id="conditions-output4-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Ice Cream Flavours 🍦                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Ice Cream Flavours 🍦</h3>
+
+    <p>You have reached the most exciting section of the Ingredients Room — the ice cream coating station! Here, popcorn gets a delicious ice cream coating. Let's check which coatings to use for each flavour!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Vanilla or Strawberry</h4>
+
+    <p>A customer is ordering from the ice cream section. If the flavour is "vanilla", we need corn and vanilla coating. If the flavour is "strawberry", we need corn and strawberry coating. Anything else is an unknown ice cream flavour.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ice cream flavour" and set its value to <code>"vanilla"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use IF to check if "ice cream flavour" equals <code>"vanilla"</code>. If it does, PRINT <code>"Get: Corn and vanilla coating"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use ELSE IF to check if "ice cream flavour" equals <code>"strawberry"</code>. If it does, PRINT <code>"Get: Corn and strawberry coating"</code>. Use ELSE for unknown ice cream flavours — PRINT <code>"Unknown ice cream flavour"</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for vanilla or strawberry in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint5-part-a"></p>
+    <pre class="output-block" id="conditions-output5-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Adding Cookies and Cream</h4>
+
+    <p>Amazing! Now a customer wants the most popular flavour — "cookies and cream"! If the flavour is "cookies and cream", we need corn, vanilla coating, and cookie crumbles. Let's add it to the chain!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Change the value of "ice cream flavour" to <code>"cookies and cream"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Keep the IF check for <code>"vanilla"</code> — PRINT <code>"Get: Corn and vanilla coating"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Keep the first ELSE IF for <code>"strawberry"</code>. Add a new ELSE IF for <code>"cookies and cream"</code> — PRINT <code>"Get: Corn, vanilla coating, and cookie crumbles"</code>. Keep the ELSE for unknown ice cream flavours.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for cookies and cream in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint5-part-b"></p>
+    <pre class="output-block" id="conditions-output5-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 3 Conditions Part 5         █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

@@ -1,29 +1,82 @@
 @charset "UTF-8";
-/* --- GENERAL WEBPAGE SETTINGS --- */
+
+/* ------------------- VARIABLES ------------------- */
+/* ------------------- GENERAL PAGE STYLES ------------------- */
 body {
-  background-color: #F5F5F5;
+  background-color: #e4dddd;
   font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2em;
   line-height: 1.6;
   color: #333;
-  font-size: 1.2em;
   margin: 0;
   padding: 0;
 }
 
-/* --- COVER PAGE --- */
+a {
+  color: #0984e3;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #74b9ff;
+}
+
+strong {
+  font-weight: 700;
+  color: #222;
+}
+
+em {
+  font-style: italic;
+  color: #555;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #5A7D8A;
+  margin: 1.5rem 0;
+  text-align: left;
+  padding: 0 80px;
+}
+
+ul,
+ol {
+  padding-left: 110px;
+  padding-right: 50px;
+  margin: 1.5rem 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #4A6D7A;
+}
+
+ul li,
+ol li {
+  margin-bottom: 0.5rem;
+}
+
+/* ------------------- COVER PAGE ------------------- */
 .cover-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100dvh;
   text-align: center;
   background: linear-gradient(135deg, #74b9ff, #0984e3);
   padding: 2rem;
+  box-sizing: border-box;
+  padding-bottom: 4rem;
 }
-.cover-page > div {
+
+.cover-page>div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 90%;
+  width: 100%;
 }
 
 .cover-title {
@@ -40,10 +93,33 @@ body {
   font-size: 2em;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: #ffffff;
+  color: #fff;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   animation: fadeInUp 1.5s ease forwards;
   opacity: 0;
+}
+
+/* ------------------- CREDITS PAGE ------------------- */
+.credits-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  text-align: center;
+  padding: 2rem;
+  color: white;
+}
+
+.credits-page .authors {
+  font-size: 2em;
+  margin: 1.5rem 0;
+  color: #ffdd59;
+  font-weight: 600;
+}
+
+.credits-page .start-button {
+  margin-top: 2rem;
 }
 
 .authors {
@@ -51,323 +127,83 @@ body {
   font-weight: 600;
   color: #ffdd59;
   letter-spacing: 1px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   text-align: center;
   position: relative;
   margin: 0;
   padding-top: 1.5rem;
 }
+
 .authors::before {
   content: "";
   display: block;
   width: 80px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #fff;
   margin: 1.5rem auto;
   border-radius: 1px;
 }
 
 .start-button {
   display: inline-block;
-  opacity: 1;
-  position: relative;
-  z-index: 10;
-  background-color: #ffffff;
+  background-color: #fff;
   color: #0984e3;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.2em;
   font-weight: bold;
   text-decoration: none;
   padding: 15px 40px;
+  border: 2px solid #fff;
   border-radius: 50px;
-  border: 2px solid #ffffff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  margin-top: 2.5rem;
+  margin: 2rem 0 3rem;
+  /* top and bottom in one line */
   cursor: pointer;
   transition: all 0.3s ease-out;
+  position: relative;
+  z-index: 10;
 }
+
 .start-button:hover {
   background-color: transparent;
-  color: #ffffff;
+  color: #fff;
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* --- FADE-IN ANIMATIONS --- */
+.start-button:focus {
+  outline: 2px solid #ffdd59;
+  outline-offset: 4px;
+}
+
+@media (hover: none) {
+  .start-button:active {
+    transform: translateY(-2px);
+  }
+}
+
+/* ------------------- ANIMATIONS ------------------- */
 @keyframes fadeInDown {
   from {
     transform: translateY(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
   }
 }
+
 @keyframes fadeInUp {
   from {
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
   }
-}
-.page {
-  /* Give the section a solid white background */
-  /* The existing styles for padding, border-radius, etc. will still apply */
-}
-
-/* --- CONTENT CARDS --- */
-.content-card {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* --- HEADINGS --- */
-/* =================================================================
-   HEADINGS & TITLES
-   ================================================================= */
-/* --- Main Section Titles (e.g., "Variables 📦") --- */
-h2 {
-  font-size: 2.5em;
-  /* Big and impactful */
-  font-weight: 700;
-  /* Bold */
-  color: #2c3e50;
-  /* A strong, dark, professional blue-grey */
-  text-align: center;
-  /* Always centered */
-  margin-top: 3rem;
-  /* Extra space above to separate from previous section */
-  margin-bottom: 2rem;
-  /* Space below before the content starts */
-  padding-bottom: 1rem;
-  /* Space between the text and the border */
-  border-bottom: 2px solid #ecf0f1;
-  /* A subtle, light grey underline */
-}
-
-/* --- Sub-Headings (e.g., "Examples", "Step-by-Step Guide") --- */
-h3 {
-  font-size: 1.8em;
-  font-weight: 600;
-  color: #34495e;
-  padding-left: 50px;
-  /* A slightly lighter blue-grey */
-  text-align: left;
-  /* Always aligned to the left */
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-/* --- Exercise Titles (e.g., "1: Popcorn Batch Info") --- */
-h4 {
-  font-size: 1.4em;
-  font-weight: 600;
-  color: #34495e;
-  text-align: left;
-  padding-left: 50px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.page-title {
-  font-size: 3em;
-  font-weight: 900;
-  margin-bottom: 0.5rem;
-  color: #222;
-  text-align: center;
-  padding: 40px;
-}
-
-/* --- PARAGRAPHS & TEXT --- */
-p {
-  font-size: 1.2em;
-  line-height: 1.8;
-  color: #5A7D8A;
-  /* The soft, muted teal-grey text color */
-  padding: 0 50px;
-  margin: 1rem 0;
-  text-align: left;
-  padding: 0 80px;
-}
-
-/* --- LISTS (UL & OL) --- */
-ul,
-ol {
-  /* --- Spacing and Layout --- */
-  /* This is the key fix for the side gaps */
-  padding-left: 70px;
-  /* Creates space from the left edge of the page */
-  padding-right: 50px;
-  /* Creates space from the right edge of the page */
-  margin: 1rem 0;
-  /* Keeps the top/bottom margin but removes side margins */
-  /* --- Font and Color --- */
-  font-family: "Space Grotesk", sans-serif;
-  /* Matches the paragraph font */
-  font-size: 1.1em;
-  /* Slightly smaller than paragraphs for hierarchy */
-  line-height: 1.7;
-  /* A bit more spacing for readability */
-  color: #4A6D7A;
-  /* A darker, complementary teal-grey */
-}
-
-a {
-  color: #0984e3;
-  text-decoration: underline;
-  transition: color 0.2s ease;
-}
-a:hover {
-  color: #74b9ff;
-}
-
-strong {
-  font-weight: 700;
-  color: #222;
-}
-
-em {
-  font-style: italic;
-  color: #555;
-}
-
-.demonstration-box {
-  background-color: #F7F9F9;
-  border: 1px solid #EAEDED;
-  border-radius: 8px;
-  padding: 20px 25px;
-  margin-bottom: 50px;
-}
-
-.code-output-comment {
-  display: block;
-  margin-top: 15px;
-  color: #27ae60;
-  font-style: italic;
-}
-
-/* --- CODE BLOCKS --- */
-.code-block {
-  /* --- Base styles for ALL code blocks --- */
-  background-color: #F8F9FA;
-  color: #5A7D8A;
-  font-family: "Inter", sans-serif;
-  padding: 20px;
-  /* The new, generous padding */
-  border-radius: 8px;
-  margin: 2.5rem 50px 20px 50px;
-  border: 1px solid #E9ECEF;
-  overflow-x: auto;
-  font-size: 1.1em;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  /* Smooth transitions */
-}
-.code-block code {
-  background-color: transparent;
-  padding: 0;
-}
-.code-block {
-  /* --- Styles for EDITABLE code blocks --- */
-}
-.code-block[contenteditable=true] {
-  cursor: text;
-  min-height: 80px;
-  /* We'll use a subtle box-shadow instead of an outline for a softer look */
-  box-shadow: 0 0 0 2px #D4E6F1;
-  /* A soft blue shadow to indicate it's editable */
-}
-.code-block[contenteditable=true]:hover {
-  background-color: #ffffff;
-  /* A clean white on hover */
-  box-shadow: 0 0 0 2px #A9CCE3;
-  /* A slightly darker blue shadow on hover */
-}
-.code-block[contenteditable=true]:focus {
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px #5DADE2;
-  /* A stronger, more prominent blue shadow on focus */
-}
-
-/* --- MISC / CARDS --- */
-/* --- BOX MODEL & SHARED STYLES --- */
-.ending-box, .helper-box, .exercise-box {
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1.5rem 50px;
-}
-
-.exercise-box {
-  background: #ffffff;
-  border: 2px solid #e0e0e0;
-}
-
-.helper-box {
-  background-color: #e8f5ff;
-  border-left: 6px solid #3399ff;
-}
-.helper-box h3 {
-  font-size: 1.5em;
-  font-weight: 700;
-  color: #2c3e50;
-  text-align: left;
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-}
-.helper-box h4 {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: #34495e;
-  text-align: left;
-  padding-left: 0;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-.helper-box p {
-  padding: 0;
-  margin-bottom: 1rem;
-}
-.helper-box ol {
-  padding-left: 25px;
-  margin-left: 0;
-}
-
-.ending-box {
-  background-color: #fff3cd;
-  border-left: 6px solid #ffcc00;
-}
-
-/* --- HINTS AND ANSWERS --- */
-.hint,
-.answer {
-  margin-top: 10px;
-  margin-left: 50px;
-  margin-right: 50px;
-  padding: 10px;
-  background-color: #e8f5ff;
-  border-left: 4px solid #3399ff;
-  border-radius: 5px;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 0.95em;
-  white-space: pre-wrap;
-  line-height: 1.6;
-}
-.hint.show,
-.answer.show {
-  display: block;
-  animation: slideIn 0.3s ease-out;
-}
-
-.answer {
-  background-color: #fff3cd;
-  border-left: 4px solid #ffcc00;
 }
 
 @keyframes slideIn {
@@ -375,18 +211,318 @@ em {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-/* --- EXERCISE BUTTONS --- */
+
+/* ------------------- HEADINGS ------------------- */
+/* Prevents margin collapse on h2 — do not remove */
+.page {
+  background-color: #fff;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+#main-content {
+  background-color: #fff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Sub-Headings --- */
+h2 {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin: 2.5rem 0 2rem 0;
+  /* equal top and bottom */
+}
+
+p+h2 {
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #34495e;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 50px;
+}
+
+.helper-box h3.centered {
+  line-height: 1.4;
+  /* prevents cramped text */
+  margin-bottom: 1.5rem;
+  /* adds space below the title */
+}
+
+h4 {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #34495e;
+  margin: 1.5rem 0;
+}
+
+h2+p,
+h3+p,
+h4+p {
+  margin-top: 0;
+}
+
+/* --- Paragraphs --- */
+p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #5A7D8A;
+  margin: 1.5rem 0;
+  /* this is 1.5rem top AND bottom */
+  text-align: left;
+}
+
+/* --- Variables Paragraph --- */
+.intro-paragraph {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unihighlight", Geneva, Verdana, sans-serif;
+  font-size: 1.25em;
+  line-height: 1.7;
+  font-style: italic;
+  color: #2c3e50;
+  text-align: left;
+}
+
+.intro-final-line {
+  display: block;
+  margin-top: 1rem;
+  /* adds space above the last line */
+  font-style: normal;
+  /* makes final line non-italic if desired */
+}
+
+/* ------------------- BASE BOX ------------------- */
+.content-box,
+.ending-box,
+.exercise-box,
+.helper-box,
+.introduction-box {
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.content-box h3,
+.ending-box h3,
+.exercise-box h3,
+.helper-box h3,
+.introduction-box h3,
+.content-box h4,
+.ending-box h4,
+.exercise-box h4,
+.helper-box h4,
+.introduction-box h4 {
+  font-weight: 600;
+  color: #34495e;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-box h3,
+.ending-box h3,
+.exercise-box h3,
+.helper-box h3,
+.introduction-box h3 {
+  font-size: 1.8em;
+  text-align: left;
+}
+
+.content-box h4,
+.ending-box h4,
+.exercise-box h4,
+.helper-box h4,
+.introduction-box h4 {
+  font-size: 1.4em;
+  padding-left: 50px;
+}
+
+.content-box h3.centered,
+.ending-box h3.centered,
+.exercise-box h3.centered,
+.helper-box h3.centered,
+.introduction-box h3.centered {
+  text-align: center;
+}
+
+content-box p {
+  margin: 1.5rem 0;
+  /* Your paragraph settings stay untouched */
+}
+
+.content-box ul,
+.ending-box ul,
+.exercise-box ul,
+.helper-box ul,
+.introduction-box ul,
+.content-box ol,
+.ending-box ol,
+.exercise-box ol,
+.helper-box ol,
+.introduction-box ol {
+  margin: 1.5rem 0;
+}
+
+.content-box li,
+.ending-box li,
+.exercise-box li,
+.helper-box li,
+.introduction-box li {
+  margin-bottom: 0.5rem;
+}
+
+.indented-list {
+  padding-left: 140px;
+}
+
+.lead-point {
+  color: #27ae60;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  text-align: left !important;
+}
+
+highlight {
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  background-color: transparent;
+  /* remove any background */
+  color: #222;
+  /* solid black — matches your strong text */
+  padding: 0;
+  border: none;
+  font-size: 1.05em;
+}
+
+.exercise-title {
+  display: block;
+  margin-top: 0.3rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Consistent spacing for special cases */
+.spacer {
+  margin-top: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+/* ------------------- Example  ------------------- */
+.highlight-example-list {
+  padding-left: 50px;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.highlight-example-list li {
+  margin-bottom: 0.3rem;
+  list-style: none;
+}
+
+/* ------------------- BOX TYPES ------------------- */
+.introduction-box {
+  margin-bottom: 4rem;
+}
+
+.helper-box {
+  background-color: #e8f5ff;
+  border-left: 4px solid #3399ff;
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.exercise-box {
+  background-color: #fff8e1;
+  border-left: 4px solid #ffcc00;
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 6rem;
+}
+
+.ending-box {
+  background-color: #e8f5ee;
+  border-left: 4px solid #2ecc71;
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ------------------- CODE BLOCKS ------------------- */
+.code-block {
+  background-color: #F8F9FA;
+  /* Remove !important */
+  min-height: 80px;
+  display: block;
+  color: #5A7D7A;
+  font-family: "Inter", sans-serif;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 2.5rem 50px 20px 50px;
+  border: 1px solid #E9ECEF;
+  overflow-x: auto;
+  font-size: 1.1em;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Editable code block base state */
+.code-block[contenteditable=true] {
+  cursor: text;
+  min-height: 80px;
+  background-color: #ffffff;
+  /* This will now apply */
+  box-shadow: 0 0 0 2px #D4E6F1;
+}
+
+/* Hover state */
+.code-block[contenteditable=true]:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px #A9CCE3;
+}
+
+/* Focus state */
+.code-block[contenteditable=true]:focus {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px #5DADE2;
+  outline: none;
+}
+
+/* Placeholder text */
+.code-block.placeholder:empty::before {
+  content: attr(data-placeholder);
+  color: #999;
+  font-style: italic;
+  pointer-events: none;
+}
+
+/* ------------------- CODE LABELS ------------------- */
+.code-label {
+  display: block;
+  font-style: italic;
+  color: #5A7D8A;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  margin-top: 4rem;
+  margin-bottom: -25px;
+  padding-left: 50px;
+}
+
+/* ------------------- BUTTONS ------------------- */
 .exercise-buttons {
   display: flex;
   gap: 20px;
-  margin: 50px;
+  margin: 1.5rem 50px 1.5rem 50px;
 }
-.exercise-buttons button {
+
+button {
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
@@ -396,53 +532,44 @@ em {
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.95em;
 }
-.exercise-buttons button:active {
-  transform: translateY(1px);
-}
 
-.hint-button {
-  background-color: #3498db;
-  color: white;
-}
-.hint-button:hover {
-  background-color: #2980b9;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
-}
-.hint-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-.hint-button:disabled:hover {
-  transform: none;
-  box-shadow: none;
+button:active {
+  transform: translateY(1px);
 }
 
 .run-button {
   background-color: #27ae60;
-  color: white;
+  color: #fff;
 }
+
 .run-button:hover {
   background-color: #229954;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
 }
 
 .reset-button {
   background-color: #ff6b6b;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1em;
+  color: #fff;
 }
+
 .reset-button:hover {
   background-color: #ee5253;
 }
 
-/* --- CONTROL PANELS --- */
+.hint-button {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.hint-button:hover {
+  background-color: #2980b9;
+}
+
+.hint-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ------------------- CONTROL PANELS ------------------- */
 .control-panel {
   background-color: #d1d8e0;
   border: 4px solid #4b6584;
@@ -462,6 +589,7 @@ em {
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
+
 .control-button:active {
   transform: translateY(2px);
 }
@@ -477,10 +605,12 @@ em {
   border: 2px solid #4b6584;
   transition: all 0.5s;
 }
+
 .status-screen.status-offline {
   color: #ff4757;
   text-shadow: 0 0 5px #ff4757;
 }
+
 .status-screen.status-online {
   color: #2ed573;
   text-shadow: 0 0 5px #2ed573;
@@ -495,44 +625,9 @@ em {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
-  box-sizing: border-box;
   font-size: 1.1em;
   resize: vertical;
-}
-
-.code-block:empty::before,
-.code-block.placeholder::before {
-  content: attr(data-placeholder);
-  color: #5A7D8A !important;
-  font-style: italic;
-  pointer-events: none;
-}
-
-pre.code-example {
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 15px;
-  margin: 1em 0;
-  white-space: pre-wrap;
-  font-family: "Courier New", Courier, monospace;
-  margin-left: 80px;
-}
-
-pre.code-example .code-comment {
-  color: #008000;
-  font-style: italic;
-}
-
-.exercise-box .code-label {
-  display: block;
-  font-style: italic;
-  color: #5A7D8A;
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  margin-top: 40px;
-  margin-bottom: -30px;
-  margin-left: 50px;
+  box-sizing: border-box;
 }
 
 /*# sourceMappingURL=webpage.css.map */

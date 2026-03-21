@@ -1,4 +1,4 @@
-// chat.js - Enhanced with draggable, resizable chat window + CODE FORMATTING
+// chat.js - Enhanced with draggable, resizable chat window + highlight FORMATTING
 document.addEventListener('DOMContentLoaded', () => {
     const chatButton = document.getElementById('chatButton');
     const chatWindow = document.getElementById('chatWindow');
@@ -12,24 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const backendUrl = 'http://127.0.0.1:8000/api/chat';
     const resetUrl = 'http://127.0.0.1:8000/api/chat/reset';
 
-    // --- MARKDOWN & CODE FORMATTING FUNCTIONS ---
+    // --- MARKDOWN & highlight FORMATTING FUNCTIONS ---
     function formatMessage(text) {
-        // Store code blocks temporarily to protect them
-        const codeBlocks = [];
-        const inlineCode = [];
+        // Store highlight blocks temporarily to protect them
+        const highlightBlocks = [];
+        const inlinehighlight = [];
         
-        // Extract and store code blocks FIRST
-        text = text.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, lang, code) => {
-            const placeholder = `__CODEBLOCK_${codeBlocks.length}__`;
+        // Extract and store highlight blocks FIRST
+        text = text.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, lang, highlight) => {
+            const placeholder = `__highlightBLOCK_${highlightBlocks.length}__`;
             const language = lang || 'plaintext';
-            codeBlocks.push(`<pre><code class="language-${language}">${code.trim()}</code></pre>`);
+            highlightBlocks.push(`<pre><highlight class="language-${language}">${highlight.trim()}</highlight></pre>`);
             return placeholder;
         });
         
-        // Extract and store inline code
-        text = text.replace(/`([^`]+)`/g, (match, code) => {
-            const placeholder = `__INLINECODE_${inlineCode.length}__`;
-            inlineCode.push(`<code class="inline-code">${escapeHtml(code)}</code>`);
+        // Extract and store inline highlight
+        text = text.replace(/`([^`]+)`/g, (match, highlight) => {
+            const placeholder = `__INLINEhighlight_${inlinehighlight.length}__`;
+            inlinehighlight.push(`<highlight class="inline-highlight">${escapeHtml(highlight)}</highlight>`);
             return placeholder;
         });
         
@@ -43,14 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Convert newlines to <br>
         text = text.replace(/\n/g, '<br>');
         
-        // Restore code blocks
-        codeBlocks.forEach((block, i) => {
-            text = text.replace(`__CODEBLOCK_${i}__`, block);
+        // Restore highlight blocks
+        highlightBlocks.forEach((block, i) => {
+            text = text.replace(`__highlightBLOCK_${i}__`, block);
         });
         
-        // Restore inline code
-        inlineCode.forEach((code, i) => {
-            text = text.replace(`__INLINECODE_${i}__`, code);
+        // Restore inline highlight
+        inlinehighlight.forEach((highlight, i) => {
+            text = text.replace(`__INLINEhighlight_${i}__`, highlight);
         });
         
         return text;
@@ -245,7 +245,7 @@ function addMessage(text, sender) {
     bubble.className = 'message-bubble';
 
     if (sender === 'ai') {
-        // AI messages are processed to handle code blocks, etc.
+        // AI messages are processed to handle highlight blocks, etc.
         bubble.innerHTML = formatMessage(text);
     } else {
         // USER messages get the special gradient text treatment.
@@ -282,5 +282,5 @@ function addMessage(text, sender) {
 
     // Initialize
     addMessage("Hey!", 'ai');
-    console.log('✅ Enhanced chat system with code formatting initialized');
+    console.log('✅ Enhanced chat system with highlight formatting initialized');
 });

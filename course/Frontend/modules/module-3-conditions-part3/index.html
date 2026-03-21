@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 3                         █ -->
+<!-- █  // Conditions Part 3                         █ -->
+<!-- █  // At Least and At Most                      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="conditions-module">
+  <h2 class="module-title">Module 3: Conditions Part 3 🛡️</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: What Does "At Least" Mean? -->
+  <div class="helper-box">
+    <h3 class="box-title">🛡️ What Does "At Least" Mean? 🛡️</h3>
+
+    <p>Imagine you're packing your bag for a field trip. Your teacher says,
+      "You need to bring at least 2 water bottles." This means you can bring
+      2, 3, 4, or more — but definitely not 0 or 1. "At least" means the
+      number must be <strong>greater than or equal to</strong> a minimum amount.</p>
+
+    <h4 class="sub-title">In Coding, We Check This With >=</h4>
+
+    <p>The symbol <code>>=</code> means "greater than or equal to." It checks
+      if a value meets or exceeds a minimum requirement.</p>
+
+    <div class="code-example">
+      <code>IF "water bottles" >= 2 THEN<br>&nbsp;&nbsp;PRINT "You have enough water!"<br>END IF</code>
+    </div>
+
+    <p><strong>Breaking it down:</strong></p>
+    <ul class="indented-list">
+      <li><strong>IF</strong> — starts our condition check</li>
+      <li><strong>"water bottles" >= 2</strong> — is the number of water bottles greater than or equal to 2?</li>
+      <li><strong>THEN</strong> — if the answer is YES, do what comes next</li>
+      <li><strong>PRINT "You have enough water!"</strong> — show this message</li>
+      <li><strong>END IF</strong> — finishes the condition check</li>
+    </ul>
+
+    <h4 class="sub-title">Real Factory Example:</h4>
+
+    <div class="code-example">
+      <code>SET "safety guards in place" = 5<br>IF "safety guards in place" >= 3 THEN<br>&nbsp;&nbsp;PRINT "Machine is safe to operate"<br>END IF</code>
+    </div>
+    <p class="output">Output: Machine is safe to operate</p>
+
+    <p class="note">💡 <strong>Remember:</strong> <code>>=</code> is like asking,
+      "Do we have enough?" It's perfect for checking minimum requirements!</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: What Does "At Most" Mean? -->
+  <div class="helper-box">
+    <h3 class="box-title">⚖️ What Does "At Most" Mean? ⚖️</h3>
+
+    <p>Now imagine the same field trip, but your teacher says, "You can bring
+      at most 3 snacks." This means you can bring 0, 1, 2, or 3 — but
+      definitely not 4 or more. "At most" means the number must be
+      <strong>less than or equal to</strong> a maximum limit.</p>
+
+    <h4 class="sub-title">In Coding, We Check This With <=</h4>
+
+    <p>The symbol <code><=</code> means "less than or equal to." It checks
+      if a value stays within or under a maximum limit.</p>
+
+    <div class="code-example">
+      <code>IF "snacks" <= 3 THEN<br>&nbsp;&nbsp;PRINT "You can bring your snacks!"<br>END IF</code>
+    </div>
+
+    <p><strong>Breaking it down:</strong></p>
+    <ul class="indented-list">
+      <li><strong>IF</strong> — starts our condition check</li>
+      <li><strong>"snacks" <= 3</strong> — is the number of snacks less than or equal to 3?</li>
+      <li><strong>THEN</strong> — if the answer is YES, do what comes next</li>
+      <li><strong>PRINT "You can bring your snacks!"</strong> — show this message</li>
+      <li><strong>END IF</strong> — finishes the condition check</li>
+    </ul>
+
+    <h4 class="sub-title">Real Factory Example:</h4>
+
+    <div class="code-example">
+      <code>SET "gloves in storage box" = 12<br>IF "gloves in storage box" <= 15 THEN<br>&nbsp;&nbsp;PRINT "Storage box is not overfilled"<br>END IF</code>
+    </div>
+    <p class="output">Output: Storage box is not overfilled</p>
+
+    <p class="note">💡 <strong>Remember:</strong> <code><=</code> is like asking,
+      "Are we within the limit?" It's perfect for checking maximum capacities!</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: Combining Text and Conditions in Output -->
+  <div class="helper-box">
+    <h3 class="box-title">🖥️ Combining Text and Conditions in Output 🖥️</h3>
+
+    <p>When we check conditions, we often want to show the result with some
+      helpful text. We can combine our own words with the result of a condition
+      check using commas in our PRINT statement.</p>
+
+    <h4 class="sub-title">Showing the Result of a Check:</h4>
+
+    <div class="code-example">
+      <code>SET "workers present" = 18<br>SET "maximum capacity" = 20<br>PRINT "Station is under capacity:", "workers present" <= "maximum capacity"</code>
+    </div>
+    <p class="output">Output: Station is under capacity: true</p>
+
+    <p>The condition <code>"workers present" <= "maximum capacity"</code> checks
+      if 18 is less than or equal to 20 — which is true. The PRINT statement shows
+      our text first, then the result (true or false) of the check.</p>
+
+    <h4 class="sub-title">More Examples:</h4>
+
+    <div class="code-example">
+      <code>SET "goggles available" = 10<br>SET "children at station" = 8<br>PRINT "Enough goggles for everyone:", "goggles available" >= "children at station"</code>
+    </div>
+    <p class="output">Output: Enough goggles for everyone: true</p>
+
+    <div class="code-example">
+      <code>SET "temperature" = 150<br>SET "maximum safe temperature" = 175<br>PRINT "Machine temperature is safe:", "temperature" <= "maximum safe temperature"</code>
+    </div>
+    <p class="output">Output: Machine temperature is safe: true</p>
+
+    <p class="note">💡 <strong>Tip:</strong> Showing true/false results helps us
+      quickly see whether our safety checks passed or failed!</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: Real-World Safety Checks in the Factory -->
+  <div class="helper-box">
+    <h3 class="box-title">🏭 Real-World Safety Checks in the Factory 🏭</h3>
+
+    <p>In our Popcorn Factory, we use conditions with >= and <= every day to
+      keep everyone safe. Let's look at some real examples from the factory floor!</p>
+
+    <h4 class="sub-title">Example 1: Safety Guard Position</h4>
+
+    <p>Every machine has a safety guard that must be in the correct position
+      before the machine can start. The guard position must be at least position 5
+      (greater than or equal to 5).</p>
+
+    <div class="code-example">
+      <code>SET "guard position" = 7<br>SET "minimum safe position" = 5<br>PRINT "Guard position is safe:", "guard position" >= "minimum safe position"</code>
+    </div>
+    <p class="output">Output: Guard position is safe: true</p>
+
+    <h4 class="sub-title">Example 2: Storage Box Capacity</h4>
+
+    <p>We have special boxes for storing safety gloves. Each box can hold at most
+      20 pairs of gloves (less than or equal to 20). We must check before adding more!</p>
+
+    <div class="code-example">
+      <code>SET "gloves in box" = 18<br>SET "maximum box capacity" = 20<br>PRINT "Can add more gloves:", "gloves in box" < "maximum box capacity"</code>
+    </div>
+    <p class="output">Output: Can add more gloves: true</p>
+
+    <h4 class="sub-title">Why These Checks Matter:</h4>
+
+    <ul class="indented-list">
+      <li><strong>Safety first:</strong> Machines only run when all safety checks pass</li>
+      <li><strong>Efficiency:</strong> We know exactly when we need more supplies</li>
+      <li><strong>Prevention:</strong> We catch problems before they become dangerous</li>
+    </ul>
+
+    <p class="note">💡 <strong>Remember:</strong> In the factory, conditions with
+      >= and <= help us maintain safe working conditions for everyone!</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- Helper Box 5: Keeping Our Factory Safe -->
+  <div class="helper-box">
+    <h3 class="box-title">💡 Keeping Our Factory Safe 💡</h3>
+
+    <p>Let's put it all together! Many factory checks involve making sure we have
+      <strong>at least</strong> the minimum required, but <strong>at most</strong>
+      the maximum allowed.</p>
+
+    <h4 class="sub-title">Example: Station Safety Check</h4>
+
+    <p>At each machine station, we need at least 2 helpers, but at most 5 people
+      total for safety. Let's check if Station 3 is properly staffed:</p>
+
+    <div class="code-example">
+      <code>SET "helpers at station" = 3<br>SET "minimum helpers needed" = 2<br>SET "people at station" = 4<br>SET "maximum allowed" = 5<br><br>PRINT "Enough helpers:", "helpers at station" >= "minimum helpers needed"<br>PRINT "Not too crowded:", "people at station" <= "maximum allowed"</code>
+    </div>
+    <p class="output">Output:<br>Enough helpers: true<br>Not too crowded: true</p>
+
+    <h4 class="sub-title">The Complete Safety Check Pattern:</h4>
+
+    <p>When doing safety checks, we often need to verify multiple conditions.
+      We check each requirement separately to make sure everything passes.</p>
+
+    <div class="code-example">
+      <code>SET "safety glasses" = 8<br>SET "children at machine" = 6<br>SET "machine temperature" = 160<br>SET "maximum temperature" = 175<br><br>PRINT "Check 1 - Enough glasses:", "safety glasses" >= "children at machine"<br>PRINT "Check 2 - Temperature safe:", "machine temperature" <= "maximum temperature"</code>
+    </div>
+    <p class="output">Output:<br>Check 1 - Enough glasses: true<br>Check 2 - Temperature safe: true</p>
+
+    <p class="note">💡 <strong>You're doing great!</strong> You now know how to
+      check both minimum requirements (>=) and maximum limits (<=). These are
+      essential skills for keeping our factory running safely and efficiently!</p>
+
+    <p>In our next module, we'll learn how to check <strong>multiple conditions
+      at the same time</strong> using logical operators like AND and OR. This will
+      make our safety checks even more powerful!</p>
+  </div>
+  <!-- End of Helper Box 5 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 3: Conditions Part 3 — Exercises 🛡️</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Safety Guard Verification 🛡️              █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Safety Guard Verification 🛡️</h3>
+
+    <p>Welcome back to the Popcorn Factory! Before we can start Machine 1, we have to do some final safety checks. We need to make sure we have AT LEAST the minimum safety equipment and that we are AT OR UNDER the maximum capacity limits. Let's use our new coding skills to verify everything is safe!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Check Guard Position</h4>
+
+    <p>Before a machine starts, the safety guard must be in a safe position. We need to check that the guard position is at least the minimum required for safety. The guard is currently at position 7, and the minimum safe position is 5.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "guard position" and set its value to <code>7</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum safe position" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "guard position" is greater than or equal to "minimum safe position".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to verify the guard position:
+        <div class="code-example">
+          <code>SET "guard position" = 7<br>SET "minimum safe position" = 5<br>PRINT "Guard position is safe:", "guard position" >= "minimum safe position"</code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="conditions-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint1-part-a">Use >= to check if "guard position" is at least "minimum safe position".</p>
+    <pre class="output-block" id="conditions-output1-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer1-part-a">SET "guard position" = 7
+SET "minimum safe position" = 5
+PRINT "Guard position is safe:", "guard position" >= "minimum safe position"</pre>
+
+    <!-- Part B -->
+    <p>Excellent! The guard is in a safe position. Now let's check a different machine where the guard might not be set correctly.</p>
+
+    <h4 class="sub-title">Part B: Check Another Guard</h4>
+
+    <p>Machine 2 also needs a safety check before starting. The guard on this machine is currently at position 3, but the minimum safe position is still 5. Let's check if it's safe to operate.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "guard position" and set its value to <code>3</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum safe position" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "guard position" is greater than or equal to "minimum safe position".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to verify Machine 2's guard position in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint1-part-b">Use >= to check if the guard position meets the minimum. Will 3 be safe enough?</p>
+    <pre class="output-block" id="conditions-output1-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer1-part-b">SET "guard position" = 3
+SET "minimum safe position" = 5
+PRINT "Guard position is safe:", "guard position" >= "minimum safe position"</pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Safety Goggles Check 🥽                   █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Safety Goggles Check 🥽</h3>
+
+    <p>Every child working near the popping machines must wear safety goggles. Before we let anyone start, we need to make sure we have at least enough goggles for everyone at the station.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Station 1 Goggles</h4>
+
+    <p>Station 1 has 10 pairs of safety goggles available. There are 8 children working at this station today. Let's check if there are enough goggles for every child.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles available" and set its value to <code>10</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "children at station" and set its value to <code>8</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "goggles available" is greater than or equal to "children at station".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough goggles for everyone in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint2-part-a">Use >= to check if the number of goggles is at least the number of children.</p>
+    <pre class="output-block" id="conditions-output2-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Great! Station 1 has enough goggles. Now let's check a different station where the numbers might be different.</p>
+
+    <h4 class="sub-title">Part B: Station 2 Goggles</h4>
+
+    <p>Station 2 only has 6 pairs of safety goggles available. But there are 9 children working at this station. Let's check if there are enough goggles for everyone.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "goggles available" and set its value to <code>6</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "children at station" and set its value to <code>9</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "goggles available" is greater than or equal to "children at station".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if Station 2 has enough goggles in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint2-part-b">Use >= to compare goggles and children. Are 6 goggles enough for 9 children?</p>
+    <pre class="output-block" id="conditions-output2-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Safety Gloves Check 🧤                    █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Safety Gloves Check 🧤</h3>
+
+    <p>Our factory uses special safety gloves when handling hot popcorn. We need to make sure we have at least the minimum number of gloves available, but also that we do not store too many in one box.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Minimum Gloves Check</h4>
+
+    <p>The Ingredients Room has 15 pairs of safety gloves available. The minimum required for today's production is 12 pairs. Let's check if we have enough gloves to start.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves available" and set its value to <code>15</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum required" and set its value to <code>12</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "gloves available" is greater than or equal to "minimum required".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if we have at least the minimum number of gloves in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint3-part-a">Use >= to check if "gloves available" meets the "minimum required".</p>
+    <pre class="output-block" id="conditions-output3-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Perfect! We have enough gloves. Now let's check our storage situation to make sure we are not overfilling the storage box.</p>
+
+    <h4 class="sub-title">Part B: Storage Capacity Check</h4>
+
+    <p>There are currently 22 pairs of gloves in the storage box. The maximum capacity of the box is 20 pairs. Let's check if the storage limit has been exceeded.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "gloves in box" and set its value to <code>22</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum capacity" and set its value to <code>20</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "gloves in box" is less than or equal to "maximum capacity".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the storage limit has not been exceeded in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint3-part-b">Use <= to check if "gloves in box" is within the "maximum capacity".</p>
+    <pre class="output-block" id="conditions-output3-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Weighing Scale Check ⚖️                  █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Weighing Scale Check ⚖️</h3>
+
+    <p>The factory uses a weighing scale to measure popcorn batches before packaging. We need to check that the scale is calibrated correctly when empty and that it is not overloaded when full.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Scale Calibration Check</h4>
+
+    <p>When the scale is empty, it should read at least zero. A reading below zero means the scale needs recalibrating. The current empty scale reading is 0. Let's verify the scale is calibrated correctly.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "scale reading" and set its value to <code>0</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum reading" and set its value to <code>0</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "scale reading" is greater than or equal to "minimum reading".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the scale is calibrated correctly in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint4-part-a">Use >= to check if "scale reading" is at least "minimum reading".</p>
+    <pre class="output-block" id="conditions-output4-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Good — the scale is calibrated! Now let's check if a batch of popcorn is too heavy for the scale.</p>
+
+    <h4 class="sub-title">Part B: Maximum Weight Check</h4>
+
+    <p>A batch of popcorn is currently on the scale weighing 85 kilogrammes. The maximum weight the scale can handle is 100 kilogrammes. Let's check if the scale is not overloaded.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current weight" and set its value to <code>85</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum weight" and set its value to <code>100</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "current weight" is less than or equal to "maximum weight".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the scale is not overloaded in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint4-part-b">Use <= to check if "current weight" is within the "maximum weight" limit.</p>
+    <pre class="output-block" id="conditions-output4-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Final Readiness Verification ✅           █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Final Readiness Verification ✅</h3>
+
+    <p>Before we officially start Machine 1, we need to do one final check — making sure we have enough helpers at the station, but not so many people that it becomes crowded and unsafe.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Enough Helpers Check</h4>
+
+    <p>Each machine station needs at least 3 helpers to run properly. Station 1 currently has 4 helpers. Let's check if there are enough helpers at the station.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "helpers at station" and set its value to <code>4</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "minimum helpers" and set its value to <code>3</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "helpers at station" is greater than or equal to "minimum helpers".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if there are enough helpers at the station in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint5-part-a">Use >= to check if "helpers at station" meets the "minimum helpers" required.</p>
+    <pre class="output-block" id="conditions-output5-part-a"></pre>
+    <pre class="answer-block" id="conditions-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Wonderful — there are enough helpers! Now let's make sure the station is not too crowded for safety.</p>
+
+    <h4 class="sub-title">Part B: Maximum People Check</h4>
+
+    <p>For safety reasons, no more than 6 people are allowed at one machine station at the same time. Station 1 currently has 8 people around it. Let's check if the station is too crowded.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "people at station" and set its value to <code>8</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "maximum allowed" and set its value to <code>6</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use PRINT to check if "people at station" is less than or equal to "maximum allowed".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if the station is not too crowded in the code block below.</li>
+    </ul>
+
+    <label for="conditions-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="conditions-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="conditions" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="conditions" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="conditions" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="conditions-hint5-part-b">Use <= to check if "people at station" is within the "maximum allowed".</p>
+    <pre class="output-block" id="conditions-output5-part-b"></pre>
+    <pre class="answer-block" id="conditions-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 3 Conditions Part 3         █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

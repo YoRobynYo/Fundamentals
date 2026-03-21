@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ============================================================ -->
+<!-- GOLD STANDARD EXERCISE FILE                                -->
+<!-- core-value-fundamentals                                    -->
+<!-- Language-Agnostic Edition                                  -->
+<!-- ============================================================ -->
+
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 2                         █ -->
+<!-- █  // Operators                                 █ -->
+<!-- █  // Count your supplies!                      █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="operations-module">
+  <h2 class="module-title">Module 2: Operators ➕➖✖️➗</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: Addition (+) -->
+  <div class="helper-box">
+    <h3 class="box-title">➕ Addition (+) ➕</h3>
+
+    <p>Good morning! Yesterday we learned how to store information using variables. Today, we're going to use maths to do calculations! The first and most common operator is <strong>addition</strong>, which we use to add numbers together.</p>
+
+    <h4 class="sub-title">Counting Totals</h4>
+
+    <p>Imagine you have pencils in two different places and you want to know the total. You can store the amount from each place in a variable, then add them up!</p>
+
+    <h4 class="sub-title">In Pseudocode It Looks Like This:</h4>
+
+    <div class="code-block">
+      SET "pencils on shelf" = 15<br>
+      SET "pencils in drawer" = 10<br>
+      SET "total pencils" = "pencils on shelf" + "pencils in drawer"<br>
+      PRINT "Total pencils:", "total pencils"
+    </div>
+    <p class="output">Output: Total pencils: 25</p>
+
+    <p><strong>Breaking it down:</strong></p>
+    <ul class="indented-list">
+      <li>We <strong>SET</strong> two variables to hold the number of pencils in each location.</li>
+      <li>We create a new variable, "total pencils", to store the result.</li>
+      <li>We use the <strong>+</strong> sign to add the values of the first two variables together.</li>
+      <li>Finally, we <strong>PRINT</strong> the result to see the total!</li>
+    </ul>
+
+    <p class="note">💡 <strong>Remember:</strong> You can only add numbers! If you try to add text, you might get an error or a very strange result.</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: Subtraction (-) -->
+  <div class="helper-box">
+    <h3 class="box-title">➖ Subtraction (-) ➖</h3>
+
+    <p>Great! Now that we can add things, let's learn how to take them away. <strong>Subtraction</strong> is how we find out what's left after something has been used or removed.</p>
+
+    <h4 class="sub-title">Calculating What's Left</h4>
+
+    <p>Let's say you start the day with a big stack of notebooks. Throughout the day, children use some of them. How do you know how many are left? You subtract!</p>
+
+    <h4 class="sub-title">In Pseudocode It Looks Like This:</h4>
+
+    <div class="code-block">
+      SET "notebooks at start" = 50<br>
+      SET "notebooks used" = 12<br>
+      SET "notebooks left" = "notebooks at start" - "notebooks used"<br>
+      PRINT "Notebooks remaining:", "notebooks left"
+    </div>
+    <p class="output">Output: Notebooks remaining: 38</p>
+
+    <p><strong>Breaking it down:</strong></p>
+    <ul class="indented-list">
+      <li>We <strong>SET</strong> a variable for the starting amount and another for the amount used.</li>
+      <li>We create a "notebooks left" variable to hold the answer.</li>
+      <li>We use the <strong>-</strong> sign to subtract the "notebooks used" from the "notebooks at start".</li>
+      <li>We <strong>PRINT</strong> the result to see how many are left.</li>
+    </ul>
+
+    <p class="note">💡 <strong>Tip:</strong> The order matters in subtraction! Make sure you always start with the total amount and subtract the smaller part from it.</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: Multiplication (×) -->
+  <div class="helper-box">
+    <h3 class="box-title">✖️ Multiplication (×) ✖️</h3>
+
+    <p>What if you need to calculate something that happens over and over again? Instead of adding the same number repeatedly, we can use a shortcut: <strong>multiplication</strong>!</p>
+
+    <h4 class="sub-title">Calculating for Groups</h4>
+
+    <p>Imagine every child in the class needs 3 sheets of paper for an art project. If there are 20 children, you could add 3 twenty times... or you could just multiply!</p>
+
+    <h4 class="sub-title">In Pseudocode It Looks Like This:</h4>
+
+    <div class="code-block">
+      SET "number of children" = 20<br>
+      SET "sheets per child" = 3<br>
+      SET "total sheets needed" = "number of children" × "sheets per child"<br>
+      PRINT "Total sheets needed:", "total sheets needed"
+    </div>
+    <p class="output">Output: Total sheets needed: 60</p>
+
+    <p><strong>Breaking it down:</strong></p>
+    <ul class="indented-list">
+      <li>We <strong>SET</strong> variables for the number of children and the sheets each one needs.</li>
+      <li>We create a "total sheets needed" variable for the result.</li>
+      <li>We use the <strong>×</strong> sign to multiply the two numbers.</li>
+      <li>We <strong>PRINT</strong> the result to see the total needed for the whole class.</li>
+    </ul>
+
+    <p class="note">💡 <strong>Note:</strong> In many coding languages, the multiplication sign is an asterisk (<code>*</code>), but we use the <code>×</code> symbol in our pseudocode because it's easier to read!</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: Division (/) -->
+  <div class="helper-box">
+    <h3 class="box-title">➗ Division (/) ➗</h3>
+
+    <p>The last of our main operators is <strong>division</strong>. We use it when we want to share or split a total amount into equal groups.</p>
+
+    <h4 class="sub-title">Splitting Things Equally</h4>
+
+    <p>You have a big pile of 48 markers, and you want to split them evenly into 4 storage boxes. How many markers go in each box? Division gives us the answer!</p>
+
+    <h4 class="sub-title">In Pseudocode It Looks Like This:</h4>
+
+    <div class="code-block">
+      SET "total markers" = 48<br>
+      SET "number of boxes" = 4<br>
+      SET "markers per box" = "total markers" / "number of boxes"<br>
+      PRINT "Markers per box:", "markers per box"
+    </div>
+    <p class="output">Output: Markers per box: 12</p>
+
+    <p><strong>Breaking it down:</strong></p>
+    <ul class="indented-list">
+      <li>We <strong>SET</strong> variables for the total number of markers and the number of boxes.</li>
+      <li>We create a "markers per box" variable to store the answer.</li>
+      <li>We use the <strong>/</strong> sign to divide the total markers by the number of boxes.</li>
+      <li>We <strong>PRINT</strong> the result to see how many go in each box.</li>
+    </ul>
+
+    <p class="note">💡 <strong>Watch out:</strong> Division can sometimes result in fractions or decimals! For now, all our exercises will divide into perfect whole numbers.</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- Helper Box 5: Field Trip Time! -->
+  <div class="helper-box">
+    <h3 class="box-title">🍿 Field Trip Time! 🍿</h3>
+
+    <p>Excellent work! You can now add, subtract, multiply, and divide using operators. You have all the basic maths skills you need to solve all sorts of interesting problems.</p>
+
+    <p>And that's perfect timing, because tomorrow is a very special day...</p>
+
+    <h4 class="sub-title">We're going on a field trip to the Popcorn Factory!</h4>
+
+    <p>You'll get to see how popcorn is made, from counting the corn kernels to checking the machines. And you'll use everything you've learned about variables and operators to help the factory manager with real production tasks!</p>
+
+    <p>Get ready to put your new coding skills to the test in a real-world setting. It's going to be a lot of fun!</p>
+
+    <p class="note">💡 Next up: We'll learn how to make decisions in our code by comparing values. See you at the factory!</p>
+  </div>
+  <!-- End of Helper Box 5 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 2: Operators — Exercises ➕➖✖️➗</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Counting Pencils ✏️                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Counting Pencils ✏️</h3>
+
+    <p>Good morning, class! Today we need to take stock of all our pencils. They are stored in different places around the room, and the teacher needs to know the grand total. Let's use addition to count them all up!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Adding Up the Shelves</h4>
+
+    <p>Our pencils are spread across two shelves. The first shelf has 15 pencils and the second shelf has 23 pencils. Let's add them together to find out how many pencils we have on the shelves in total.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "first shelf pencils" and set its value to <code>15</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "second shelf pencils" and set its value to <code>23</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "total pencils" by adding "first shelf pencils" and "second shelf pencils" together.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the pencils:
+        <div class="code-example">
+          <code>
+            SET "first shelf pencils" = 15<br>
+            SET "second shelf pencils" = 23<br>
+            SET "total pencils" = "first shelf pencils" + "second shelf pencils"<br>
+            PRINT "Shelf 1 has", "first shelf pencils", "pencils"<br>
+            PRINT "Shelf 2 has", "second shelf pencils", "pencils"<br>
+            PRINT "Total:", "total pencils", "pencils"
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="operations-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint1-part-a"></p>
+    <pre class="output-block" id="operations-output1-part-a"></pre>
+    <pre class="answer-block" id="operations-answer1-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Excellent! You've counted all the pencils on the shelves. Now let's look at what's in the drawers too.</p>
+
+    <h4 class="sub-title">Part B: Checking the Drawers</h4>
+
+    <p>We also have pencils stored in two drawers. The first drawer has 12 pencils and the second drawer has 8 pencils. Let's add up the drawer totals, then combine everything to get the grand total of all pencils in the classroom.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "first drawer pencils" and set its value to <code>12</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "second drawer pencils" and set its value to <code>8</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "grand total" by adding "first drawer pencils" and "second drawer pencils" together.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to count the drawer pencils and show the grand total:
+        <div class="code-example">
+          <code>
+            SET "first drawer pencils" = 12<br>
+            SET "second drawer pencils" = 8<br>
+            SET "grand total" = "first drawer pencils" + "second drawer pencils"<br>
+            PRINT "Drawer 1 has", "first drawer pencils", "pencils"<br>
+            PRINT "Drawer 2 has", "second drawer pencils", "pencils"<br>
+            PRINT "Grand total of all pencils:", "grand total"
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="operations-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint1-part-b"></p>
+    <pre class="output-block" id="operations-output1-part-b"></pre>
+    <pre class="answer-block" id="operations-answer1-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Supplies Used vs. Remaining 📝            █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Supplies Used vs. Remaining 📝</h3>
+
+    <p>It has been a busy day in the classroom! Lots of supplies have been used during our lessons. Now we need to figure out what's left so we know what to order. Let's use subtraction to find out!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Notebooks</h4>
+
+    <p>We started the day with 50 notebooks in the supply cupboard. Throughout the day, children used 12 of them for their work. How many notebooks are left?</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "notebooks at start" and set its value to <code>50</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "notebooks used" and set its value to <code>12</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "notebooks left" by subtracting "notebooks used" from "notebooks at start".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the remaining notebooks in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint2-part-a"></p>
+    <pre class="output-block" id="operations-output2-part-a"></pre>
+    <pre class="answer-block" id="operations-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Well done! Now let's check on another supply that was used today.</p>
+
+    <h4 class="sub-title">Part B: Erasers</h4>
+
+    <p>We also started the day with 30 erasers. During the day, children used 7 of them. How many erasers do we have remaining?</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "erasers at start" and set its value to <code>30</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "erasers used" and set its value to <code>7</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "erasers remaining" by subtracting "erasers used" from "erasers at start".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the remaining erasers in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint2-part-b"></p>
+    <pre class="output-block" id="operations-output2-part-b"></pre>
+    <pre class="answer-block" id="operations-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Organising into Boxes 📦                  █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Organising into Boxes 📦</h3>
+
+    <p>The classroom is getting messy and we need to tidy up! We have lots of supplies that need to be shared out equally into storage containers. Let's use division to make sure everything is split fairly.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Markers</h4>
+
+    <p>We have 48 markers that need to be put into 4 boxes equally. Each box should get the same number of markers. How many markers will each box hold?</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total markers" and set its value to <code>48</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of boxes" and set its value to <code>4</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "markers per box" by dividing "total markers" by "number of boxes".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to divide the markers equally into boxes in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint3-part-a"></p>
+    <pre class="output-block" id="operations-output3-part-a"></pre>
+    <pre class="answer-block" id="operations-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Great sorting! Now let's organise another set of supplies.</p>
+
+    <h4 class="sub-title">Part B: Crayons</h4>
+
+    <p>We have 60 crayons that need to go into 5 containers equally. How many crayons will each container hold?</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total crayons" and set its value to <code>60</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of containers" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "crayons per container" by dividing "total crayons" by "number of containers".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to divide the crayons equally into containers in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint3-part-b"></p>
+    <pre class="output-block" id="operations-output3-part-b"></pre>
+    <pre class="answer-block" id="operations-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Supplies for All Children 🎨              █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Supplies for All Children 🎨</h3>
+
+    <p>It is art lesson time! Every child needs supplies for the project, but we need to make sure we have enough for everyone. Let's use multiplication to figure out exactly how many items we need to prepare.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Paper Sheets</h4>
+
+    <p>There are 20 children in the class and each child needs 3 sheets of paper for the art project. How many sheets do we need to prepare altogether?</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of children" and set its value to <code>20</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sheets per child" and set its value to <code>3</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "total sheets" by multiplying "number of children" by "sheets per child".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total sheets needed in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint4-part-a"></p>
+    <pre class="output-block" id="operations-output4-part-a"></pre>
+    <pre class="answer-block" id="operations-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Perfect! Now let's figure out another supply we need for the groups.</p>
+
+    <h4 class="sub-title">Part B: Glue Sticks</h4>
+
+    <p>The children are working in 5 groups and each group needs 2 glue sticks. How many glue sticks do we need in total?</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "number of groups" and set its value to <code>5</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "glue per group" and set its value to <code>2</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "total glue sticks" by multiplying "number of groups" by "glue per group".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total glue sticks needed in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint4-part-b"></p>
+    <pre class="output-block" id="operations-output4-part-b"></pre>
+    <pre class="answer-block" id="operations-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Complete Classroom Supply Planning 📊     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Complete Classroom Supply Planning 📊</h3>
+
+    <p>It is the end of the week and we need to do a full supply check! We will use all four operators — addition, subtraction, multiplication, and division — to plan everything properly. Let's put all your new skills together!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: How Many Pencils Do We Need?</h4>
+
+    <p>Today we had 18 children present and 2 children absent. We need to work out the total number of children in the class, then figure out how many pencils we need if each child gets 2 pencils. Let's use addition first, then multiplication!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "children present" and set its value to <code>18</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "children absent" and set its value to <code>2</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "total children" by adding "children present" and "children absent" together.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "pencils per child" and set its value to <code>2</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Calculate "pencils needed" by multiplying "total children" by "pencils per child".</li>
+      <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to calculate the total children and pencils needed in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint5-part-a"></p>
+    <pre class="output-block" id="operations-output5-part-a"></pre>
+    <pre class="answer-block" id="operations-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <p>Brilliant planning! Now let's sort out the leftover papers from the week.</p>
+
+    <h4 class="sub-title">Part B: Organising Leftover Papers</h4>
+
+    <p>We started the week with 100 sheets of paper. Over the week, we used 35 sheets. We need to find out how many are left, then divide them equally into 5 storage boxes. Let's use subtraction first, then division!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "papers available" and set its value to <code>100</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "papers used" and set its value to <code>35</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate "papers left" by subtracting "papers used" from "papers available".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "boxes to fill" and set its value to <code>5</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Calculate "papers per box" by dividing "papers left" by "boxes to fill".</li>
+      <li><strong>Step 6:</strong>&nbsp;&nbsp;Now write the code to calculate the papers remaining and organise them into boxes in the code block below.</li>
+    </ul>
+
+    <label for="operations-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="operations-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="operations" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="operations" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="operations" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="operations-hint5-part-b"></p>
+    <pre class="output-block" id="operations-output5-part-b"></pre>
+    <pre class="answer-block" id="operations-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 2 Operators                  █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

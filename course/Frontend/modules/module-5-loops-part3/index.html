@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 5                         █ -->
+<!-- █  // Loops Part 3                             █ -->
+<!-- █  // Subtraction and Division                 █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="loops-module">
+  <h2 class="module-title">Module 5: Loops Part 3 🔁</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: Repeating Tasks in the Factory -->
+  <div class="helper-box">
+    <h3 class="box-title">🔁 Repeating Tasks in the Factory 🔁</h3>
+
+    <p>Welcome to Part 3 of Loops! In the factory, many tasks happen over and over
+      again. We count supplies going down. We share items out between machines. We track
+      what's left after each step. Instead of writing the same code again and again, we
+      use a loop to do it all in one go!</p>
+
+    <h4 class="sub-title">Example: Counting Down Oil Containers</h4>
+
+    <p>The factory starts with 30 oil containers. Each shift, workers use 1 container.
+      We want to see how many are left after each shift. Without a loop, we would have to
+      write it out manually:</p>
+
+    <div class="code-block">
+      SET "remaining" = 30<br>
+      SET "remaining" = "remaining" - 1<br>
+      PRINT "Shift 1:", "remaining", "containers remain"<br>
+      SET "remaining" = "remaining" - 1<br>
+      PRINT "Shift 2:", "remaining", "containers remain"<br>
+      SET "remaining" = "remaining" - 1<br>
+      PRINT "Shift 3:", "remaining", "containers remain"<br>
+      ...and so on for every shift!
+    </div>
+
+    <p>That's a lot of copying! Now look what happens with a loop:</p>
+
+    <div class="code-block">
+      SET "remaining" = 30<br>
+      FOR shift FROM 1 TO 6 DO<br>
+      &nbsp;&nbsp;SET "remaining" = "remaining" - 1<br>
+      &nbsp;&nbsp;PRINT "Shift", shift, ":", "remaining", "containers remain"<br>
+      END FOR
+    </div>
+
+    <p>One loop replaces all that copying! The loop acts like a factory supervisor,
+      telling the computer: "Do these steps for each shift." Change the number of shifts
+      and the loop adjusts automatically.</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: The FOR Loop Pattern -->
+  <div class="helper-box">
+    <h3 class="box-title">🔄 The FOR Loop Pattern 🔄</h3>
+
+    <p>Let's review the FOR loop structure we use. Every FOR loop has the same
+      basic shape:</p>
+
+    <div class="code-block">
+      FOR variable FROM start TO end DO<br>
+      &nbsp;&nbsp;(steps to repeat go here)<br>
+      END FOR
+    </div>
+
+    <p><strong>Breaking it down:</strong></p>
+    <ul class="indented-list">
+      <li><strong>FOR</strong> — starts the loop</li>
+      <li><strong>variable</strong> — a name we choose (like <code>i</code>, <code>shift</code>, or <code>day</code>) that counts which cycle we are on</li>
+      <li><strong>FROM start TO end</strong> — the range to loop through (like FROM 1 TO 6)</li>
+      <li><strong>DO</strong> — begins the steps that repeat</li>
+      <li><strong>END FOR</strong> — marks the end of the repeating steps</li>
+    </ul>
+
+    <h4 class="sub-title">Counting with Different Variable Names</h4>
+
+    <p>The variable inside the loop can be called anything that makes sense:</p>
+
+    <div class="code-block">
+      FOR shift FROM 1 TO 6 DO<br>
+      &nbsp;&nbsp;PRINT "Processing shift", shift<br>
+      END FOR
+    </div>
+
+    <p class="output">Output:<br>
+      Processing shift 1<br>
+      Processing shift 2<br>
+      Processing shift 3<br>
+      Processing shift 4<br>
+      Processing shift 5<br>
+      Processing shift 6</p>
+
+    <p>Whether you call it <code>i</code>, <code>shift</code>, <code>day</code>, or
+      <code>machine</code> — the loop works exactly the same way. Choose a name that
+      describes what you are counting!</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: Counting Down with Subtraction -->
+  <div class="helper-box">
+    <h3 class="box-title">📉 Counting Down with Subtraction 📉</h3>
+
+    <p>Sometimes in the factory, supplies go DOWN instead of up. Oil containers get
+      used, bags get shipped out, stock gets consumed. We can use a loop with subtraction
+      to track how much is left after each step.</p>
+
+    <h4 class="sub-title">How It Works</h4>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong> Start with your total amount</li>
+      <li><strong>Step 2:</strong> In each loop cycle, subtract the amount used</li>
+      <li><strong>Step 3:</strong> Print what remains after each cycle</li>
+    </ul>
+
+    <h4 class="sub-title">Example: Tracking Oil Containers</h4>
+
+    <p>We start with 30 oil containers. Each shift, 1 container is used. Let's track
+      what's left over 6 shifts:</p>
+
+    <div class="code-block">
+      SET "total containers" = 30<br>
+      FOR shift FROM 1 TO 6 DO<br>
+      &nbsp;&nbsp;SET "total containers" = "total containers" - 1<br>
+      &nbsp;&nbsp;PRINT "Shift", shift, ":", "total containers", "containers remain"<br>
+      END FOR
+    </div>
+
+    <p class="output">Output:<br>
+      Shift 1: 29 containers remain<br>
+      Shift 2: 28 containers remain<br>
+      Shift 3: 27 containers remain<br>
+      Shift 4: 26 containers remain<br>
+      Shift 5: 25 containers remain<br>
+      Shift 6: 24 containers remain</p>
+
+    <p>Each time through the loop, we subtract 1 from the total and print what's
+      left. The value keeps going down — that's what makes it a countdown loop!</p>
+
+    <p class="note">💡 <strong>Tip:</strong> You can subtract any amount — not just 1!
+      If the factory uses 2 containers per shift, just subtract 2 instead of 1 each time
+      through the loop.</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: Sharing with Division -->
+  <div class="helper-box">
+    <h3 class="box-title">➗ Sharing with Division ➗</h3>
+
+    <p>Another factory task is sharing supplies equally. How many packets does each
+      machine get? How many bags fit on each shelf? Division helps us split things fairly,
+      and a loop lets us try different numbers quickly!</p>
+
+    <h4 class="sub-title">How It Works</h4>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong> Start with your total amount</li>
+      <li><strong>Step 2:</strong> In each loop cycle, divide by the number of recipients</li>
+      <li><strong>Step 3:</strong> Print the result for each number</li>
+    </ul>
+
+    <h4 class="sub-title">Example: Distributing Flavor Packets</h4>
+
+    <p>We have 24 flavor packets to share. Let's see how many each machine gets if we
+      have different numbers of machines:</p>
+
+    <div class="code-block">
+      SET "total packets" = 24<br>
+      FOR machines FROM 1 TO 4 DO<br>
+      &nbsp;&nbsp;SET "each gets" = "total packets" / machines<br>
+      &nbsp;&nbsp;PRINT machines, "machines: Each gets", "each gets", "packets"<br>
+      END FOR
+    </div>
+
+    <p class="output">Output:<br>
+      1 machines: Each gets 24 packets<br>
+      2 machines: Each gets 12 packets<br>
+      3 machines: Each gets 8 packets<br>
+      4 machines: Each gets 6 packets</p>
+
+    <p>With 1 machine, it gets all 24. With 2 machines, they each get 12. With 4
+      machines, they each get 6. The loop tries each number and shows us the answer
+      instantly!</p>
+
+    <p class="note">💡 <strong>Tip:</strong> Sometimes division doesn't split evenly.
+      For example, 24 ÷ 5 = 4.8. That's perfectly fine — your answer can include
+      decimal numbers!</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 5: Loops Part 3 — Exercises 🔁</h2>
+
+  <p>Time to practise! In these exercises, you will use loops with subtraction to
+    count supplies going down, and loops with division to share items out equally. Each
+    exercise builds on the last — from simple countdowns to combining operations. Let's
+    get started!</p>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Tracking Oil Containers 🛢️               █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Tracking Oil Containers 🛢️</h3>
+
+    <p>The factory uses oil to run its machines. Let's track how many containers are
+      left as they get used up during each shift.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: First Week Tracking</h4>
+
+    <p>We start the week with 30 oil containers in storage. Each shift, the workers
+      use 1 container to keep the machines running. There are 6 shifts this week. Let's
+      track how many containers remain after each shift.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total containers" and set its value to <code>30</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of shifts" and set its value to <code>6</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use a FOR loop from 1 to "number of shifts". Inside the loop, subtract 1 from "total containers" and print the shift number with the remaining containers.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the oil containers:
+        <div class="code-example">
+          <code>
+            SET "total containers" = 30<br>
+            FOR shift FROM 1 TO 6 DO<br>
+            &nbsp;&nbsp;SET "total containers" = "total containers" - 1<br>
+            &nbsp;&nbsp;PRINT "Shift", shift, ":", "total containers", "containers remain"<br>
+            END FOR
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="loops-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint1-part-a"></p>
+    <pre class="output-block" id="loops-output1-part-a"></pre>
+    <pre class="answer-block" id="loops-answer1-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Busier Week Ahead</h4>
+
+    <p>Great tracking! Now the factory is preparing for a busier week. We have 50 oil
+      containers ready, and there will be 8 shifts instead of 6. Workers still use 1
+      container per shift. Let's track what's left after each shift.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total containers" and set its value to <code>50</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of shifts" and set its value to <code>8</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use a FOR loop from 1 to "number of shifts". Inside the loop, subtract 1 from "total containers" and print the shift number with the remaining containers.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the oil containers for the busier week in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint1-part-b"></p>
+    <pre class="output-block" id="loops-output1-part-b"></pre>
+    <pre class="answer-block" id="loops-answer1-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Corn Supply Countdown 🌽                 █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Corn Supply Countdown 🌽</h3>
+
+    <p>The factory needs to track its corn supply carefully. Each day, multiple boxes
+      are used for production. Let's see how the supply changes over time.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Five-Day Countdown</h4>
+
+    <p>We start with 20 corn boxes in storage. Each day, the factory uses 2 boxes for
+      production. We want to track how many boxes remain over 5 days. Let's calculate the
+      remaining supply after each day.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "starting corn" and set its value to <code>20</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "days" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "used per day" and set its value to <code>2</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the corn supply over 5 days in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint2-part-a"></p>
+    <pre class="output-block" id="loops-output2-part-a"></pre>
+    <pre class="answer-block" id="loops-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Extended Production Run</h4>
+
+    <p>Excellent work! Now the factory is planning a longer production run. We have
+      100 corn boxes to start with. Each day, 3 boxes are used for production. We need to
+      track the supply over 10 days. Let's see how many boxes remain after each day.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "starting corn" and set its value to <code>100</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "days" and set its value to <code>10</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "used per day" and set its value to <code>3</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the corn supply over 10 days in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint2-part-b"></p>
+    <pre class="output-block" id="loops-output2-part-b"></pre>
+    <pre class="answer-block" id="loops-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Distributing Flavor Packets 🍬           █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Distributing Flavor Packets 🍬</h3>
+
+    <p>The factory adds flavouring to make the popcorn taste delicious. Let's figure
+      out how many flavour packets each machine gets when we share them equally.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Four Machine Setup</h4>
+
+    <p>We have 24 flavour packets to distribute. Let's see how many packets each
+      machine would get if we had 1, 2, 3, or 4 machines. We need to divide the total
+      packets by the number of machines and show the result for each setup.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total packets" and set its value to <code>24</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR loop from 1 to 4. The loop variable represents the number of machines.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, divide "total packets" by the loop variable to find how many each machine gets. Print the result.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to distribute flavour packets between 1 and 4 machines in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint3-part-a"></p>
+    <pre class="output-block" id="loops-output3-part-a"></pre>
+    <pre class="answer-block" id="loops-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Expanding to Six Machines</h4>
+
+    <p>Great calculating! Now the factory is expanding. We have 48 flavour packets
+      and want to see how they would be shared across 1, 2, 3, 4, 5, or 6 machines.
+      Remember — sometimes the numbers won't divide evenly, and that's perfectly fine!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total packets" and set its value to <code>48</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR loop from 1 to 6. The loop variable represents the number of machines.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, divide "total packets" by the loop variable and print how many packets each machine gets.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to distribute flavour packets between 1 and 6 machines in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint3-part-b"></p>
+    <pre class="output-block" id="loops-output3-part-b"></pre>
+    <pre class="answer-block" id="loops-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Organising Popcorn Bags 📦               █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Organising Popcorn Bags 📦</h3>
+
+    <p>Finished popcorn bags need to be organised onto storage shelves. Let's work out
+      how many bags fit on each shelf when we use different numbers of shelves.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Shelf Planning</h4>
+
+    <p>We have 36 finished popcorn bags ready for storage. Let's see how many bags
+      would go on each shelf if we used 1, 2, 3, 4, 5, or 6 shelves. Divide the total
+      bags by the number of shelves for each setup.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total bags" and set its value to <code>36</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR loop from 1 to 6. The loop variable represents the number of shelves.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, divide "total bags" by the loop variable and print how many bags each shelf holds.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to organise 36 bags across 1 to 6 shelves in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint4-part-a"></p>
+    <pre class="output-block" id="loops-output4-part-a"></pre>
+    <pre class="answer-block" id="loops-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Larger Shipment</h4>
+
+    <p>Nice organising! Now a larger shipment has arrived — 60 popcorn bags need
+      storage. Let's calculate how many bags fit on each shelf when we use 1 through 6
+      shelves. Check which setup gives us the most even distribution!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total bags" and set its value to <code>60</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Use a FOR loop from 1 to 6. The loop variable represents the number of shelves.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, divide "total bags" by the loop variable and print how many bags each shelf holds.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to organise 60 bags across 1 to 6 shelves in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint4-part-b"></p>
+    <pre class="output-block" id="loops-output4-part-b"></pre>
+    <pre class="answer-block" id="loops-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Salt Packet Distribution 🧂              █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Salt Packet Distribution 🧂</h3>
+
+    <p>Each popcorn machine needs salt packets to season the popcorn. Let's distribute
+      salt packets equally to all machines and track how many are left after each machine
+      gets its share.</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Five Machine Distribution</h4>
+
+    <p>We have 40 salt packets to distribute equally among 5 machines. First, calculate
+      how many packets each machine gets by dividing the total by the number of machines.
+      Then use a loop to show how many packets remain after each machine receives its
+      share.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total salt" and set its value to <code>40</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of machines" and set its value to <code>5</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate how many packets each machine gets by dividing "total salt" by "number of machines". Store this in a variable named "per machine".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to distribute salt and track what remains in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint5-part-a"></p>
+    <pre class="output-block" id="loops-output5-part-a"></pre>
+    <pre class="answer-block" id="loops-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: Ten Machine Distribution</h4>
+
+    <p>Great distributing! Now the factory has doubled its machines — we need to
+      distribute 100 salt packets among 10 machines. Calculate how many each machine gets,
+      then use a loop to track the remaining packets after each machine is supplied. When
+      we're done, there should be nothing left!</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total salt" and set its value to <code>100</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of machines" and set its value to <code>10</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Calculate how many packets each machine gets by dividing "total salt" by "number of machines". Store this in a variable named "per machine".</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to distribute salt among 10 machines and track what remains in the code block below.</li>
+    </ul>
+
+    <label for="loops-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="loops-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="loops" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="loops" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="loops" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="loops-hint5-part-b"></p>
+    <pre class="output-block" id="loops-output5-part-b"></pre>
+    <pre class="answer-block" id="loops-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 5 Loops Part 3              █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>

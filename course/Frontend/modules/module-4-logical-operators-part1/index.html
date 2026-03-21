@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core Value Fundamentals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/css/style.css">
+</head>
+<body>
+<main id="main-content">
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // Start::: Module 4                         █ -->
+<!-- █  // Logical Operators Part 1                  █ -->
+<!-- █  // Both conditions must be true              █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+<section class="page" id="logicalOperators-module">
+  <h2 class="module-title">Module 4: Logical Operators Part 1 🔒</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Helper Boxes                     █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- Helper Box 1: What Are Logical Operators? -->
+  <div class="helper-box">
+    <h3 class="box-title">🤔 What Are Logical Operators? 🤔</h3>
+
+    <p>Imagine you're at the Popcorn Factory quality checkpoint. Before a batch of popcorn
+      can be approved, it must pass TWO checks: it must have the correct flavour AND it must
+      have enough bags ready. If either check fails, the batch cannot be approved!</p>
+
+    <h4 class="sub-title">Making Decisions with Multiple Rules</h4>
+
+    <p>In coding, we often need to check if multiple conditions are true before doing something.
+      Just like at the factory checkpoint, we might need to check:</p>
+
+    <ul class="indented-list">
+      <li>Is the flavour correct? <strong>AND</strong></li>
+      <li>Is there enough quantity?</li>
+    </ul>
+
+    <p>Both must be true to approve the batch!</p>
+
+    <h4 class="sub-title">The Logical Operators We'll Learn</h4>
+
+    <p>In this module, we'll learn about the <strong>AND</strong> operator. It helps us check
+      if two things are BOTH true at the same time. Later, you'll learn about <strong>OR</strong>
+      (which checks if at least one thing is true) and <strong>NOT</strong> (which flips a true to
+      false or false to true).</p>
+
+    <h4 class="sub-title">Real-World Examples of AND Logic:</h4>
+
+    <ul class="indented-list">
+      <li>To go outside: You need shoes <strong>AND</strong> a jacket (if it's cold)</li>
+      <li>To pass a test: You need correct answers <strong>AND</strong> to finish on time</li>
+      <li>To bake cookies: You need ingredients <strong>AND</strong> an oven</li>
+    </ul>
+
+    <p>In all these examples, BOTH conditions must be true. That's what AND means!</p>
+
+    <p class="note">💡 <strong>Think of AND as a double checkpoint:</strong> Both gates must
+      open for you to pass through!</p>
+  </div>
+  <!-- End of Helper Box 1 -->
+
+  <!-- Helper Box 2: How the AND Operator Works -->
+  <div class="helper-box">
+    <h3 class="box-title">🔍 How the AND Operator Works 🔍</h3>
+
+    <p>The AND operator is like asking two questions at once and only getting a "yes" if
+      BOTH answers are "yes". Let's see how this looks in our pseudocode.</p>
+
+    <h4 class="sub-title">The Basic AND Pattern:</h4>
+
+    <p>Here's how we check if two conditions are both true:</p>
+
+    <div class="code-block">
+      IF condition1 AND condition2 THEN<br>
+      &nbsp;&nbsp;PRINT "Both conditions are true!"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">A Factory Example:</h4>
+
+    <p>Let's check if a popcorn batch is ready for shipping. It needs the correct flavour
+      AND enough bags:</p>
+
+    <div class="code-block">
+      SET "current flavour" = "Plain"<br>
+      SET "required flavour" = "Plain"<br>
+      SET "bags ready" = 25<br>
+      SET "bags needed" = 20<br>
+      <br>
+      IF "current flavour" = "required flavour" AND "bags ready" >= "bags needed" THEN<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: true"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: false"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">What This Means:</h4>
+
+    <ul class="indented-list">
+      <li><strong>First check:</strong> Is "current flavour" equal to "required flavour"? (Is the flavour correct?)</li>
+      <li><strong>Second check:</strong> Is "bags ready" greater than or equal to "bags needed"? (Is there enough?)</li>
+      <li><strong>AND:</strong> BOTH checks must be true for the whole statement to be true</li>
+    </ul>
+
+    <h4 class="sub-title">The Four Possible Outcomes:</h4>
+
+    <p>Let's see what happens with different combinations:</p>
+
+    <div class="code-block">
+      <!-- Example 1: Both true -->
+      Flavour correct: true<br>
+      Quantity enough: true<br>
+      Result: true ✅ (Batch approved!)<br>
+      <br>
+      <!-- Example 2: Flavour wrong, quantity enough -->
+      Flavour correct: false<br>
+      Quantity enough: true<br>
+      Result: false ❌ (Wrong flavour!)<br>
+      <br>
+      <!-- Example 3: Flavour correct, quantity not enough -->
+      Flavour correct: true<br>
+      Quantity enough: false<br>
+      Result: false ❌ (Not enough bags!)<br>
+      <br>
+      <!-- Example 4: Both false -->
+      Flavour correct: false<br>
+      Quantity enough: false<br>
+      Result: false ❌ (Wrong flavour AND not enough bags!)
+    </div>
+
+    <p class="note">💡 <strong>Key insight:</strong> With AND, you only get true when
+      BOTH conditions are true. Even one false makes the whole thing false!</p>
+  </div>
+  <!-- End of Helper Box 2 -->
+
+  <!-- Helper Box 3: When to Use the AND Operator -->
+  <div class="helper-box">
+    <h3 class="box-title">🎯 When to Use the AND Operator 🎯</h3>
+
+    <p>The AND operator is perfect when you have multiple requirements that MUST ALL
+      be met. Think of it as a checklist where every item needs a tick!</p>
+
+    <h4 class="sub-title">Use AND When:</h4>
+
+    <ul class="indented-list">
+      <li><strong>Multiple requirements:</strong> Something needs to pass several checks</li>
+      <li><strong>All must be true:</strong> Every condition matters</li>
+      <li><strong>Safety or quality checks:</strong> No compromises allowed</li>
+      <li><strong>Complete sets:</strong> You need all pieces together</li>
+    </ul>
+
+    <h4 class="sub-title">Factory Examples of AND:</h4>
+
+    <h5 class="sub-sub-title">Example 1: Popcorn Quality Check</h5>
+    <p>A batch must have: Correct flavour AND enough quantity AND proper packaging</p>
+    <div class="code-block">
+      IF flavour is correct AND quantity is enough AND packaging is proper THEN<br>
+      &nbsp;&nbsp;PRINT "Batch approved for shipping"<br>
+      END IF
+    </div>
+
+    <h5 class="sub-sub-title">Example 2: Machine Operation</h5>
+    <p>A machine can start only when: Power is on AND safety door is closed AND emergency stop is not pressed</p>
+    <div class="code-block">
+      IF "power status" = "on" AND "door status" = "closed" AND "emergency stop" = "not pressed" THEN<br>
+      &nbsp;&nbsp;PRINT "Machine can start"<br>
+      END IF
+    </div>
+
+    <h5 class="sub-sub-title">Example 3: Order Shipping</h5>
+    <p>An order can ship when: Payment is received AND address is verified AND items are in stock</p>
+    <div class="code-block">
+      IF "payment status" = "received" AND "address status" = "verified" AND "stock status" = "in stock" THEN<br>
+      &nbsp;&nbsp;PRINT "Order can ship"<br>
+      END IF
+    </div>
+
+    <h4 class="sub-title">Real-Life Analogies:</h4>
+
+    <ul class="indented-list">
+      <li><strong>Lock with two keys:</strong> You need Key A AND Key B to open the lock</li>
+      <li><strong>Recipe requirements:</strong> To bake a cake, you need flour AND eggs AND sugar</li>
+      <li><strong>Game level completion:</strong> You need to collect the key AND defeat the boss AND find the exit</li>
+    </ul>
+
+    <p class="note">💡 <strong>Remember:</strong> If you can say "I need this AND that AND the other thing,"
+      you're thinking about AND logic!</p>
+  </div>
+  <!-- End of Helper Box 3 -->
+
+  <!-- Helper Box 4: AND in Action — Factory Examples -->
+  <div class="helper-box">
+    <h3 class="box-title">🏭 AND in Action — Factory Examples 🏭</h3>
+
+    <p>Let's see how the AND operator works in real Popcorn Factory scenarios.
+      We'll use the exact examples from your exercises!</p>
+
+    <h4 class="sub-title">Scenario 1: Plain Popcorn Check</h4>
+
+    <p>We need to check if the Plain Popcorn station has the correct flavour AND
+      enough bags ready for an order:</p>
+
+    <div class="code-block">
+      SET "current flavour" = "Plain"<br>
+      SET "required flavour" = "Plain"<br>
+      SET "bags ready" = 25<br>
+      SET "bags needed" = 20<br>
+      <br>
+      IF "current flavour" = "required flavour" AND "bags ready" >= "bags needed" THEN<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: true"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: false"<br>
+      END IF
+    </div>
+    <p class="output">Output: The flavour is correct and the quantity is enough: true</p>
+
+    <h4 class="sub-title">Scenario 2: Buttery Popcorn Check</h4>
+
+    <p>Now we need to check if the Buttery Popcorn has the correct flavour AND
+      is still fresh (made within the freshness limit):</p>
+
+    <div class="code-block">
+      SET "current flavour" = "Buttery"<br>
+      SET "required flavour" = "Buttery"<br>
+      SET "hours since made" = 2<br>
+      SET "freshness limit in hours" = 4<br>
+      <br>
+      IF "current flavour" = "required flavour" AND "hours since made" <= "freshness limit in hours" THEN<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the popcorn is fresh: true"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the popcorn is fresh: false"<br>
+      END IF
+    </div>
+    <p class="output">Output: The flavour is correct and the popcorn is fresh: true</p>
+
+    <h4 class="sub-title">Scenario 3: When One Condition Fails</h4>
+
+    <p>What happens when the flavour is correct BUT there aren't enough bags?</p>
+
+    <div class="code-block">
+      SET "current flavour" = "Plain"<br>
+      SET "required flavour" = "Plain"<br>
+      SET "bags ready" = 15<br>
+      SET "bags needed" = 20<br>
+      <br>
+      IF "current flavour" = "required flavour" AND "bags ready" >= "bags needed" THEN<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: true"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: false"<br>
+      END IF
+    </div>
+    <p class="output">Output: The flavour is correct and the quantity is enough: false</p>
+
+    <p>Even though the flavour is correct, there aren't enough bags. With AND,
+      BOTH must be true!</p>
+
+    <p class="note">💡 <strong>Practise tip:</strong> Try changing the numbers in your
+      head. What if "bags ready" was 20? What if it was 19? See how the output changes!</p>
+  </div>
+  <!-- End of Helper Box 4 -->
+
+  <!-- Helper Box 5: Your First AND Practise -->
+  <div class="helper-box">
+    <h3 class="box-title">🧪 Your First AND Practise 🧪</h3>
+
+    <p>Now it's your turn to practise using the AND operator! Let's try some
+      simple examples before you do the exercises.</p>
+
+    <h4 class="sub-title">Practise Example 1: Library Book</h4>
+
+    <p>You can borrow a library book if: You have a library card AND the book is available.</p>
+
+    <div class="code-block">
+      SET "has library card" = true<br>
+      SET "book available" = true<br>
+      <br>
+      IF "has library card" AND "book available" THEN<br>
+      &nbsp;&nbsp;PRINT "You can borrow the book!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "You cannot borrow the book."<br>
+      END IF
+    </div>
+    <p class="output">Output: You can borrow the book!</p>
+
+    <h4 class="sub-title">Practise Example 2: Rainy Day</h4>
+
+    <p>You should bring an umbrella if: It is raining AND you will be outside for more than 10 minutes.</p>
+
+    <div class="code-block">
+      SET "is raining" = true<br>
+      SET "minutes outside" = 15<br>
+      <br>
+      IF "is raining" AND "minutes outside" > 10 THEN<br>
+      &nbsp;&nbsp;PRINT "Bring an umbrella!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "No umbrella needed."<br>
+      END IF
+    </div>
+    <p class="output">Output: Bring an umbrella!</p>
+
+    <h4 class="sub-title">Practise Example 3: Game Level</h4>
+
+    <p>You can enter the next game level if: You have the golden key AND you have defeated the dragon.</p>
+
+    <div class="code-block">
+      SET "has golden key" = true<br>
+      SET "defeated dragon" = false<br>
+      <br>
+      IF "has golden key" AND "defeated dragon" THEN<br>
+      &nbsp;&nbsp;PRINT "Welcome to the next level!"<br>
+      ELSE<br>
+      &nbsp;&nbsp;PRINT "You must find the key and defeat the dragon first."<br>
+      END IF
+    </div>
+    <p class="output">Output: You must find the key and defeat the dragon first.</p>
+
+    <h4 class="sub-title">What You've Learned:</h4>
+
+    <ul class="indented-list">
+      <li><strong>AND checks multiple conditions</strong> — all must be true</li>
+      <li><strong>One false makes everything false</strong> — no exceptions</li>
+      <li><strong>Real-world checkpoints</strong> — library, weather, games</li>
+      <li><strong>Factory quality control</strong> — flavour AND quantity AND freshness</li>
+    </ul>
+
+    <p>You're ready for the exercises! Remember: AND is like a double checkpoint.
+      Both gates must open for you to pass. Good luck at the Popcorn Factory! 🍿</p>
+  </div>
+  <!-- End of Helper Box 5 -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Helper Boxes                       █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercises                        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <h2 class="module-title">Module 4: Logical Operators Part 1 — Exercises 🔒</h2>
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 1                       █ -->
+  <!-- █  // Plain Popcorn - Flavor and Quantity 🌽    █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 1: Plain Popcorn - Flavor and Quantity 🌽</h3>
+
+    <p>The Plain Popcorn station needs both the right flavour AND enough quantity to fill an order. Let's check if they can proceed!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Checking Today's Batch</h4>
+
+    <p>Today the Plain Popcorn station has 25 bags ready. The order requires at least 20 bags. The flavour is correctly set to "Plain". We need to check if the flavour is correct AND the quantity is enough.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavour" and set its value to <code>"Plain"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavour" and set its value to <code>"Plain"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "bags ready" and set its value to <code>25</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "bags needed" and set its value to <code>20</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check if the flavour is correct and the quantity is enough:
+        <div class="code-example">
+          <code>
+            SET "current flavour" = "Plain"<br>
+            SET "required flavour" = "Plain"<br>
+            SET "bags ready" = 25<br>
+            SET "bags needed" = 20<br>
+            IF "current flavour" = "required flavour" AND "bags ready" >= "bags needed" THEN<br>
+            &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: true"<br>
+            ELSE<br>
+            &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: false"<br>
+            END IF
+          </code>
+        </div>
+      </li>
+    </ul>
+
+    <label for="logicalOperators-ex1-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex1-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="1-part-a">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="1-part-a">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="1-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint1-part-a"></p>
+    <pre class="output-block" id="logicalOperators-output1-part-a"></pre>
+    <pre class="answer-block" id="logicalOperators-answer1-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: When Quantity Drops</h4>
+
+    <p>Perfect! The first check passed. But what if the quantity drops? Let's see what happens when there are only 15 bags ready instead of 25.</p>
+
+    <p>We still have the same order requirement of 20 bags. The flavour is still correct. But now we need to check what happens when the flavour is correct BUT the quantity is not enough.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavour" and set its value to <code>"Plain"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavour" and set its value to <code>"Plain"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "bags ready" and set its value to <code>15</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "bags needed" and set its value to <code>20</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check what happens when the flavour is correct but the quantity is not enough in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex1-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex1-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="1-part-b">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="1-part-b">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="1-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint1-part-b"></p>
+    <pre class="output-block" id="logicalOperators-output1-part-b"></pre>
+    <pre class="answer-block" id="logicalOperators-answer1-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 1                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 2                       █ -->
+  <!-- █  // Buttery Popcorn - Flavor and Freshness 🧈 █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 2: Buttery Popcorn - Flavor and Freshness 🧈</h3>
+
+    <p>The Buttery Popcorn station must have the correct flavour AND the popcorn must be fresh. Let's check if their batch passes both tests!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Checking Freshness Today</h4>
+
+    <p>Today's batch of Buttery Popcorn was made 2 hours ago. The freshness limit is 4 hours. The flavour is correctly set to "Buttery". We need to check if the flavour is correct AND the popcorn is still fresh.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavour" and set its value to <code>"Buttery"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavour" and set its value to <code>"Buttery"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "hours since made" and set its value to <code>2</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "freshness limit in hours" and set its value to <code>4</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check if the flavour is correct and the popcorn is fresh in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex2-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex2-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="2-part-a">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="2-part-a">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="2-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint2-part-a"></p>
+    <pre class="output-block" id="logicalOperators-output2-part-a"></pre>
+    <pre class="answer-block" id="logicalOperators-answer2-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: When Popcorn Goes Stale</h4>
+
+    <p>Great! The first batch passed. But what if the popcorn sits too long? Let's check a batch that was made 5 hours ago.</p>
+
+    <p>The flavour is still correct, but now we need to check what happens when the flavour is correct BUT the popcorn is not fresh.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current flavour" and set its value to <code>"Buttery"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavour" and set its value to <code>"Buttery"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "hours since made" and set its value to <code>5</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "freshness limit in hours" and set its value to <code>4</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check what happens when the flavour is correct but the popcorn is not fresh in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex2-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex2-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="2-part-b">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="2-part-b">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="2-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint2-part-b"></p>
+    <pre class="output-block" id="logicalOperators-output2-part-b"></pre>
+    <pre class="answer-block" id="logicalOperators-answer2-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 2                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 3                       █ -->
+  <!-- █  // Cheese Popcorn - Ingredient and Container 🧀 █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 3: Cheese Popcorn - Ingredient and Container 🧀</h3>
+
+    <p>The Cheese Popcorn station needs the right cheese ingredient AND the correct container size. Let's check if their setup is correct!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Checking Ingredients Today</h4>
+
+    <p>Today the Cheese Popcorn station is using "Cheddar" cheese. The required ingredient is "Cheddar". The container size is 250 grams, and the minimum required size is 200 grams. We need to check if the ingredient is correct AND the container is large enough.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current ingredient" and set its value to <code>"Cheddar"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required ingredient" and set its value to <code>"Cheddar"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "container size in grams" and set its value to <code>250</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "minimum size in grams" and set its value to <code>200</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check if the ingredient is correct and the container is large enough in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex3-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex3-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="3-part-a">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="3-part-a">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="3-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint3-part-a"></p>
+    <pre class="output-block" id="logicalOperators-output3-part-a"></pre>
+    <pre class="answer-block" id="logicalOperators-answer3-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: When Containers are Too Small</h4>
+
+    <p>Excellent! The first check passed. But what if we get smaller containers? Let's check a container that is only 180 grams.</p>
+
+    <p>The ingredient is still correct, but now we need to check what happens when the ingredient is correct BUT the container is too small.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "current ingredient" and set its value to <code>"Cheddar"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required ingredient" and set its value to <code>"Cheddar"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "container size in grams" and set its value to <code>180</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "minimum size in grams" and set its value to <code>200</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check what happens when the ingredient is correct but the container is too small in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex3-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex3-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="3-part-b">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="3-part-b">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="3-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint3-part-b"></p>
+    <pre class="output-block" id="logicalOperators-output3-part-b"></pre>
+    <pre class="answer-block" id="logicalOperators-answer3-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 3                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 4                       █ -->
+  <!-- █  // Sweet Popcorn - Sugar and Label 🍬        █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 4: Sweet Popcorn - Sugar and Label 🍬</h3>
+
+    <p>The Sweet Popcorn station needs enough sugar AND the correct label on the bag. Let's check if their bags are ready for shipping!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Checking Sugar and Labels Today</h4>
+
+    <p>Today's batch has 50 grams of sugar. The required amount is 45 grams. The bag label says "Sweet Popcorn", which matches the required label. We need to check if there is enough sugar AND the bag label is correct.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar amount in grams" and set its value to <code>50</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar needed in grams" and set its value to <code>45</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current label text" and set its value to <code>"Sweet Popcorn"</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "required label text" and set its value to <code>"Sweet Popcorn"</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check if there is enough sugar and the label is correct in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex4-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex4-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="4-part-a">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="4-part-a">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="4-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint4-part-a"></p>
+    <pre class="output-block" id="logicalOperators-output4-part-a"></pre>
+    <pre class="answer-block" id="logicalOperators-answer4-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: When Labels are Wrong</h4>
+
+    <p>Perfect! The first batch is good. But what if someone puts the wrong label on a bag? Let's check a bag that has enough sugar but the label says "Salty Popcorn".</p>
+
+    <p>We need to check what happens when there is enough sugar BUT the label is wrong.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "sugar amount in grams" and set its value to <code>50</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "sugar needed in grams" and set its value to <code>45</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current label text" and set its value to <code>"Salty Popcorn"</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "required label text" and set its value to <code>"Sweet Popcorn"</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check what happens when there is enough sugar but the label is wrong in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex4-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex4-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="4-part-b">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="4-part-b">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="4-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint4-part-b"></p>
+    <pre class="output-block" id="logicalOperators-output4-part-b"></pre>
+    <pre class="answer-block" id="logicalOperators-answer4-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 4                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // Start::: Exercise 5                       █ -->
+  <!-- █  // Complete Order Check ✅                   █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <div class="exercise-box">
+    <h3 class="exercise-title">Exercise 5: Complete Order Check ✅</h3>
+
+    <p>Before shipping an order, we must verify that BOTH the flavour is correct AND the weight meets requirements. Let's perform a final check!</p>
+
+    <!-- Part A -->
+    <h4 class="sub-title">Part A: Checking a Good Order</h4>
+
+    <p>An order has come in for "Caramel" popcorn. The current flavour is "Caramel". The current weight is 500 grams, and the required weight for shipping is 450 grams. We need to check if the flavour is correct AND the weight is sufficient.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ordered flavour" and set its value to <code>"Caramel"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "current flavour" and set its value to <code>"Caramel"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current weight in grams" and set its value to <code>500</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "required weight in grams" and set its value to <code>450</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check if the flavour is correct and the weight is sufficient in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex5-part-a" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex5-part-a"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="5-part-a">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="5-part-a">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="5-part-a">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint5-part-a"></p>
+    <pre class="output-block" id="logicalOperators-output5-part-a"></pre>
+    <pre class="answer-block" id="logicalOperators-answer5-part-a"></pre>
+
+    <!-- Part B -->
+    <h4 class="sub-title">Part B: When Weight is Insufficient</h4>
+
+    <p>Great! The first order is ready. But what if the weight is too low? Let's check an order where the flavour is correct but the weight is only 400 grams.</p>
+
+    <p>We need to check what happens when the flavour is correct BUT the weight is insufficient.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "ordered flavour" and set its value to <code>"Caramel"</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "current flavour" and set its value to <code>"Caramel"</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "current weight in grams" and set its value to <code>400</code>.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "required weight in grams" and set its value to <code>450</code>.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check what happens when the flavour is correct but the weight is insufficient in the code block below.</li>
+    </ul>
+
+    <label for="logicalOperators-ex5-part-b" class="code-label">Add your code in the area below</label>
+    <div class="code-block" contenteditable="true" id="logicalOperators-ex5-part-b"></div>
+
+    <div class="exercise-buttons">
+      <button class="hint-button" data-section="logicalOperators" data-ex="5-part-b">Hint</button>
+      <button class="run-button" data-section="logicalOperators" data-ex="5-part-b">Run My Code</button>
+      <button class="reset-button" data-section="logicalOperators" data-ex="5-part-b">Reset My Code</button>
+    </div>
+
+    <p class="hint" id="logicalOperators-hint5-part-b"></p>
+    <pre class="output-block" id="logicalOperators-output5-part-b"></pre>
+    <pre class="answer-block" id="logicalOperators-answer5-part-b"></pre>
+
+  </div>
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercise 5                         █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+  <!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+  <!-- █  // End::: Exercises                          █ -->
+  <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</section>
+
+<!-- ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ -->
+<!-- █  // End::: Module 4 Logical Operators Part 1   █ -->
+<!-- █  // End of file                                █ -->
+<!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
+
+</main>
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/scroll.js"></script>
+</body>
+</html>
