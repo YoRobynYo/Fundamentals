@@ -109,6 +109,8 @@ BANNED WORDS — fix these:
 - "recognize" -> "recognise"
 - "center" -> "centre" (NOT in CSS like text-align: center)
 - "math" -> "maths"
+- "kids" -> "children"
+- "console" -> do not use technical jargon
 
 ${isRuleSection ? `IMPORTANT: After RULE 6, add this new section exactly:
 
@@ -164,14 +166,28 @@ async function agentValidator(original, fixed, chunkIndex) {
   const issues = [];
   const lines = fixed.split('\n');
   
+  const BANNED = [
+    'period', 'students', 'student', 'color', 'center', 'organize', 'recognize',
+    'practice', 'program', 'programming', 'math', 'kids', 'console'
+  ];
+
   lines.forEach((line, i) => {
     const lower = line.toLowerCase();
-    const isComment = line.trim().startsWith('<!--');
-    const inScript = false;
+    // Skip comments and lines that look like they are part of a rules table or mapping
+    const isExempt = line.trim().startsWith('<!--') || line.includes('|') || line.includes('->');
     
-    if (!isComment) {
-      if (lower.includes('students') && !line.includes('|')) issues.push(`Line ${i+1}: "students" still present`);
-      if (lower.includes(' period') && !line.includes('lesson') && !line.includes('|')) issues.push(`Line ${i+1}: "period" still present`);
+    if (!isExempt) {
+      BANNED.forEach(word => {
+        if (lower.includes(word)) {
+          // Exception for "maths" which contains "math"
+          if (word === 'math' && lower.includes('maths')) {
+            const occurrences = (lower.match(/math/g) || []).length;
+            const mathsOccurrences = (lower.match(/maths/g) || []).length;
+            if (occurrences === mathsOccurrences) return;
+          }
+          issues.push(`Line ${i+1}: "${word}" still present`);
+        }
+      });
     }
   });
 

@@ -32,6 +32,9 @@ const BANNED = [
   { word: 'practice',    reason: 'American verb — use "practise"' },
   { word: 'program',     reason: 'Use "code" or "coding" instead' },
   { word: 'programming', reason: 'Use "coding" instead' },
+  { word: 'math',        reason: 'American spelling — use "maths"' },
+  { word: 'kids',        reason: 'Informal — use "children"' },
+  { word: 'console',     reason: 'Technical jargon — do not use' },
   { word: 'let ',        reason: 'JS syntax — use SET in pseudocode' },
   { word: 'const ',      reason: 'JS syntax — use pseudocode' },
   { word: 'var ',        reason: 'JS syntax — use pseudocode' },
@@ -56,6 +59,7 @@ function auditFile(filePath) {
   const lines = fs.readFileSync(filePath, 'utf8').split('\n');
   const findings = [];
   let inScriptTag = false;
+  let inGoldStandard = false;
 
   lines.forEach((line, i) => {
     const lineNum = i + 1;
@@ -66,6 +70,11 @@ function auditFile(filePath) {
     if (trimmed.startsWith('<script')) { inScriptTag = true; return; }
     if (trimmed.startsWith('</script>')) { inScriptTag = false; return; }
     if (inScriptTag) return;
+
+    // Track GOLD STANDARD block — skip it (contains examples of banned words)
+    if (trimmed.includes('GOLD STANDARD EXERCISE FILE')) { inGoldStandard = true; return; }
+    if (inGoldStandard && trimmed.includes('====') && trimmed.endsWith('-->')) { inGoldStandard = false; return; }
+    if (inGoldStandard) return;
 
     // Is this line an HTML comment?
     const isComment = trimmed.startsWith('<!--');
@@ -93,6 +102,12 @@ function auditFile(filePath) {
       if ((word === 'var ' || word === 'const ') && isComment) return;
 
       if (lower.includes(word.toLowerCase())) {
+        // Exception for "maths" which contains "math"
+        if (word === 'math' && lower.includes('maths')) {
+          const occurrences = (lower.match(/math/g) || []).length;
+          const mathsOccurrences = (lower.match(/maths/g) || []).length;
+          if (occurrences === mathsOccurrences) return;
+        }
         findings.push({ lineNum, word, reason, line: trimmed });
       }
     });

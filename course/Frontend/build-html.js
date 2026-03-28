@@ -277,6 +277,88 @@ async function callValidator(prompt) {
   }
 }
 
+// --- PROGRAMMATIC AUDIT ---
+function programmaticAudit(html) {
+  const BANNED = [
+    { word: 'period',      reason: 'Banned — use "lesson", "week", "time", "stretch" etc' },
+    { word: 'periods',     reason: 'Banned — use "lessons" etc' },
+    { word: 'students',    reason: 'Use "children" instead' },
+    { word: 'student',     reason: 'Use "child" instead' },
+    { word: 'color',       reason: 'American spelling — use "colour"' },
+    { word: 'center',      reason: 'American spelling — use "centre"' },
+    { word: 'organize',    reason: 'American spelling — use "organise"' },
+    { word: 'recognize',   reason: 'American spelling — use "recognise"' },
+    { word: 'practice',    reason: 'American verb — use "practise"' },
+    { word: 'program',     reason: 'Use "code" or "coding" instead' },
+    { word: 'programming', reason: 'Use "coding" instead' },
+    { word: 'math',        reason: 'American spelling — use "maths"' },
+    { word: 'kids',        reason: 'Informal — use "children"' },
+    { word: 'console',     reason: 'Technical jargon — do not use' },
+    { word: 'let ',        reason: 'JS syntax — use SET in pseudocode' },
+    { word: 'const ',      reason: 'JS syntax — use pseudocode' },
+    { word: 'var ',        reason: 'JS syntax — use pseudocode' },
+    { word: 'childName',   reason: 'camelCase variable — use "child name" in quotes' },
+  ];
+
+  const lines = html.split('\n');
+  const issues = [];
+  let inScriptTag = false;
+  let inGoldStandard = false;
+
+  lines.forEach((line, i) => {
+    const lineNum = i + 1;
+    const lower = line.toLowerCase();
+    const trimmed = line.trim();
+
+    // Track <script> blocks — skip them entirely (real JS lives here)
+    if (trimmed.startsWith('<script')) { inScriptTag = true; return; }
+    if (trimmed.startsWith('</script>')) { inScriptTag = false; return; }
+    if (inScriptTag) return;
+
+    // Track GOLD STANDARD block — skip it (contains examples of banned words)
+    if (trimmed.includes('GOLD STANDARD EXERCISE FILE')) { inGoldStandard = true; return; }
+    if (inGoldStandard && trimmed.includes('====') && trimmed.endsWith('-->')) { inGoldStandard = false; return; }
+    if (inGoldStandard) return;
+
+    // Is this line an HTML comment?
+    const isComment = trimmed.startsWith('<!--');
+
+    BANNED.forEach(({ word, reason }) => {
+
+      // CSS exceptions — these are valid CSS, not English spelling
+      if (word === 'color' && (line.includes('background-color') || line.includes('-color') || line.includes('color:'))) return;
+      if (word === 'center' && line.includes('text-align')) return;
+
+      // For 'let ' — only flag real JS let, not British English phrases
+      if (word === 'let ') {
+        const letMatches = lower.match(/\blet\s+/g) || [];
+        const englishLetMatches = lower.match(/\blet\s+(us|anyone|them|me|her|him|it|the|a|an)\b/g) || [];
+        const wontLetMatches = lower.match(/\b(won't|will not|cannot|can't)\s+let\b/g) || [];
+        const genuineJS = letMatches.length - englishLetMatches.length - wontLetMatches.length;
+        if (genuineJS > 0) {
+          issues.push(`Line ${lineNum}: "let " — ${reason}`);
+        }
+        return;
+      }
+
+      // For 'var ' and 'const ' — skip if in a comment
+      if ((word === 'var ' || word === 'const ') && isComment) return;
+
+      if (lower.includes(word.toLowerCase())) {
+        // Exception for "maths" which contains "math"
+        if (word === 'math' && lower.includes('maths')) {
+          const occurrences = (lower.match(/math/g) || []).length;
+          const mathsOccurrences = (lower.match(/maths/g) || []).length;
+          if (occurrences === mathsOccurrences) return;
+        }
+        issues.push(`Line ${lineNum}: "${word}" — ${reason}`);
+      }
+    });
+  });
+
+  return issues;
+}
+
 
 // --- BUILD HTML ---
 
@@ -504,11 +586,20 @@ async function main() {
       continue;
     }
 
-    console.log(`   🔍 Validating...`);
-    try {
-      validationResult = await validateHTML(html, moduleName);
-    } catch (e) {
-      validationResult = `FAIL: Validation error — ${e.message}`;
+    console.log(`   🔍 Programmatic Auditing...`);
+    const auditIssues = programmaticAudit(html);
+    if (auditIssues.length > 0) {
+      validationResult = `FAIL: Programmatic audit found ${auditIssues.length} issue(s):\n   ` + auditIssues.join('\n   ');
+      console.log(`\n❌ Programmatic Audit FAILED:`);
+      console.log(validationResult);
+    } else {
+      console.log(`   ✅ Programmatic Audit PASSED`);
+      console.log(`   🔍 AI Validating...`);
+      try {
+        validationResult = await validateHTML(html, moduleName);
+      } catch (e) {
+        validationResult = `FAIL: AI Validation error — ${e.message}`;
+      }
     }
 
     if (validationResult.includes('PASS: All blocks passed')) {
