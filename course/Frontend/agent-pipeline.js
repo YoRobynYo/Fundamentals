@@ -93,25 +93,17 @@ function agentChunker(content) {
 // Fixes one chunk at a time
 // =============================================================
 async function agentFixer(chunk, rules, isRuleSection) {
+  const bannedInstructions = RULES.bannedWords
+    .map(b => `- "${b.word.trim()}" -> ${b.reason}`)
+    .join('\n');
+
   const prompt = `You are fixing a section of a children's coding course foundation file.
 
 RULES TO FOLLOW:
 ${rules}
 
 BANNED WORDS — fix these:
-- "students" -> "children"
-- "student" -> "child"
-- "period" (school) -> "lesson"
-- "program" (computer) -> "code"
-- "programming" -> "coding"
-- "practice" (verb) -> "practise"
-- "color" -> "colour" (NOT in CSS properties like color: or background-color)
-- "organize" -> "organise"
-- "recognize" -> "recognise"
-- "center" -> "centre" (NOT in CSS like text-align: center)
-- "math" -> "maths"
-- "kids" -> "children"
-- "console" -> do not use technical jargon
+${bannedInstructions}
 
 ${isRuleSection ? `IMPORTANT: After RULE 6, add this new section exactly:
 

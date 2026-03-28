@@ -391,12 +391,7 @@ ${specContent}
 === BUILD INSTRUCTIONS ===
 
 BRITISH ENGLISH ONLY — CRITICAL:
-- lessons (NOT periods)
-- colour (NOT color)
-- organise (NOT organize)
-- maths (NOT math)
-- children (NOT students or kids)
-- practise (NOT practice as a verb)
+${RULES.bannedWords.map(b => `- ${b.reason} (NOT ${b.word.trim()})`).join('\n')}
 
 PSEUDOCODE RULES — CRITICAL:
 - Exercise 1 Part A & Part B → SHOW pseudocode in a code-example div
@@ -421,11 +416,11 @@ EVERY PART must have ALL of these in order:
 - <pre class="answer-block"> with correct id
 
 CRITICAL ID PATTERN — NEVER BREAK THIS:
-- code block:   id="[section]-ex[N]-part-[a/b]"
-- hint button:  data-section="[section]" data-ex="[N]-part-[a/b]"
-- hint para:    id="[section]-hint[N]-part-[a/b]"
-- output block: id="[section]-output[N]-part-[a/b]"
-- answer block: id="[section]-answer[N]-part-[a/b]"
+- code block:   id="${RULES.idPatterns.codeBlock.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- hint button:  data-section="[section]" data-ex="${RULES.idPatterns.dataEx.replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- hint para:    id="${RULES.idPatterns.hintPara.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- output block: id="${RULES.idPatterns.outputBlock.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- answer block: id="${RULES.idPatterns.answerBlock.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
 
 SECTION NAMES — EXACT — READ THIS VERY CAREFULLY:
 - variables        (Module 1)
