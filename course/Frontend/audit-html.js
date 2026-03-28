@@ -76,8 +76,8 @@ function auditFile(filePath) {
     if (inGoldStandard && trimmed.includes('====') && trimmed.endsWith('-->')) { inGoldStandard = false; return; }
     if (inGoldStandard) return;
 
-    // Is this line an HTML comment?
-    const isComment = trimmed.startsWith('<!--');
+    // Is this line an HTML comment? Skip entirely as children won't see it
+    if (trimmed.startsWith('<!--') || trimmed.endsWith('-->')) return;
 
     BANNED.forEach(({ word, reason }) => {
 
@@ -97,9 +97,6 @@ function auditFile(filePath) {
         }
         return;
       }
-
-      // For 'var ' and 'const ' — skip if in a comment
-      if ((word === 'var ' || word === 'const ') && isComment) return;
 
       if (lower.includes(word.toLowerCase())) {
         // Exception for "maths" which contains "math"

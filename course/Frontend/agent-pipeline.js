@@ -173,8 +173,9 @@ async function agentValidator(original, fixed, chunkIndex) {
 
   lines.forEach((line, i) => {
     const lower = line.toLowerCase();
+    const trimmed = line.trim();
     // Skip comments and lines that look like they are part of a rules table or mapping
-    const isExempt = line.trim().startsWith('<!--') || line.includes('|') || line.includes('->');
+    const isExempt = trimmed.startsWith('<!--') || trimmed.endsWith('-->') || line.includes('|') || line.includes('->');
     
     if (!isExempt) {
       BANNED.forEach(word => {
