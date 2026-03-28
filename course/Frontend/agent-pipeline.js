@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MAIN_TEMPLATE_DIR = path.join(__dirname, 'mainTemplate');
+const RULES = JSON.parse(fs.readFileSync(path.join(__dirname, 'course-rules.json'), 'utf8'));
 const OLLAMA_URL = 'http://localhost:11434/api/generate';
 const BUILDER_MODEL = 'qwen2.5-coder:7b';
 const VALIDATOR_MODEL = 'qwen2.5-coder:7b'; // Temporary - same as builder to reduce memory
@@ -166,22 +167,40 @@ async function agentValidator(original, fixed, chunkIndex) {
   const issues = [];
   const lines = fixed.split('\n');
   
-  const BANNED = [
-    'period', 'students', 'student', 'color', 'center', 'organize', 'recognize',
-    'practice', 'program', 'programming', 'math', 'kids', 'console'
-  ];
+  const BANNED_LIST = RULES.bannedWords;
+  let inCommentBlock = false;
 
   lines.forEach((line, i) => {
     const lower = line.toLowerCase();
     const trimmed = line.trim();
-    // Skip comments and lines that look like they are part of a rules table or mapping
-    const isExempt = trimmed.startsWith('<!--') || trimmed.endsWith('-->') || line.includes('|') || line.includes('->');
+
+    // Track Multi-line HTML Comments
+    if (trimmed.startsWith('<!--')) { inCommentBlock = true; }
+    if (inCommentBlock && trimmed.includes('-->')) { inCommentBlock = false; return; }
+    if (inCommentBlock) return;
+
+    // Skip lines that look like they are part of a rules table or mapping
+    const isExempt = line.includes('|') || line.includes('->');
     
     if (!isExempt) {
-      BANNED.forEach(word => {
-        if (lower.includes(word)) {
+      BANNED_LIST.forEach(({ word, reason }) => {
+        const lowerWord = word.toLowerCase();
+
+        // For 'let ' — only flag real JS let, not British English phrases
+        if (lowerWord === 'let ') {
+          const letMatches = lower.match(/\blet\s+/g) || [];
+          const englishLetMatches = lower.match(/\blet\s+(us|anyone|them|me|her|him|it|the|a|an)\b/g) || [];
+          const wontLetMatches = lower.match(/\b(won't|will not|cannot|can't)\s+let\b/g) || [];
+          const genuineJS = letMatches.length - englishLetMatches.length - wontLetMatches.length;
+          if (genuineJS > 0) {
+            issues.push(`Line ${i+1}: "let " still present`);
+          }
+          return;
+        }
+
+        if (lower.includes(lowerWord)) {
           // Exception for "maths" which contains "math"
-          if (word === 'math' && lower.includes('maths')) {
+          if (lowerWord === 'math' && lower.includes('maths')) {
             const occurrences = (lower.match(/math/g) || []).length;
             const mathsOccurrences = (lower.match(/maths/g) || []).length;
             if (occurrences === mathsOccurrences) return;

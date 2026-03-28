@@ -21,6 +21,8 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+const RULES = JSON.parse(fs.readFileSync(path.join(__dirname, 'course-rules.json'), 'utf8'));
+
 // --- CONFIG ---
 const MAIN_TEMPLATE_DIR = path.join(__dirname, 'mainTemplate');
 const MODULES_DIR = path.join(__dirname, 'modules');
@@ -278,32 +280,14 @@ async function callValidator(prompt) {
 }
 
 // --- PROGRAMMATIC AUDIT ---
-function programmaticAudit(html) {
-  const BANNED = [
-    { word: 'period',      reason: 'Banned — use "lesson", "week", "time", "stretch" etc' },
-    { word: 'periods',     reason: 'Banned — use "lessons" etc' },
-    { word: 'students',    reason: 'Use "children" instead' },
-    { word: 'student',     reason: 'Use "child" instead' },
-    { word: 'color',       reason: 'American spelling — use "colour"' },
-    { word: 'center',      reason: 'American spelling — use "centre"' },
-    { word: 'organize',    reason: 'American spelling — use "organise"' },
-    { word: 'recognize',   reason: 'American spelling — use "recognise"' },
-    { word: 'practice',    reason: 'American verb — use "practise"' },
-    { word: 'program',     reason: 'Use "code" or "coding" instead' },
-    { word: 'programming', reason: 'Use "coding" instead' },
-    { word: 'math',        reason: 'American spelling — use "maths"' },
-    { word: 'kids',        reason: 'Informal — use "children"' },
-    { word: 'console',     reason: 'Technical jargon — do not use' },
-    { word: 'let ',        reason: 'JS syntax — use SET in pseudocode' },
-    { word: 'const ',      reason: 'JS syntax — use pseudocode' },
-    { word: 'var ',        reason: 'JS syntax — use pseudocode' },
-    { word: 'childName',   reason: 'camelCase variable — use "child name" in quotes' },
-  ];
+function programmaticAudit(html, moduleName) {
+  const BANNED = RULES.bannedWords;
 
   const lines = html.split('\n');
   const issues = [];
   let inScriptTag = false;
   let inGoldStandard = false;
+  let inCommentBlock = false;
 
   lines.forEach((line, i) => {
     const lineNum = i + 1;
@@ -315,19 +299,24 @@ function programmaticAudit(html) {
     if (trimmed.startsWith('</script>')) { inScriptTag = false; return; }
     if (inScriptTag) return;
 
+    // Track Multi-line HTML Comments
+    if (trimmed.startsWith('<!--')) { inCommentBlock = true; }
+    if (inCommentBlock && trimmed.includes('-->')) { inCommentBlock = false; return; }
+    if (inCommentBlock) return;
+
     // Track GOLD STANDARD block — skip it (contains examples of banned words)
     if (trimmed.includes('GOLD STANDARD EXERCISE FILE')) { inGoldStandard = true; return; }
     if (inGoldStandard && trimmed.includes('====') && trimmed.endsWith('-->')) { inGoldStandard = false; return; }
     if (inGoldStandard) return;
-
-    // Is this line an HTML comment? Skip entirely
-    if (trimmed.startsWith('<!--') || trimmed.endsWith('-->')) return;
 
     BANNED.forEach(({ word, reason }) => {
 
       // CSS exceptions — these are valid CSS, not English spelling
       if (word === 'color' && (line.includes('background-color') || line.includes('-color') || line.includes('color:'))) return;
       if (word === 'center' && line.includes('text-align')) return;
+
+      // JS Reserved Words — skip if in a code-block div (those are pseudocode examples)
+      if ((word === 'let ' || word === 'const ' || word === 'var ') && trimmed.includes('class="code-block"')) return;
 
       // For 'let ' — only flag real JS let, not British English phrases
       if (word === 'let ') {
@@ -352,6 +341,27 @@ function programmaticAudit(html) {
       }
     });
   });
+
+  // Structural Validation
+  const section = getSectionName(moduleName);
+  const patterns = RULES.idPatterns;
+
+  for (let ex = 1; ex <= 5; ex++) {
+    ['a', 'b'].forEach(part => {
+      const codeId = patterns.codeBlock.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const hintId = patterns.hintPara.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const outputId = patterns.outputBlock.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const answerId = patterns.answerBlock.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const dataEx = patterns.dataEx.replace('{n}', ex).replace('{part}', part);
+
+      if (!html.includes(`id="${codeId}"`)) issues.push(`Missing or incorrect ID for code block: ${codeId}`);
+      if (!html.includes(`id="${hintId}"`)) issues.push(`Missing or incorrect ID for hint para: ${hintId}`);
+      if (!html.includes(`id="${outputId}"`)) issues.push(`Missing or incorrect ID for output block: ${outputId}`);
+      if (!html.includes(`id="${answerId}"`)) issues.push(`Missing or incorrect ID for answer block: ${answerId}`);
+      if (!html.includes(`data-section="${section}"`)) issues.push(`Missing or incorrect data-section: ${section}`);
+      if (!html.includes(`data-ex="${dataEx}"`)) issues.push(`Missing or incorrect data-ex: ${dataEx}`);
+    });
+  }
 
   return issues;
 }
@@ -584,7 +594,7 @@ async function main() {
     }
 
     console.log(`   🔍 Programmatic Auditing...`);
-    const auditIssues = programmaticAudit(html);
+    const auditIssues = programmaticAudit(html, moduleName);
     if (auditIssues.length > 0) {
       validationResult = `FAIL: Programmatic audit found ${auditIssues.length} issue(s):\n   ` + auditIssues.join('\n   ');
       console.log(`\n❌ Programmatic Audit FAILED:`);
