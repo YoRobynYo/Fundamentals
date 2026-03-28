@@ -23,7 +23,7 @@
   <!-- █  // Start::: Helper Boxes                     █ -->
   <!-- ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ -->
 
-  <!-- Helper Box: Loops with Math -->
+  <!-- Helper Box: Loops with Maths -->
   <div class="helper-box">
     <h3 class="box-title">🔢 Loops Can Do Maths! 🔢</h3>
     <p>In the last part, you learned how to make a loop count numbers. But loops can do much more than just count! You can put any calculation inside a loop — addition, subtraction, multiplication, or division. The loop will perform that calculation for each cycle, making it easy to manage supplies for the whole factory!</p>
@@ -107,7 +107,17 @@
       <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a loop that counts "container number" from 1 to 6.</li>
       <li><strong>Step 2:</strong>&nbsp;&nbsp;Inside the loop, create a variable named "backup containers" and set its value to 3.</li>
       <li><strong>Step 3:</strong>&nbsp;&nbsp;Inside the loop, calculate "total containers" by adding "container number" and "backup containers".</li>
-      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total containers for machines 1 through 6 in the code block below.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to calculate the total containers for machines 1 through 6:
+        <div class="code-example">
+          <code>
+            FOR "container number" FROM 1 TO 6 DO<br>
+            &nbsp;&nbsp;SET "backup containers" = 3<br>
+            &nbsp;&nbsp;SET "total containers" = "container number" + "backup containers"<br>
+            &nbsp;&nbsp;PRINT "Container", "container number", "plus", "backup containers", "backups is", "total containers", "total."<br>
+            END FOR
+          </code>
+        </div>
+      </li>
     </ul>
 
     <label for="loops-ex1-part-b" class="code-label">Add your code in the area below</label>

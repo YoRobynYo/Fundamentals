@@ -409,7 +409,21 @@
       <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "required flavour" and set its value to <code>"Plain"</code>.</li>
       <li><strong>Step 3:</strong>&nbsp;&nbsp;Create a variable named "bags ready" and set its value to <code>15</code>.</li>
       <li><strong>Step 4:</strong>&nbsp;&nbsp;Create a variable named "bags needed" and set its value to <code>20</code>.</li>
-      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check what happens when the flavour is correct but the quantity is not enough in the code block below.</li>
+      <li><strong>Step 5:</strong>&nbsp;&nbsp;Now write the code to check what happens when the flavour is correct but the quantity is not enough:
+        <div class="code-example">
+          <code>
+            SET "current flavour" = "Plain"<br>
+            SET "required flavour" = "Plain"<br>
+            SET "bags ready" = 15<br>
+            SET "bags needed" = 20<br>
+            IF "current flavour" = "required flavour" AND "bags ready" >= "bags needed" THEN<br>
+            &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: true"<br>
+            ELSE<br>
+            &nbsp;&nbsp;PRINT "The flavour is correct and the quantity is enough: false"<br>
+            END IF
+          </code>
+        </div>
+      </li>
     </ul>
 
     <label for="logicalOperators-ex1-part-b" class="code-label">Add your code in the area below</label>

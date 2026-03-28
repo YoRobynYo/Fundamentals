@@ -73,7 +73,7 @@ Exercise [NUMBER] following these specifications exactly."
 
 ---
 
-## EXERCISE 3: STUDENT DIRECTORY 📚
+## EXERCISE 3: CLASSMATE DIRECTORY 📚
 
 **SECTION NAME:** variables
 **EXERCISE NUMBER:** 3
@@ -93,8 +93,8 @@ Exercise [NUMBER] following these specifications exactly."
 **IMAGE:** first-steps-console.jpg
 **ALT TEXT:** "Storing multiple related pieces of information"
 
-**EXPECTED OUTPUT PART A:** "Student: Sarah, Age: 11, Favourite subject: Art"
-**EXPECTED OUTPUT PART B:** "Student: James, Grade: 6, Hobby: Football"
+**EXPECTED OUTPUT PART A:** "Child: Sarah, Age: 11, Favourite subject: Art"
+**EXPECTED OUTPUT PART B:** "Child: James, Grade: 6, Hobby: Football"
 
 ---
 
@@ -123,7 +123,7 @@ Exercise [NUMBER] following these specifications exactly."
 
 ---
 
-## EXERCISE 5: DAILY SCHEDULE ⏰
+## EXERCISE 5: DAILY TIMETABLE ⏰
 
 **SECTION NAME:** variables
 **EXERCISE NUMBER:** 5
@@ -132,8 +132,8 @@ Exercise [NUMBER] following these specifications exactly."
 **SCENARIO:** Creating today's classroom timetable so everyone knows what is happening and when
 
 **VARIABLES TO USE:**
-- Part A: "first period subject", "first period time", "first period teacher"
-- Part B: "second period subject", "second period time", "special activity"
+- Part A: "first lesson subject", "first lesson time", "first lesson teacher"
+- Part B: "second lesson subject", "second lesson time", "special activity"
 
 **CONCEPT:** Building a complete schedule by organising time-based information into variables
 
@@ -143,8 +143,8 @@ Exercise [NUMBER] following these specifications exactly."
 **IMAGE:** first-steps-console.jpg
 **ALT TEXT:** "Building schedules with variables"
 
-**EXPECTED OUTPUT PART A:** "Period 1: Maths at 9am with Mrs Jones."
-**EXPECTED OUTPUT PART B:** "Period 2: Science at 10am. Today's activity: Nature Walk."
+**EXPECTED OUTPUT PART A:** "Lesson 1: Maths at 9am with Mrs Jones."
+**EXPECTED OUTPUT PART B:** "Lesson 2: Science at 10am. Today's activity: Nature Walk."
 
 ---
 

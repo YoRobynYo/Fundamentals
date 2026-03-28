@@ -105,21 +105,21 @@
 
 ---
 
-## EXERCISE 4: SUPPLIES FOR ALL STUDENTS 🎨
+## EXERCISE 4: SUPPLIES FOR ALL CHILDREN 🎨
 
-**SECTION NAME:** operators
+**SECTION NAME:** operations
 **EXERCISE NUMBER:** 4
 **EMOJI:** 🎨
 
 **SCENARIO:** Calculate total supplies needed when each child needs multiple items
 
 **VARIABLES TO USE:**
-- Part A: `numberOfStudents`, `sheetsPerStudent`, `totalSheets`
-- Part B: `numberOfGroups`, `gluePerGroup`, `totalGlueSticks`
+- Part A: "number of children", "sheets per child", "total sheets"
+- Part B: "number of groups", "glue per group", "total glue sticks"
 
 **CONCEPT:** Using the multiplication operator (×) to calculate totals
 
-**PART A FOCUS:** Multiply students by sheets needed per student
+**PART A FOCUS:** Multiply children by sheets needed per child
 **PART A CONTEXT:** For today's drawing activity, each child needs 3 sheets of paper. How many sheets total?
 
 **PART B FOCUS:** Multiply groups by glue sticks per group
@@ -128,35 +128,35 @@
 **IMAGE:** first-steps-console.jpg
 **ALT TEXT:** "Using multiplication to calculate total supplies needed"
 
-**EXPECTED OUTPUT PART A:** "We have 20 students. Each needs 3 sheets. Total sheets needed: 60."
+**EXPECTED OUTPUT PART A:** "We have 20 children. Each needs 3 sheets. Total sheets needed: 60."
 **EXPECTED OUTPUT PART B:** "We have 5 groups. Each needs 2 glue sticks. Total glue sticks needed: 10."
 
 ---
 
 ## EXERCISE 5: COMPLETE CLASSROOM SUPPLY PLANNING 📊
 
-**SECTION NAME:** operators
+**SECTION NAME:** operations
 **EXERCISE NUMBER:** 5
 **EMOJI:** 📊
 
 **SCENARIO:** Use all four operations to plan and calculate classroom supplies
 
 **VARIABLES TO USE:**
-- Part A: `studentsPresent`, `studentsAbsent`, `totalStudents`, `pencilsPerStudent`, `pencilsNeeded`
-- Part B: `papersAvailable`, `papersUsed`, `papersLeft`, `boxesToFill`, `papersPerBox`
+- Part A: "children present", "children absent", "total children", "pencils per child", "pencils needed"
+- Part B: "papers available", "papers used", "papers left", "boxes to fill", "papers per box"
 
 **CONCEPT:** Combining all operators (+, -, ×, /) in realistic calculations
 
-**PART A FOCUS:** Calculate total students (addition) then supplies needed (multiplication)
-**PART A CONTEXT:** Let's plan for tomorrow! First, figure out total students, then calculate supplies needed.
+**PART A FOCUS:** Calculate total children (addition) then supplies needed (multiplication)
+**PART A CONTEXT:** Let's plan for tomorrow! First, figure out total children, then calculate supplies needed.
 
-**PART B FOCUS:** Calculate papers remaining (subtraction) then organize into boxes (division)
-**PART B CONTEXT:** Now let's see what papers we have left and organize them into storage boxes!
+**PART B FOCUS:** Calculate papers remaining (subtraction) then organise into boxes (division)
+**PART B CONTEXT:** Now let's see what papers we have left and organise them into storage boxes!
 
 **IMAGE:** first-steps-console.jpg
-**ALT TEXT:** "Using all math operators together for planning"
+**ALT TEXT:** "Using all maths operators together for planning"
 
-**EXPECTED OUTPUT PART A:** "Present: 18 students. Absent: 2 students. Total students: 20. Each needs 2 pencils. Total pencils needed: 40."
+**EXPECTED OUTPUT PART A:** "Present: 18 children. Absent: 2 children. Total children: 20. Each needs 2 pencils. Total pencils needed: 40."
 **EXPECTED OUTPUT PART B:** "Started with 100 papers. Used 35 papers. Papers left: 65. We have 5 boxes. Papers per box: 13."
 
 ---
@@ -164,7 +164,7 @@
 ## NARRATIVE CONTEXT (From NARRATIVE-FRAMEWORK.md)
 
 **Opening for Module 2:**
-"Good morning! Yesterday we learned how to store and organize information using variables. Today we're going to use MATH to calculate things! Counting supplies, figuring out what's left, dividing things equally - math operators help us do all of this. Let's start calculating!"
+"Good morning! Yesterday we learned how to store and organise information using variables. Today we're going to use MATHS to calculate things! Counting supplies, figuring out what's left, dividing things equally - maths operators help us do all of this. Let's start calculating!"
 
 **Exercise Flow:**
 1. Addition (+): Counting totals
