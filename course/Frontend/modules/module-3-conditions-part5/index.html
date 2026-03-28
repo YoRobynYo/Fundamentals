@@ -356,7 +356,11 @@
       <li><strong>Step 1:</strong>&nbsp;&nbsp;Change the value of "flavour order" to <code>"salty"</code>.</li>
       <li><strong>Step 2:</strong>&nbsp;&nbsp;Keep the IF check for <code>"plain"</code> — PRINT <code>"Get: Corn only"</code>.</li>
       <li><strong>Step 3:</strong>&nbsp;&nbsp;Keep the first ELSE IF for <code>"buttery"</code> — PRINT <code>"Get: Corn and butter"</code>. Add a new ELSE IF for <code>"salty"</code> — PRINT <code>"Get: Corn and salt"</code>. Keep the ELSE for unknown flavours.</li>
-      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for salty in the code block below.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check which ingredients are needed for salty:
+        <div class="code-example">
+          <code>SET "flavour order" = "salty"<br><br>IF "flavour order" = "plain" THEN<br>&nbsp;&nbsp;PRINT "Get: Corn only"<br>ELSE IF "flavour order" = "buttery" THEN<br>&nbsp;&nbsp;PRINT "Get: Corn and butter"<br>ELSE IF "flavour order" = "salty" THEN<br>&nbsp;&nbsp;PRINT "Get: Corn and salt"<br>ELSE<br>&nbsp;&nbsp;PRINT "Unknown flavour"<br>END IF</code>
+        </div>
+      </li>
     </ul>
 
     <label for="conditions-ex1-part-b" class="code-label">Add your code in the area below</label>

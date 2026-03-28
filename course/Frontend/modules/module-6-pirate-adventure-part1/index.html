@@ -315,7 +315,19 @@
       <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "child age" and set its value to <code>7</code>.</li>
       <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "has permission" and set its value to <code>true</code>.</li>
       <li><strong>Step 3:</strong>&nbsp;&nbsp;Use IF with AND to check if "child age" is greater than or equal to 8 AND "has permission" is true.</li>
-      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if this younger child can board in the code block below.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to check if this younger child can board:
+        <div class="code-example">
+          <code>
+            SET "child age" = 7<br>
+            SET "has permission" = true<br>
+            IF "child age" &gt;= 8 AND "has permission" THEN<br>
+            &nbsp;&nbsp;PRINT "&#x2705; Permission granted — welcome aboard!"<br>
+            ELSE<br>
+            &nbsp;&nbsp;PRINT "&#x1f6ab; Stay on shore — need to be 8 or older with permission!"<br>
+            END IF
+          </code>
+        </div>
+      </li>
     </ul>
 
     <label for="pirateAdventure-ex1-part-b" class="code-label">Add your code in the area below</label>

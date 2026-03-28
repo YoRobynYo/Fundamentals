@@ -255,6 +255,29 @@
       </li>
     </ul>
 
+    <h4 class="sub-title">Part B: Busier Week Ahead</h4>
+
+    <p>Great tracking! Now the factory is preparing for a busier week. We have 50 oil
+      containers ready, and there will be 8 shifts instead of 6. Workers still use 1
+      container per shift. Let's track what's left after each shift.</p>
+
+    <ul class="indented-list">
+      <li><strong>Step 1:</strong>&nbsp;&nbsp;Create a variable named "total containers" and set its value to <code>50</code>.</li>
+      <li><strong>Step 2:</strong>&nbsp;&nbsp;Create a variable named "number of shifts" and set its value to <code>8</code>.</li>
+      <li><strong>Step 3:</strong>&nbsp;&nbsp;Use a FOR loop from 1 to "number of shifts". Inside the loop, subtract 1 from "total containers" and print the shift number with the remaining containers.</li>
+      <li><strong>Step 4:</strong>&nbsp;&nbsp;Now write the code to track the oil containers for the busier week:
+        <div class="code-example">
+          <code>
+            SET "total containers" = 50<br>
+            FOR shift FROM 1 TO 8 DO<br>
+            &nbsp;&nbsp;SET "total containers" = "total containers" - 1<br>
+            &nbsp;&nbsp;PRINT "Shift", shift, ":", "total containers", "containers remain"<br>
+            END FOR
+          </code>
+        </div>
+      </li>
+    </ul>
+
     <label for="loops-ex1-part-a" class="code-label">Add your code in the area below</label>
     <div class="code-block" contenteditable="true" id="loops-ex1-part-a"></div>
 

@@ -25,6 +25,7 @@ const BANNED = [
   { word: 'periods',     reason: 'Banned — use "lessons" etc' },
   { word: 'students',    reason: 'Use "children" instead' },
   { word: 'student',     reason: 'Use "child" instead' },
+  { word: 'kids',        reason: 'Use "children" instead' },
   { word: 'color',       reason: 'American spelling — use "colour"' },
   { word: 'center',      reason: 'American spelling — use "centre"' },
   { word: 'organize',    reason: 'American spelling — use "organise"' },
@@ -32,6 +33,9 @@ const BANNED = [
   { word: 'practice',    reason: 'American verb — use "practise"' },
   { word: 'program',     reason: 'Use "code" or "coding" instead' },
   { word: 'programming', reason: 'Use "coding" instead' },
+  { word: 'math',        reason: 'American spelling — use "maths"' },
+  { word: 'console',     reason: 'Technical jargon — avoid' },
+  { word: 'terminal',    reason: 'Technical jargon — avoid' },
   { word: 'let ',        reason: 'JS syntax — use SET in pseudocode' },
   { word: 'const ',      reason: 'JS syntax — use pseudocode' },
   { word: 'var ',        reason: 'JS syntax — use pseudocode' },
@@ -56,6 +60,7 @@ function auditFile(filePath) {
   const lines = fs.readFileSync(filePath, 'utf8').split('\n');
   const findings = [];
   let inScriptTag = false;
+  let inGoldStandardBlock = false;
 
   lines.forEach((line, i) => {
     const lineNum = i + 1;
@@ -66,6 +71,19 @@ function auditFile(filePath) {
     if (trimmed.startsWith('<script')) { inScriptTag = true; return; }
     if (trimmed.startsWith('</script>')) { inScriptTag = false; return; }
     if (inScriptTag) return;
+
+    // Track Gold Standard block to skip false positives in the rule explanation
+    if (trimmed === '<!-- ============================================================ -->' && lines[i+1]?.includes('GOLD STANDARD EXERCISE FILE')) {
+      inGoldStandardBlock = true;
+    }
+
+    if (inGoldStandardBlock) {
+      if (trimmed === '<!-- ============================================================ -->' && i > 0 && lines[i-1]?.includes('STRUCTURE RULES')) {
+        inGoldStandardBlock = false;
+        return; // skip the closing line too
+      }
+      return; // skip everything inside the block
+    }
 
     // Is this line an HTML comment?
     const isComment = trimmed.startsWith('<!--');
@@ -92,7 +110,11 @@ function auditFile(filePath) {
       // For 'var ' and 'const ' — skip if in a comment
       if ((word === 'var ' || word === 'const ') && isComment) return;
 
-      if (lower.includes(word.toLowerCase())) {
+      // Use word boundaries for words that could be part of other words (like 'math' in 'maths')
+      const useBoundary = ['math', 'program', 'kids', 'student', 'students', 'color', 'center', 'period', 'periods'].includes(word);
+      const regex = useBoundary ? new RegExp('\\b' + word + '\\b', 'i') : new RegExp(word, 'i');
+
+      if (regex.test(line)) {
         findings.push({ lineNum, word, reason, line: trimmed });
       }
     });
