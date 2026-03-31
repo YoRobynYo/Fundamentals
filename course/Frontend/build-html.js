@@ -39,7 +39,7 @@ const FOUNDATION_FILES = [
 ];
 
 // Gold standard HTML — the structure every exercise must match
-const GOLD_STANDARD_FILE = 'MODULE-0-EXERCISE-GOLD-STANDARD.html';
+const GOLD_STANDARD_FILE = '4-MODULE-0-EXERCISE-GOLD-STANDARD.html';
 
 // Module name → output folder mapping
 const MODULE_FOLDER_MAP = {
