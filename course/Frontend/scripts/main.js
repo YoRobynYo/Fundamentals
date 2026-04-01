@@ -387,14 +387,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let captured = '';
     const oldLog = console.log;
+
+    // Virtual Factory State for Monitor
+    const factoryState = {
+      pencils: 0,
+      kernels: 0,
+      bags: 0,
+      temp: 185
+    };
+
     console.log = (...args) => {
       captured += args.join(' ') + '\n';
       oldLog(...args);
     };
 
+    // Custom commands for pseudocode interaction
+    const SET = (name, value) => {
+      // Logic to update factoryState if variable matches factory items
+      if (name.includes('pencil')) factoryState.pencils = value;
+      if (name.includes('kernel')) factoryState.kernels = value;
+      if (name.includes('bag')) factoryState.bags = value;
+      return value;
+    };
+
+    const PRINT = (...args) => {
+      console.log(...args);
+    };
+
     try {
-      eval(codeBox.innerText);
+      // Simple translation for educational pseudocode to executable JS
+      let code = codeBox.innerText
+        .replace(/SET\s+"([^"]+)"\s*=\s*(.+)/g, 'var $1 = SET("$1", $2);')
+        .replace(/PRINT\s+(.+)/g, 'PRINT($1);');
+
+      eval(code);
       output.textContent = captured || 'Code ran but produced no output.';
+
+      // Update System Monitor if it exists in parent or iframe
+      if (window.updateFactoryMonitor) {
+        window.updateFactoryMonitor(factoryState);
+      }
+
+      // Also send to iframe if it's open
+      const iframe = document.querySelector('.dashboard-iframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'UPDATE_MONITOR', state: factoryState }, '*');
+      }
     } catch (err) {
       output.textContent = err.message;
     }
@@ -437,5 +475,42 @@ document.addEventListener('DOMContentLoaded', function () {
       // We pass the string from data-ex, not a number
       resetExercise(btn.dataset.section, btn.dataset.ex);
     });
-  }); 
+  });
+
+  // Dashboard Integration
+  function injectDashboard() {
+    const dashboardContainer = document.createElement('div');
+    dashboardContainer.className = 'dashboard-iframe-container';
+    dashboardContainer.id = 'dashboardContainer';
+    dashboardContainer.innerHTML = `
+      <iframe src="../../cube-prototype.html" class="dashboard-iframe" id="dashboardIframe"></iframe>
+    `;
+    document.body.appendChild(dashboardContainer);
+
+    const miniDashboard = document.createElement('div');
+    miniDashboard.className = 'mini-dashboard';
+    miniDashboard.innerHTML = `
+      <div class="mini-cube" title="Open Dashboard" onclick="document.getElementById('dashboardContainer').classList.add('active')">📊</div>
+    `;
+    document.body.appendChild(miniDashboard);
+
+    // Close dashboard when pressing Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dashboardContainer.classList.remove('active');
+      }
+    });
+
+    // Handle messages from dashboard iframe
+    window.addEventListener('message', (e) => {
+      if (e.data.type === 'CLOSE_DASHBOARD') {
+        dashboardContainer.classList.remove('active');
+      }
+    });
+  }
+
+  // Only inject if in a module page (not index.html)
+  if (window.location.pathname.includes('/modules/')) {
+    injectDashboard();
+  }
 }); 

@@ -3,87 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Cube Prototype</title>
+    <title>Popcorn Factory Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --cube-yellow: #f1c40f;
             --cube-blue: #3498db;
-            --glass-bg: rgba(255, 255, 255, 0.2);
+            --cube-green: #2ecc71;
+            --cube-red: #e74c3c;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
 
         body {
-            background: #2c3e50;
+            background: #1a1a2e;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden;
+            color: white;
         }
 
-        .cube-container {
-            display: grid;
-            grid-template-columns: repeat(2, 120px);
-            gap: 15px;
-            perspective: 1000px;
-        }
-
-        .cube {
-            width: 120px;
-            height: 120px;
+        .dashboard {
             position: relative;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 100vw;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.8);
-            box-shadow:
-                inset 5px 5px 15px rgba(255, 255, 255, 0.4),
-                inset -5px -5px 15px rgba(0, 0, 0, 0.2),
-                10px 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
         }
 
-        .cube.yellow {
-            background: rgba(241, 196, 15, 0.3);
-            border-color: rgba(241, 196, 15, 0.5);
-            color: #f1c40f;
+        /* The Grid of Cubes */
+        .cube-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 160px);
+            gap: 30px;
+            perspective: 1200px;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .cube.blue {
-            background: rgba(52, 152, 219, 0.3);
-            border-color: rgba(52, 152, 219, 0.5);
-            color: #3498db;
-        }
-
-        .cube::after {
-            content: '';
-            position: absolute;
-            top: 5%;
-            left: 5%;
-            width: 90%;
-            height: 40%;
-            background: linear-gradient(rgba(255,255,255,0.4), transparent);
-            border-radius: 15px 15px 0 0;
+        .dashboard.app-open .cube-grid {
+            transform: scale(0.5) translateX(-100%);
+            opacity: 0;
             pointer-events: none;
         }
 
-        .cube:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        .cube {
+            width: 160px;
+            height: 160px;
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                inset 5px 5px 15px rgba(255, 255, 255, 0.2),
+                inset -5px -5px 15px rgba(0, 0, 0, 0.3),
+                0 15px 35px rgba(0, 0, 0, 0.4);
         }
+
+        /* LEGO Studs */
+        .cube::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 30px;
+            height: 15px;
+            background: inherit;
+            border-radius: 10px 10px 0 0;
+            border: 1px solid var(--glass-border);
+            border-bottom: none;
+            box-shadow: 80px 0 0 0 transparent; /* Use multiple if needed */
+        }
+
+        .cube.monitor::before { box-shadow: 40px 0 0 0 var(--cube-blue), 80px 0 0 0 var(--cube-blue); background: var(--cube-blue); opacity: 0.3; }
+        .cube.inventory::before { box-shadow: 40px 0 0 0 var(--cube-yellow), 80px 0 0 0 var(--cube-yellow); background: var(--cube-yellow); opacity: 0.3; }
+        .cube.production::before { box-shadow: 40px 0 0 0 var(--cube-green), 80px 0 0 0 var(--cube-green); background: var(--cube-green); opacity: 0.3; }
+        .cube.assistant::before { box-shadow: 40px 0 0 0 var(--cube-red), 80px 0 0 0 var(--cube-red); background: var(--cube-red); opacity: 0.3; }
+
+        .cube:hover {
+            transform: translateY(-15px) rotateX(10deg) rotateY(10deg);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .cube i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .cube span {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Cube Variants */
+        .cube.monitor { color: var(--cube-blue); border-bottom: 4px solid var(--cube-blue); }
+        .cube.inventory { color: var(--cube-yellow); border-bottom: 4px solid var(--cube-yellow); }
+        .cube.production { color: var(--cube-green); border-bottom: 4px solid var(--cube-green); }
+        .cube.assistant { color: var(--cube-red); border-bottom: 4px solid var(--cube-red); }
+
+        /* The App Container */
+        .app-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .dashboard.app-open .app-overlay {
+            transform: translateY(0);
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .app-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .close-app {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .close-app:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .app-content {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Specific App Views */
+        .view { display: none; }
+        .view.active { display: block; }
+
+        /* Monitor Styles */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 20px;
+            border-left: 5px solid var(--cube-blue);
+        }
+
+        .stat-value { font-size: 2rem; font-weight: 900; margin: 10px 0; }
+        .stat-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; }
+
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--cube-blue);
+            width: 45%;
+            transition: width 1s ease;
+        }
+
     </style>
 </head>
 <body>
-    <div class="cube-container">
-        <div class="cube yellow">5</div>
-        <div class="cube blue">7</div>
-        <div class="cube yellow">3</div>
-        <div class="cube blue">1</div>
+
+    <div class="dashboard" id="dashboard">
+
+        <!-- Selection Grid -->
+        <div class="cube-grid">
+            <div class="cube monitor" onclick="openApp('monitor')">
+                <i>📊</i>
+                <span>Monitor</span>
+            </div>
+            <div class="cube inventory" onclick="openApp('inventory')">
+                <i>📦</i>
+                <span>Inventory</span>
+            </div>
+            <div class="cube production" onclick="openApp('production')">
+                <i>🏭</i>
+                <span>Production</span>
+            </div>
+            <div class="cube assistant" onclick="openApp('assistant')">
+                <i>🤖</i>
+                <span>Assistant</span>
+            </div>
+        </div>
+
+        <!-- Fullscreen App View -->
+        <div class="app-overlay" id="appOverlay">
+            <div class="app-header">
+                <h2 class="app-title" id="appTitle">App Name</h2>
+                <div style="display: flex; gap: 10px;">
+                    <button class="close-app" id="minimizeApp" style="display: none;">Minimize (Esc) ↙</button>
+                    <button class="close-app" onclick="closeApp()">Close App ✕</button>
+                </div>
+            </div>
+
+            <div class="app-content">
+
+                <!-- System Monitor View -->
+                <div id="view-monitor" class="view">
+                    <p>Live factory metrics and system health.</p>
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Bags Produced</div>
+                            <div class="stat-value">1,240</div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 62%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Kernel Temp</div>
+                            <div class="stat-value">185°C</div>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 85%; background: var(--cube-red);"></div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">System Load</div>
+                            <div class="stat-value">Low</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory View -->
+                <div id="view-inventory" class="view">
+                    <p>Current stock levels and storage mapping.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">🌽 Kernels: 5,000kg (Bin A)</li>
+                        <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">🧂 Salt: 200kg (Shelf 2)</li>
+                        <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">🍯 Butter: 450L (Fridge 1)</li>
+                        <li style="padding: 15px;">🛍️ Empty Bags: 15,000 units</li>
+                    </ul>
+                </div>
+
+                <!-- Production View -->
+                <div id="view-production" class="view">
+                    <p>Machine controls and batch sequencing.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="background: rgba(46, 204, 113, 0.2); padding: 20px; border-radius: 15px; border: 1px solid var(--cube-green);">
+                            <h4>Machine 1: Popping</h4>
+                            <p>Status: RUNNING</p>
+                        </div>
+                        <div style="background: rgba(231, 76, 60, 0.2); padding: 20px; border-radius: 15px; border: 1px solid var(--cube-red);">
+                            <h4>Machine 2: Flavouring</h4>
+                            <p>Status: STANDBY</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assistant View -->
+                <div id="view-assistant" class="view">
+                    <p>Ask Koby for help with your pseudocode.</p>
+                    <div style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px; padding: 20px; font-style: italic;">
+                        "Hey! I'm Koby. You can click the chat button on any module page to talk to me properly, but I'm monitoring everything from here too!"
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        const dashboard = document.getElementById('dashboard');
+        const appOverlay = document.getElementById('appOverlay');
+        const appTitle = document.getElementById('appTitle');
+
+        function openApp(appName) {
+            // Set Title
+            appTitle.innerText = appName.charAt(0).toUpperCase() + appName.slice(1) + " App";
+
+            // Switch View
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + appName).classList.add('active');
+
+            // Open Overlay
+            dashboard.classList.add('app-open');
+        }
+
+        function closeApp() {
+            dashboard.classList.remove('app-open');
+            // Notify parent to close iframe if we are minimizing
+            window.parent.postMessage({ type: 'CLOSE_DASHBOARD' }, '*');
+        }
+
+        // Show minimize if in iframe
+        if (window.self !== window.top) {
+            document.getElementById('minimizeApp').style.display = 'block';
+            document.getElementById('minimizeApp').onclick = closeApp;
+        }
+
+        // Live Monitor Logic
+        window.updateFactoryMonitor = function(state) {
+            console.log("Updating Monitor with state:", state);
+            if (state.bags) {
+                document.querySelector('#view-monitor .stat-card:nth-child(1) .stat-value').innerText = state.bags.toLocaleString();
+                document.querySelector('#view-monitor .stat-card:nth-child(1) .progress-bar').style.width = Math.min(100, (state.bags / 2000) * 100) + "%";
+            }
+            if (state.temp) {
+                document.querySelector('#view-monitor .stat-card:nth-child(2) .stat-value').innerText = state.temp + "°C";
+            }
+        };
+
+        // Listen for messages from parent if embedded in iframe
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'UPDATE_MONITOR') {
+                window.updateFactoryMonitor(event.data.state);
+            }
+        });
+    </script>
 </body>
 </html>
