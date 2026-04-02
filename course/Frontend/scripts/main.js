@@ -100,18 +100,18 @@ document.addEventListener('DOMContentLoaded', function () {
 					// EXERCISE 5: Daily Schedule ⏰
 					"5-part-a": {
 						hints: [
-							"Store the subject, time, and teacher for the first period in variables.",
-							"Use PRINT to output the schedule entry for period 1."
+							"Store the subject, time, and teacher for the first lesson in variables.",
+							"Use PRINT to output the schedule entry for lesson 1."
 						],
-						answer: "SET \"first period subject\" = \"Maths\"\nSET \"first period time\" = \"9am\"\nSET \"first period teacher\" = \"Mrs Jones\"\nPRINT \"Period 1: \", \"first period subject\", \" at \", \"first period time\", \" with \", \"first period teacher\", \".\""
+						answer: "SET \"first lesson subject\" = \"Maths\"\nSET \"first lesson time\" = \"9am\"\nSET \"first lesson teacher\" = \"Mrs Jones\"\nPRINT \"Lesson 1: \", \"first lesson subject\", \" at \", \"first lesson time\", \" with \", \"first lesson teacher\", \".\""
 					},
 					
 					"5-part-b": {
 						hints: [
-							"Create variables for the second period details and the special activity.",
-							"Use PRINT to display the full schedule for the second period."
+							"Create variables for the second lesson details and the special activity.",
+							"Use PRINT to display the full schedule for the second lesson."
 						],
-						answer: "SET \"second period subject\" = \"Science\"\nSET \"second period time\" = \"10am\"\nSET \"special activity\" = \"Nature Walk\"\nPRINT \"Period 2: \", \"second period subject\", \" at \", \"second period time\", \". Today's activity: \", \"special activity\", \".\""
+						answer: "SET \"second lesson subject\" = \"Science\"\nSET \"second lesson time\" = \"10am\"\nSET \"special activity\" = \"Nature Walk\"\nPRINT \"Lesson 2: \", \"second lesson subject\", \" at \", \"second lesson time\", \". Today's activity: \", \"special activity\", \".\""
 					}
 				}, // updated March 2026
 
@@ -393,8 +393,11 @@ document.addEventListener('DOMContentLoaded', function () {
       pencils: 0,
       kernels: 0,
       bags: 0,
-      temp: 185
+      temp: 185 + Math.floor(Math.random() * 20), // Random starting temp
+      machines: 1
     };
+
+    const vars = {};
 
     console.log = (...args) => {
       captured += args.join(' ') + '\n';
@@ -403,10 +406,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Custom commands for pseudocode interaction
     const SET = (name, value) => {
+      vars[name] = value;
+      const lowerName = name.toLowerCase();
       // Logic to update factoryState if variable matches factory items
-      if (name.includes('pencil')) factoryState.pencils = value;
-      if (name.includes('kernel')) factoryState.kernels = value;
-      if (name.includes('bag')) factoryState.bags = value;
+      if (lowerName.includes('pencil')) factoryState.pencils = value;
+      if (lowerName.includes('kernel')) factoryState.kernels = value;
+      if (lowerName.includes('bag')) factoryState.bags = value;
+      if (lowerName.includes('temp')) factoryState.temp = value;
+      if (lowerName.includes('machine')) factoryState.machines = value;
       return value;
     };
 
@@ -417,10 +424,37 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       // Simple translation for educational pseudocode to executable JS
       let code = codeBox.innerText
-        .replace(/SET\s+"([^"]+)"\s*=\s*(.+)/g, 'var $1 = SET("$1", $2);')
-        .replace(/PRINT\s+(.+)/g, 'PRINT($1);');
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => {
+          // Handle SET "var" = value or SET "var" TO value
+          if (line.startsWith('SET')) {
+            return line.replace(/SET\s+"([^"]+)"\s*(?:=|TO)\s*(.+)/i, (match, name, value) => {
+               return `SET("${name}", ${value})`;
+            });
+          }
+          // Handle PRINT val1, val2
+          if (line.startsWith('PRINT')) {
+            return line.replace(/PRINT\s+(.+)/i, 'PRINT($1)');
+          }
+          return line;
+        })
+        .join(';'); // Use semicolon to separate statements
 
-      eval(code);
+      // We look for "var name" in the pseudocode and replace with vars["var name"]
+      // but only when they're NOT the first argument of SET.
+      // This is still complex, so let's simplify:
+      // replace all "name" with vars["name"] except when it's the first param of SET.
+      let executableCode = code.replace(/"([^"]+)"/g, (match, name, offset, fullString) => {
+          const prev = fullString.substring(0, offset);
+          if (prev.trim().endsWith('SET(')) {
+              return match; // Keep as string for key
+          }
+          return `vars["${name}"]`;
+      });
+
+      eval(executableCode);
       output.textContent = captured || 'Code ran but produced no output.';
 
       // Update System Monitor if it exists in parent or iframe

@@ -40,15 +40,15 @@
         .cube-grid {
             display: grid;
             grid-template-columns: repeat(2, 160px);
-            gap: 30px;
+            gap: 40px;
             perspective: 1200px;
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
         }
 
         .dashboard.app-open .cube-grid {
-            transform: scale(0.5) translateX(-100%);
-            opacity: 0;
-            pointer-events: none;
+            transform: rotateY(-30deg) scale(0.3) translateX(-150%);
+            opacity: 0.5;
         }
 
         .cube {
@@ -57,34 +57,67 @@
             position: relative;
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid var(--glass-border);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow:
-                inset 5px 5px 15px rgba(255, 255, 255, 0.2),
-                inset -5px -5px 15px rgba(0, 0, 0, 0.3),
-                0 15px 35px rgba(0, 0, 0, 0.4);
+                0 20px 40px rgba(0,0,0,0.3),
+                inset 0 0 20px rgba(255,255,255,0.1);
+            transform-style: preserve-3d;
         }
 
-        /* LEGO Studs */
-        .cube::before {
-            content: '';
+        /* LEGO Studs (interactive parts) */
+        .stud-grid {
             position: absolute;
-            top: -10px;
-            left: 20px;
-            width: 30px;
-            height: 15px;
+            top: -15px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 15px;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .stud {
+            width: 35px;
+            height: 18px;
             background: inherit;
-            border-radius: 10px 10px 0 0;
             border: 1px solid var(--glass-border);
             border-bottom: none;
-            box-shadow: 80px 0 0 0 transparent; /* Use multiple if needed */
+            border-radius: 10px 10px 0 0;
+            pointer-events: auto;
+            transition: transform 0.2s;
+            position: relative;
         }
+
+        .stud:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.2);
+        }
+
+        .stud[data-app]::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .stud:hover::after { opacity: 1; }
 
         .cube.monitor::before { box-shadow: 40px 0 0 0 var(--cube-blue), 80px 0 0 0 var(--cube-blue); background: var(--cube-blue); opacity: 0.3; }
         .cube.inventory::before { box-shadow: 40px 0 0 0 var(--cube-yellow), 80px 0 0 0 var(--cube-yellow); background: var(--cube-yellow); opacity: 0.3; }
@@ -181,37 +214,132 @@
         .view.active { display: block; }
 
         /* Monitor Styles */
+        .monitor-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            height: 100%;
+        }
+
         .stat-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
 
         .stat-card {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
             padding: 20px;
             border-radius: 20px;
-            border-left: 5px solid var(--cube-blue);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
         }
 
-        .stat-value { font-size: 2rem; font-weight: 900; margin: 10px 0; }
-        .stat-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--cube-blue);
+        }
+
+        .stat-value { font-size: 2.2rem; font-weight: 900; margin: 10px 0; font-variant-numeric: tabular-nums; }
+        .stat-label { font-size: 0.75rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
 
         .progress-container {
             width: 100%;
-            height: 20px;
+            height: 8px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 4px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .progress-bar {
             height: 100%;
             background: var(--cube-blue);
-            width: 45%;
-            transition: width 1s ease;
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px var(--cube-blue);
         }
+
+        .factory-flow {
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flow-nodes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+            position: relative;
+        }
+
+        .flow-node {
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        .flow-node.active {
+            border-color: var(--cube-green);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+            transform: scale(1.1);
+        }
+
+        .flow-line {
+            position: absolute;
+            height: 2px;
+            background: var(--glass-border);
+            top: 50%;
+            left: 60px;
+            right: 60px;
+            z-index: 1;
+        }
+
+        .flow-line-active {
+            position: absolute;
+            height: 2px;
+            background: var(--cube-green);
+            top: 50%;
+            left: 60px;
+            width: 0%;
+            z-index: 1;
+            transition: width 2s linear;
+        }
+
+        .event-log {
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            height: 150px;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+        }
+
+        .log-entry { margin-bottom: 5px; color: #aaa; }
+        .log-entry.info { color: var(--cube-blue); }
+        .log-entry.success { color: var(--cube-green); }
+        .log-entry.warning { color: var(--cube-yellow); }
 
     </style>
 </head>
@@ -222,18 +350,34 @@
         <!-- Selection Grid -->
         <div class="cube-grid">
             <div class="cube monitor" onclick="openApp('monitor')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Live Metrics"></div>
+                    <div class="stud" data-label="History"></div>
+                </div>
                 <i>📊</i>
                 <span>Monitor</span>
             </div>
             <div class="cube inventory" onclick="openApp('inventory')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Stock"></div>
+                    <div class="stud" data-label="Orders"></div>
+                </div>
                 <i>📦</i>
                 <span>Inventory</span>
             </div>
             <div class="cube production" onclick="openApp('production')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Machines"></div>
+                    <div class="stud" data-label="Queues"></div>
+                </div>
                 <i>🏭</i>
                 <span>Production</span>
             </div>
             <div class="cube assistant" onclick="openApp('assistant')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Knowledge"></div>
+                    <div class="stud" data-label="Support"></div>
+                </div>
                 <i>🤖</i>
                 <span>Assistant</span>
             </div>
@@ -253,25 +397,57 @@
 
                 <!-- System Monitor View -->
                 <div id="view-monitor" class="view">
-                    <p>Live factory metrics and system health.</p>
-                    <div class="stat-grid">
-                        <div class="stat-card">
-                            <div class="stat-label">Bags Produced</div>
-                            <div class="stat-value">1,240</div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 62%;"></div>
+                    <div class="monitor-layout">
+                        <div class="monitor-main">
+                            <div class="stat-grid">
+                                <div class="stat-card" style="--cube-blue: var(--cube-blue)">
+                                    <div class="stat-label">Bags Produced</div>
+                                    <div class="stat-value" id="monitor-bags">1,240</div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar" id="monitor-bags-progress" style="width: 62%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-card" style="--cube-blue: var(--cube-yellow)">
+                                    <div class="stat-label">Kernel Temp</div>
+                                    <div class="stat-value" id="monitor-temp">185°C</div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar" id="monitor-temp-progress" style="width: 85%; background: var(--cube-red);"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-card" style="--cube-blue: var(--cube-green)">
+                                    <div class="stat-label">Active Machines</div>
+                                    <div class="stat-value" id="monitor-machines">3</div>
+                                    <div class="stat-label">All Systems Nominal</div>
+                                </div>
+                                <div class="stat-card" style="--cube-blue: var(--cube-red)">
+                                    <div class="stat-label">Efficiency</div>
+                                    <div class="stat-value" id="monitor-efficiency">94%</div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar" style="width: 94%; background: var(--cube-green);"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="factory-flow" style="margin-top: 20px;">
+                                <div class="stat-label" style="margin-bottom: 15px;">Real-time Production Pipeline</div>
+                                <div class="flow-nodes">
+                                    <div class="flow-node active" id="node-raw" title="Raw Material">🌽</div>
+                                    <div class="flow-node" id="node-pop" title="Popping">🔥</div>
+                                    <div class="flow-node" id="node-season" title="Seasoning">🧂</div>
+                                    <div class="flow-node" id="node-pack" title="Packaging">🛍️</div>
+                                    <div class="flow-line"></div>
+                                    <div class="flow-line-active" id="pipeline-progress"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-label">Kernel Temp</div>
-                            <div class="stat-value">185°C</div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 85%; background: var(--cube-red);"></div>
+
+                        <div class="monitor-side">
+                            <div class="stat-label" style="margin-bottom: 10px;">System Event Log</div>
+                            <div class="event-log" id="event-log">
+                                <div class="log-entry info">[09:00:01] System boot sequence complete.</div>
+                                <div class="log-entry success">[09:05:12] Batch #402 initialized successfully.</div>
+                                <div class="log-entry info">[09:10:45] Connecting to local AI agent...</div>
                             </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">System Load</div>
-                            <div class="stat-value">Low</div>
                         </div>
                     </div>
                 </div>
@@ -345,14 +521,37 @@
         }
 
         // Live Monitor Logic
+        const logEl = document.getElementById('event-log');
+        function addLog(msg, type='info') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            const time = new Date().toLocaleTimeString([], { hour12: false });
+            entry.innerText = `[${time}] ${msg}`;
+            logEl.prepend(entry);
+        }
+
         window.updateFactoryMonitor = function(state) {
             console.log("Updating Monitor with state:", state);
-            if (state.bags) {
-                document.querySelector('#view-monitor .stat-card:nth-child(1) .stat-value').innerText = state.bags.toLocaleString();
-                document.querySelector('#view-monitor .stat-card:nth-child(1) .progress-bar').style.width = Math.min(100, (state.bags / 2000) * 100) + "%";
+
+            if (state.bags !== undefined) {
+                document.getElementById('monitor-bags').innerText = state.bags.toLocaleString();
+                document.getElementById('monitor-bags-progress').style.width = Math.min(100, (state.bags / 2000) * 100) + "%";
+                addLog(`Production update: ${state.bags} bags.`, 'success');
+
+                // Animate pipeline based on bags
+                const progress = (state.bags % 500) / 500 * 100;
+                document.getElementById('pipeline-progress').style.width = progress + "%";
+
+                // Toggle nodes
+                document.getElementById('node-pop').classList.toggle('active', progress > 25);
+                document.getElementById('node-season').classList.toggle('active', progress > 50);
+                document.getElementById('node-pack').classList.toggle('active', progress > 75);
             }
-            if (state.temp) {
-                document.querySelector('#view-monitor .stat-card:nth-child(2) .stat-value').innerText = state.temp + "°C";
+
+            if (state.temp !== undefined) {
+                document.getElementById('monitor-temp').innerText = state.temp + "°C";
+                document.getElementById('monitor-temp-progress').style.width = Math.min(100, (state.temp / 250) * 100) + "%";
+                if (state.temp > 200) addLog(`Warning: High kernel temperature!`, 'warning');
             }
         };
 

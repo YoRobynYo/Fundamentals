@@ -578,14 +578,22 @@ async function main() {
   while (attempt < MAX_ATTEMPTS) {
     attempt++;
     console.log(`\n🔄 Attempt ${attempt} of ${MAX_ATTEMPTS}`);
-    console.log(`   ✍️  Building HTML...`);
 
-    try {
-      html = await buildHTML(moduleName, foundationContent, goldStandard, specContent, helperContent);
-    } catch (e) {
-      console.log(`   ❌ Build error: ${e.message}`);
-      await sleep(DELAY_BETWEEN_ATTEMPTS);
-      continue;
+    // If file exists, skip build and just audit/validate the existing file
+    const folder = MODULE_FOLDER_MAP[moduleName];
+    const indexPath = path.join(MODULES_DIR, folder, 'index.html');
+    if (fs.existsSync(indexPath)) {
+      console.log(`   📄 File exists, skipping build and performing audit...`);
+      html = fs.readFileSync(indexPath, 'utf8');
+    } else {
+      console.log(`   ✍️  Building HTML...`);
+      try {
+        html = await buildHTML(moduleName, foundationContent, goldStandard, specContent, helperContent);
+      } catch (e) {
+        console.log(`   ❌ Build error: ${e.message}`);
+        await sleep(DELAY_BETWEEN_ATTEMPTS);
+        continue;
+      }
     }
 
     console.log(`   🔍 Programmatic Auditing...`);
