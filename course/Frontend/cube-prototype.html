@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popcorn Factory Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cube-yellow: #f1c40f;
+            --cube-blue: #3498db;
+            --cube-green: #2ecc71;
+            --cube-red: #e74c3c;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        .dashboard {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* The Grid of Cubes */
+        .cube-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 160px);
+            gap: 40px;
+            perspective: 1200px;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .dashboard.app-open .cube-grid {
+            transform: rotateY(-30deg) scale(0.3) translateX(-150%);
+            opacity: 0.5;
+        }
+
+        .cube {
+            width: 160px;
+            height: 160px;
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 20px 40px rgba(0,0,0,0.3),
+                inset 0 0 20px rgba(255,255,255,0.1);
+            transform-style: preserve-3d;
+        }
+
+        /* LEGO Studs (interactive parts) */
+        .stud-grid {
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 15px;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .stud {
+            width: 35px;
+            height: 18px;
+            background: inherit;
+            border: 1px solid var(--glass-border);
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+            pointer-events: auto;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .stud:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.2);
+        }
+
+        .stud[data-app]::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .stud:hover::after { opacity: 1; }
+
+        .cube.monitor::before { box-shadow: 40px 0 0 0 var(--cube-blue), 80px 0 0 0 var(--cube-blue); background: var(--cube-blue); opacity: 0.3; }
+        .cube.inventory::before { box-shadow: 40px 0 0 0 var(--cube-yellow), 80px 0 0 0 var(--cube-yellow); background: var(--cube-yellow); opacity: 0.3; }
+        .cube.production::before { box-shadow: 40px 0 0 0 var(--cube-green), 80px 0 0 0 var(--cube-green); background: var(--cube-green); opacity: 0.3; }
+        .cube.assistant::before { box-shadow: 40px 0 0 0 var(--cube-red), 80px 0 0 0 var(--cube-red); background: var(--cube-red); opacity: 0.3; }
+
+        .cube:hover {
+            transform: translateY(-15px) rotateX(10deg) rotateY(10deg);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .cube i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .cube span {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Cube Variants */
+        .cube.monitor { color: var(--cube-blue); border-bottom: 4px solid var(--cube-blue); }
+        .cube.inventory { color: var(--cube-yellow); border-bottom: 4px solid var(--cube-yellow); }
+        .cube.production { color: var(--cube-green); border-bottom: 4px solid var(--cube-green); }
+        .cube.assistant { color: var(--cube-red); border-bottom: 4px solid var(--cube-red); }
+
+        /* The App Container */
+        .app-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .dashboard.app-open .app-overlay {
+            transform: translateY(0);
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .app-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .close-app {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .close-app:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .app-content {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Specific App Views */
+        .view { display: none; }
+        .view.active { display: block; }
+
+        /* Monitor Styles */
+        .monitor-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--cube-blue);
+        }
+
+        .stat-value { font-size: 2.2rem; font-weight: 900; margin: 10px 0; font-variant-numeric: tabular-nums; }
+        .stat-label { font-size: 0.75rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--cube-blue);
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px var(--cube-blue);
+        }
+
+        .factory-flow {
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flow-nodes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+            position: relative;
+        }
+
+        .flow-node {
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        .flow-node.active {
+            border-color: var(--cube-green);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+            transform: scale(1.1);
+        }
+
+        .flow-line {
+            position: absolute;
+            height: 2px;
+            background: var(--glass-border);
+            top: 50%;
+            left: 60px;
+            right: 60px;
+            z-index: 1;
+        }
+
+        .flow-line-active {
+            position: absolute;
+            height: 2px;
+            background: var(--cube-green);
+            top: 50%;
+            left: 60px;
+            width: 0%;
+            z-index: 1;
+            transition: width 2s linear;
+        }
+
+        .event-log {
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            height: 150px;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+        }
+
+        .log-entry { margin-bottom: 5px; color: #aaa; }
+        .log-entry.info { color: var(--cube-blue); }
+        .log-entry.success { color: var(--cube-green); }
+        .log-entry.warning { color: var(--cube-yellow); }
+
+    </style>
+</head>
+<body>
+
+    <div class="dashboard" id="dashboard">
+
+        <!-- Selection Grid -->
+        <div class="cube-grid">
+            <div class="cube monitor" onclick="openApp('monitor')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Live Metrics"></div>
+                    <div class="stud" data-label="History"></div>
+                </div>
+                <i>📊</i>
+                <span>Monitor</span>
+            </div>
+            <div class="cube inventory" onclick="openApp('inventory')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Stock"></div>
+                    <div class="stud" data-label="Orders"></div>
+                </div>
+                <i>📦</i>
+                <span>Inventory</span>
+            </div>
+            <div class="cube production" onclick="openApp('production')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Machines"></div>
+                    <div class="stud" data-label="Queues"></div>
+                </div>
+                <i>🏭</i>
+                <span>Production</span>
+            </div>
+            <div class="cube assistant" onclick="openApp('assistant')">
+                <div class="stud-grid">
+                    <div class="stud" data-label="Knowledge"></div>
+                    <div class="stud" data-label="Support"></div>
+                </div>
+                <i>🤖</i>
+                <span>Assistant</span>
+            </div>
+        </div>
+
+        <!-- Fullscreen App View -->
+        <div class="app-overlay" id="appOverlay">
+            <div class="app-header">
+                <h2 class="app-title" id="appTitle">App Name</h2>
+                <div style="display: flex; gap: 10px;">
+                    <button class="close-app" id="minimizeApp" style="display: none;">Minimize (Esc) ↙</button>
+                    <button class="close-app" onclick="closeApp()">Close App ✕</button>
+                </div>
+            </div>
+
+            <div class="app-content">
+
+                <!-- System Monitor View -->
+                <div id="view-monitor" class="view">
+                    <div class="monitor-layout">
+                        <div class="monitor-main">
+                            <div class="stat-grid">
+                                <div class="stat-card" style="--cube-blue: var(--cube-blue)">
+                                    <div class="stat-label">Bags Produced</div>
+                                    <div class="stat-value" id="monitor-bags">1,240</div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar" id="monitor-bags-progress" style="width: 62%;"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-card" style="--cube-blue: var(--cube-yellow)">
+                                    <div class="stat-label">Kernel Temp</div>
+                                    <div class="stat-value" id="monitor-temp">185°C</div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar" id="monitor-temp-progress" style="width: 85%; background: var(--cube-red);"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-card" style="--cube-blue: var(--cube-green)">
+                                    <div class="stat-label">Active Machines</div>
+                                    <div class="stat-value" id="monitor-machines">3</div>
+                                    <div class="stat-label">All Systems Nominal</div>
+                                </div>
+                                <div class="stat-card" style="--cube-blue: var(--cube-red)">
+                                    <div class="stat-label">Efficiency</div>
+                                    <div class="stat-value" id="monitor-efficiency">94%</div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar" style="width: 94%; background: var(--cube-green);"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="factory-flow" style="margin-top: 20px;">
+                                <div class="stat-label" style="margin-bottom: 15px;">Real-time Production Pipeline</div>
+                                <div class="flow-nodes">
+                                    <div class="flow-node active" id="node-raw" title="Raw Material">🌽</div>
+                                    <div class="flow-node" id="node-pop" title="Popping">🔥</div>
+                                    <div class="flow-node" id="node-season" title="Seasoning">🧂</div>
+                                    <div class="flow-node" id="node-pack" title="Packaging">🛍️</div>
+                                    <div class="flow-line"></div>
+                                    <div class="flow-line-active" id="pipeline-progress"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="monitor-side">
+                            <div class="stat-label" style="margin-bottom: 10px;">System Event Log</div>
+                            <div class="event-log" id="event-log">
+                                <div class="log-entry info">[09:00:01] System boot sequence complete.</div>
+                                <div class="log-entry success">[09:05:12] Batch #402 initialized successfully.</div>
+                                <div class="log-entry info">[09:10:45] Connecting to local AI agent...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory View -->
+                <div id="view-inventory" class="view">
+                    <p>Current stock levels and storage mapping.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">🌽 Kernels: 5,000kg (Bin A)</li>
+                        <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">🧂 Salt: 200kg (Shelf 2)</li>
+                        <li style="padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);">🍯 Butter: 450L (Fridge 1)</li>
+                        <li style="padding: 15px;">🛍️ Empty Bags: 15,000 units</li>
+                    </ul>
+                </div>
+
+                <!-- Production View -->
+                <div id="view-production" class="view">
+                    <p>Machine controls and batch sequencing.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="background: rgba(46, 204, 113, 0.2); padding: 20px; border-radius: 15px; border: 1px solid var(--cube-green);">
+                            <h4>Machine 1: Popping</h4>
+                            <p>Status: RUNNING</p>
+                        </div>
+                        <div style="background: rgba(231, 76, 60, 0.2); padding: 20px; border-radius: 15px; border: 1px solid var(--cube-red);">
+                            <h4>Machine 2: Flavouring</h4>
+                            <p>Status: STANDBY</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assistant View -->
+                <div id="view-assistant" class="view">
+                    <p>Ask Koby for help with your pseudocode.</p>
+                    <div style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px; padding: 20px; font-style: italic;">
+                        "Hey! I'm Koby. You can click the chat button on any module page to talk to me properly, but I'm monitoring everything from here too!"
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const dashboard = document.getElementById('dashboard');
+        const appOverlay = document.getElementById('appOverlay');
+        const appTitle = document.getElementById('appTitle');
+
+        function openApp(appName) {
+            // Set Title
+            appTitle.innerText = appName.charAt(0).toUpperCase() + appName.slice(1) + " App";
+
+            // Switch View
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + appName).classList.add('active');
+
+            // Open Overlay
+            dashboard.classList.add('app-open');
+        }
+
+        function closeApp() {
+            dashboard.classList.remove('app-open');
+            // Notify parent to close iframe if we are minimizing
+            window.parent.postMessage({ type: 'CLOSE_DASHBOARD' }, '*');
+        }
+
+        // Show minimize if in iframe
+        if (window.self !== window.top) {
+            document.getElementById('minimizeApp').style.display = 'block';
+            document.getElementById('minimizeApp').onclick = closeApp;
+        }
+
+        // Live Monitor Logic
+        const logEl = document.getElementById('event-log');
+        function addLog(msg, type='info') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            const time = new Date().toLocaleTimeString([], { hour12: false });
+            entry.innerText = `[${time}] ${msg}`;
+            logEl.prepend(entry);
+        }
+
+        window.updateFactoryMonitor = function(state) {
+            console.log("Updating Monitor with state:", state);
+
+            if (state.bags !== undefined) {
+                document.getElementById('monitor-bags').innerText = state.bags.toLocaleString();
+                document.getElementById('monitor-bags-progress').style.width = Math.min(100, (state.bags / 2000) * 100) + "%";
+                addLog(`Production update: ${state.bags} bags.`, 'success');
+
+                // Animate pipeline based on bags
+                const progress = (state.bags % 500) / 500 * 100;
+                document.getElementById('pipeline-progress').style.width = progress + "%";
+
+                // Toggle nodes
+                document.getElementById('node-pop').classList.toggle('active', progress > 25);
+                document.getElementById('node-season').classList.toggle('active', progress > 50);
+                document.getElementById('node-pack').classList.toggle('active', progress > 75);
+            }
+
+            if (state.temp !== undefined) {
+                document.getElementById('monitor-temp').innerText = state.temp + "°C";
+                document.getElementById('monitor-temp-progress').style.width = Math.min(100, (state.temp / 250) * 100) + "%";
+                if (state.temp > 200) addLog(`Warning: High kernel temperature!`, 'warning');
+            }
+        };
+
+        // Listen for messages from parent if embedded in iframe
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'UPDATE_MONITOR') {
+                window.updateFactoryMonitor(event.data.state);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "bannedWords": [
+    { "word": "period", "reason": "Banned — use 'lesson', 'week', 'time', 'stretch' etc" },
+    { "word": "periods", "reason": "Banned — use 'lessons' etc" },
+    { "word": "students", "reason": "Use 'children' instead" },
+    { "word": "student", "reason": "Use 'child' instead" },
+    { "word": "color", "reason": "American spelling — use 'colour'" },
+    { "word": "center", "reason": "American spelling — use 'centre'" },
+    { "word": "organize", "reason": "American spelling — use 'organise'" },
+    { "word": "recognize", "reason": "American spelling — use 'recognise'" },
+    { "word": "practice", "reason": "American verb — use 'practise'" },
+    { "word": "program", "reason": "Use 'code' or 'coding' instead" },
+    { "word": "programming", "reason": "Use 'coding' instead" },
+    { "word": "math", "reason": "American spelling — use 'maths'" },
+    { "word": "kids", "reason": "Informal — use 'children'" },
+    { "word": "console", "reason": "Technical jargon — do not use" },
+    { "word": "let ", "reason": "JS syntax — use SET in pseudocode" },
+    { "word": "const ", "reason": "JS syntax — use pseudocode" },
+    { "word": "var ", "reason": "JS syntax — use pseudocode" },
+    { "word": "childName", "reason": "camelCase variable — use 'child name' in quotes" }
+  ],
+  "idPatterns": {
+    "codeBlock": "{section}-ex{n}-part-{part}",
+    "hintPara": "{section}-hint{n}-part-{part}",
+    "outputBlock": "{section}-output{n}-part-{part}",
+    "answerBlock": "{section}-answer{n}-part-{part}",
+    "dataEx": "{n}-part-{part}"
+  }
+}

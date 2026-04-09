@@ -16,27 +16,12 @@ const fs = require('fs');
 const path = require('path');
 
 const MODULES_DIR = path.join(__dirname, 'modules');
+const RULES = JSON.parse(fs.readFileSync(path.join(__dirname, 'course-rules.json'), 'utf8'));
 
 // ---------------------------------------------------------------
 // BANNED WORDS — with reason
 // ---------------------------------------------------------------
-const BANNED = [
-  { word: 'period',      reason: 'Banned — use "lesson", "week", "time", "stretch" etc' },
-  { word: 'periods',     reason: 'Banned — use "lessons" etc' },
-  { word: 'students',    reason: 'Use "children" instead' },
-  { word: 'student',     reason: 'Use "child" instead' },
-  { word: 'color',       reason: 'American spelling — use "colour"' },
-  { word: 'center',      reason: 'American spelling — use "centre"' },
-  { word: 'organize',    reason: 'American spelling — use "organise"' },
-  { word: 'recognize',   reason: 'American spelling — use "recognise"' },
-  { word: 'practice',    reason: 'American verb — use "practise"' },
-  { word: 'program',     reason: 'Use "code" or "coding" instead' },
-  { word: 'programming', reason: 'Use "coding" instead' },
-  { word: 'let ',        reason: 'JS syntax — use SET in pseudocode' },
-  { word: 'const ',      reason: 'JS syntax — use pseudocode' },
-  { word: 'var ',        reason: 'JS syntax — use pseudocode' },
-  { word: 'childName',   reason: 'camelCase variable — use "child name" in quotes' },
-];
+const BANNED = RULES.bannedWords;
 
 // ---------------------------------------------------------------
 // HELPERS
@@ -56,6 +41,8 @@ function auditFile(filePath) {
   const lines = fs.readFileSync(filePath, 'utf8').split('\n');
   const findings = [];
   let inScriptTag = false;
+  let inGoldStandard = false;
+  let inCommentBlock = false;
 
   lines.forEach((line, i) => {
     const lineNum = i + 1;
@@ -67,8 +54,15 @@ function auditFile(filePath) {
     if (trimmed.startsWith('</script>')) { inScriptTag = false; return; }
     if (inScriptTag) return;
 
-    // Is this line an HTML comment?
-    const isComment = trimmed.startsWith('<!--');
+    // Track Multi-line HTML Comments
+    if (trimmed.startsWith('<!--')) { inCommentBlock = true; }
+    if (inCommentBlock && trimmed.includes('-->')) { inCommentBlock = false; return; }
+    if (inCommentBlock) return;
+
+    // Track GOLD STANDARD block — skip it (contains examples of banned words)
+    if (trimmed.includes('GOLD STANDARD EXERCISE FILE')) { inGoldStandard = true; return; }
+    if (inGoldStandard && trimmed.includes('====') && trimmed.endsWith('-->')) { inGoldStandard = false; return; }
+    if (inGoldStandard) return;
 
     BANNED.forEach(({ word, reason }) => {
 
@@ -76,6 +70,8 @@ function auditFile(filePath) {
       if (word === 'color' && (line.includes('background-color') || line.includes('-color') || line.includes('color:'))) return;
       if (word === 'center' && line.includes('text-align')) return;
 
+      // JS Reserved Words — skip if in a code-block div (those are pseudocode examples)
+      if ((word === 'let ' || word === 'const ' || word === 'var ') && trimmed.includes('class="code-block"')) return;
 
       // For 'let ' — only flag real JS let, not British English phrases
       if (word === 'let ') {
@@ -89,10 +85,13 @@ function auditFile(filePath) {
         return;
       }
 
-      // For 'var ' and 'const ' — skip if in a comment
-      if ((word === 'var ' || word === 'const ') && isComment) return;
-
       if (lower.includes(word.toLowerCase())) {
+        // Exception for "maths" which contains "math"
+        if (word === 'math' && lower.includes('maths')) {
+          const occurrences = (lower.match(/math/g) || []).length;
+          const mathsOccurrences = (lower.match(/maths/g) || []).length;
+          if (occurrences === mathsOccurrences) return;
+        }
         findings.push({ lineNum, word, reason, line: trimmed });
       }
     });

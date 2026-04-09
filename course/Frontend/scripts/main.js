@@ -100,18 +100,18 @@ document.addEventListener('DOMContentLoaded', function () {
 					// EXERCISE 5: Daily Schedule ⏰
 					"5-part-a": {
 						hints: [
-							"Store the subject, time, and teacher for the first period in variables.",
-							"Use PRINT to output the schedule entry for period 1."
+							"Store the subject, time, and teacher for the first lesson in variables.",
+							"Use PRINT to output the schedule entry for lesson 1."
 						],
-						answer: "SET \"first period subject\" = \"Maths\"\nSET \"first period time\" = \"9am\"\nSET \"first period teacher\" = \"Mrs Jones\"\nPRINT \"Period 1: \", \"first period subject\", \" at \", \"first period time\", \" with \", \"first period teacher\", \".\""
+						answer: "SET \"first lesson subject\" = \"Maths\"\nSET \"first lesson time\" = \"9am\"\nSET \"first lesson teacher\" = \"Mrs Jones\"\nPRINT \"Lesson 1: \", \"first lesson subject\", \" at \", \"first lesson time\", \" with \", \"first lesson teacher\", \".\""
 					},
 					
 					"5-part-b": {
 						hints: [
-							"Create variables for the second period details and the special activity.",
-							"Use PRINT to display the full schedule for the second period."
+							"Create variables for the second lesson details and the special activity.",
+							"Use PRINT to display the full schedule for the second lesson."
 						],
-						answer: "SET \"second period subject\" = \"Science\"\nSET \"second period time\" = \"10am\"\nSET \"special activity\" = \"Nature Walk\"\nPRINT \"Period 2: \", \"second period subject\", \" at \", \"second period time\", \". Today's activity: \", \"special activity\", \".\""
+						answer: "SET \"second lesson subject\" = \"Science\"\nSET \"second lesson time\" = \"10am\"\nSET \"special activity\" = \"Nature Walk\"\nPRINT \"Lesson 2: \", \"second lesson subject\", \" at \", \"second lesson time\", \". Today's activity: \", \"special activity\", \".\""
 					}
 				}, // updated March 2026
 
@@ -387,14 +387,86 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let captured = '';
     const oldLog = console.log;
+
+    // Virtual Factory State for Monitor
+    const factoryState = {
+      pencils: 0,
+      kernels: 0,
+      bags: 0,
+      temp: 185 + Math.floor(Math.random() * 20), // Random starting temp
+      machines: 1
+    };
+
+    const vars = {};
+
     console.log = (...args) => {
       captured += args.join(' ') + '\n';
       oldLog(...args);
     };
 
+    // Custom commands for pseudocode interaction
+    const SET = (name, value) => {
+      vars[name] = value;
+      const lowerName = name.toLowerCase();
+      // Logic to update factoryState if variable matches factory items
+      if (lowerName.includes('pencil')) factoryState.pencils = value;
+      if (lowerName.includes('kernel')) factoryState.kernels = value;
+      if (lowerName.includes('bag')) factoryState.bags = value;
+      if (lowerName.includes('temp')) factoryState.temp = value;
+      if (lowerName.includes('machine')) factoryState.machines = value;
+      return value;
+    };
+
+    const PRINT = (...args) => {
+      console.log(...args);
+    };
+
     try {
-      eval(codeBox.innerText);
+      // Simple translation for educational pseudocode to executable JS
+      let code = codeBox.innerText
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => {
+          // Handle SET "var" = value or SET "var" TO value
+          if (line.startsWith('SET')) {
+            return line.replace(/SET\s+"([^"]+)"\s*(?:=|TO)\s*(.+)/i, (match, name, value) => {
+               return `SET("${name}", ${value})`;
+            });
+          }
+          // Handle PRINT val1, val2
+          if (line.startsWith('PRINT')) {
+            return line.replace(/PRINT\s+(.+)/i, 'PRINT($1)');
+          }
+          return line;
+        })
+        .join(';'); // Use semicolon to separate statements
+
+      // We look for "var name" in the pseudocode and replace with vars["var name"]
+      // but only when they're NOT the first argument of SET.
+      // This is still complex, so let's simplify:
+      // replace all "name" with vars["name"] except when it's the first param of SET.
+      let executableCode = code.replace(/"([^"]+)"/g, (match, name, offset, fullString) => {
+          const prev = fullString.substring(0, offset);
+          if (prev.trim().endsWith('SET(')) {
+              return match; // Keep as string for key
+          }
+          return `vars["${name}"]`;
+      });
+
+      eval(executableCode);
       output.textContent = captured || 'Code ran but produced no output.';
+
+      // Update System Monitor if it exists in parent or iframe
+      if (window.updateFactoryMonitor) {
+        window.updateFactoryMonitor(factoryState);
+      }
+
+      // Also send to iframe if it's open
+      const iframe = document.querySelector('.dashboard-iframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'UPDATE_MONITOR', state: factoryState }, '*');
+      }
     } catch (err) {
       output.textContent = err.message;
     }
@@ -437,5 +509,42 @@ document.addEventListener('DOMContentLoaded', function () {
       // We pass the string from data-ex, not a number
       resetExercise(btn.dataset.section, btn.dataset.ex);
     });
-  }); 
+  });
+
+  // Dashboard Integration
+  function injectDashboard() {
+    const dashboardContainer = document.createElement('div');
+    dashboardContainer.className = 'dashboard-iframe-container';
+    dashboardContainer.id = 'dashboardContainer';
+    dashboardContainer.innerHTML = `
+      <iframe src="../../cube-prototype.html" class="dashboard-iframe" id="dashboardIframe"></iframe>
+    `;
+    document.body.appendChild(dashboardContainer);
+
+    const miniDashboard = document.createElement('div');
+    miniDashboard.className = 'mini-dashboard';
+    miniDashboard.innerHTML = `
+      <div class="mini-cube" title="Open Dashboard" onclick="document.getElementById('dashboardContainer').classList.add('active')">📊</div>
+    `;
+    document.body.appendChild(miniDashboard);
+
+    // Close dashboard when pressing Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dashboardContainer.classList.remove('active');
+      }
+    });
+
+    // Handle messages from dashboard iframe
+    window.addEventListener('message', (e) => {
+      if (e.data.type === 'CLOSE_DASHBOARD') {
+        dashboardContainer.classList.remove('active');
+      }
+    });
+  }
+
+  // Only inject if in a module page (not index.html)
+  if (window.location.pathname.includes('/modules/')) {
+    injectDashboard();
+  }
 }); 

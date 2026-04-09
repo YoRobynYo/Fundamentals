@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MAIN_TEMPLATE_DIR = path.join(__dirname, 'mainTemplate');
+const RULES = JSON.parse(fs.readFileSync(path.join(__dirname, 'course-rules.json'), 'utf8'));
 const OLLAMA_URL = 'http://localhost:11434/api/generate';
 const BUILDER_MODEL = 'qwen2.5-coder:7b';
 const VALIDATOR_MODEL = 'qwen2.5-coder:7b'; // Temporary - same as builder to reduce memory
@@ -92,23 +93,17 @@ function agentChunker(content) {
 // Fixes one chunk at a time
 // =============================================================
 async function agentFixer(chunk, rules, isRuleSection) {
+  const bannedInstructions = RULES.bannedWords
+    .map(b => `- "${b.word.trim()}" -> ${b.reason}`)
+    .join('\n');
+
   const prompt = `You are fixing a section of a children's coding course foundation file.
 
 RULES TO FOLLOW:
 ${rules}
 
 BANNED WORDS — fix these:
-- "students" -> "children"
-- "student" -> "child"
-- "period" (school) -> "lesson"
-- "program" (computer) -> "code"
-- "programming" -> "coding"
-- "practice" (verb) -> "practise"
-- "color" -> "colour" (NOT in CSS properties like color: or background-color)
-- "organize" -> "organise"
-- "recognize" -> "recognise"
-- "center" -> "centre" (NOT in CSS like text-align: center)
-- "math" -> "maths"
+${bannedInstructions}
 
 ${isRuleSection ? `IMPORTANT: After RULE 6, add this new section exactly:
 
@@ -164,14 +159,47 @@ async function agentValidator(original, fixed, chunkIndex) {
   const issues = [];
   const lines = fixed.split('\n');
   
+  const BANNED_LIST = RULES.bannedWords;
+  let inCommentBlock = false;
+
   lines.forEach((line, i) => {
     const lower = line.toLowerCase();
-    const isComment = line.trim().startsWith('<!--');
-    const inScript = false;
+    const trimmed = line.trim();
+
+    // Track Multi-line HTML Comments
+    if (trimmed.startsWith('<!--')) { inCommentBlock = true; }
+    if (inCommentBlock && trimmed.includes('-->')) { inCommentBlock = false; return; }
+    if (inCommentBlock) return;
+
+    // Skip lines that look like they are part of a rules table or mapping
+    const isExempt = line.includes('|') || line.includes('->');
     
-    if (!isComment) {
-      if (lower.includes('students') && !line.includes('|')) issues.push(`Line ${i+1}: "students" still present`);
-      if (lower.includes(' period') && !line.includes('lesson') && !line.includes('|')) issues.push(`Line ${i+1}: "period" still present`);
+    if (!isExempt) {
+      BANNED_LIST.forEach(({ word, reason }) => {
+        const lowerWord = word.toLowerCase();
+
+        // For 'let ' — only flag real JS let, not British English phrases
+        if (lowerWord === 'let ') {
+          const letMatches = lower.match(/\blet\s+/g) || [];
+          const englishLetMatches = lower.match(/\blet\s+(us|anyone|them|me|her|him|it|the|a|an)\b/g) || [];
+          const wontLetMatches = lower.match(/\b(won't|will not|cannot|can't)\s+let\b/g) || [];
+          const genuineJS = letMatches.length - englishLetMatches.length - wontLetMatches.length;
+          if (genuineJS > 0) {
+            issues.push(`Line ${i+1}: "let " still present`);
+          }
+          return;
+        }
+
+        if (lower.includes(lowerWord)) {
+          // Exception for "maths" which contains "math"
+          if (lowerWord === 'math' && lower.includes('maths')) {
+            const occurrences = (lower.match(/math/g) || []).length;
+            const mathsOccurrences = (lower.match(/maths/g) || []).length;
+            if (occurrences === mathsOccurrences) return;
+          }
+          issues.push(`Line ${i+1}: "${word}" still present`);
+        }
+      });
     }
   });
 

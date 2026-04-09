@@ -21,6 +21,8 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+const RULES = JSON.parse(fs.readFileSync(path.join(__dirname, 'course-rules.json'), 'utf8'));
+
 // --- CONFIG ---
 const MAIN_TEMPLATE_DIR = path.join(__dirname, 'mainTemplate');
 const MODULES_DIR = path.join(__dirname, 'modules');
@@ -37,7 +39,7 @@ const FOUNDATION_FILES = [
 ];
 
 // Gold standard HTML — the structure every exercise must match
-const GOLD_STANDARD_FILE = 'MODULE-0-EXERCISE-GOLD-STANDARD.html';
+const GOLD_STANDARD_FILE = '4-MODULE-0-EXERCISE-GOLD-STANDARD.html';
 
 // Module name → output folder mapping
 const MODULE_FOLDER_MAP = {
@@ -277,6 +279,93 @@ async function callValidator(prompt) {
   }
 }
 
+// --- PROGRAMMATIC AUDIT ---
+function programmaticAudit(html, moduleName) {
+  const BANNED = RULES.bannedWords;
+
+  const lines = html.split('\n');
+  const issues = [];
+  let inScriptTag = false;
+  let inGoldStandard = false;
+  let inCommentBlock = false;
+
+  lines.forEach((line, i) => {
+    const lineNum = i + 1;
+    const lower = line.toLowerCase();
+    const trimmed = line.trim();
+
+    // Track <script> blocks — skip them entirely (real JS lives here)
+    if (trimmed.startsWith('<script')) { inScriptTag = true; return; }
+    if (trimmed.startsWith('</script>')) { inScriptTag = false; return; }
+    if (inScriptTag) return;
+
+    // Track Multi-line HTML Comments
+    if (trimmed.startsWith('<!--')) { inCommentBlock = true; }
+    if (inCommentBlock && trimmed.includes('-->')) { inCommentBlock = false; return; }
+    if (inCommentBlock) return;
+
+    // Track GOLD STANDARD block — skip it (contains examples of banned words)
+    if (trimmed.includes('GOLD STANDARD EXERCISE FILE')) { inGoldStandard = true; return; }
+    if (inGoldStandard && trimmed.includes('====') && trimmed.endsWith('-->')) { inGoldStandard = false; return; }
+    if (inGoldStandard) return;
+
+    BANNED.forEach(({ word, reason }) => {
+
+      // CSS exceptions — these are valid CSS, not English spelling
+      if (word === 'color' && (line.includes('background-color') || line.includes('-color') || line.includes('color:'))) return;
+      if (word === 'center' && line.includes('text-align')) return;
+
+      // JS Reserved Words — skip if in a code-block div (those are pseudocode examples)
+      if ((word === 'let ' || word === 'const ' || word === 'var ') && trimmed.includes('class="code-block"')) return;
+
+      // For 'let ' — only flag real JS let, not British English phrases
+      if (word === 'let ') {
+        const letMatches = lower.match(/\blet\s+/g) || [];
+        const englishLetMatches = lower.match(/\blet\s+(us|anyone|them|me|her|him|it|the|a|an)\b/g) || [];
+        const wontLetMatches = lower.match(/\b(won't|will not|cannot|can't)\s+let\b/g) || [];
+        const genuineJS = letMatches.length - englishLetMatches.length - wontLetMatches.length;
+        if (genuineJS > 0) {
+          issues.push(`Line ${lineNum}: "let " — ${reason}`);
+        }
+        return;
+      }
+
+      if (lower.includes(word.toLowerCase())) {
+        // Exception for "maths" which contains "math"
+        if (word === 'math' && lower.includes('maths')) {
+          const occurrences = (lower.match(/math/g) || []).length;
+          const mathsOccurrences = (lower.match(/maths/g) || []).length;
+          if (occurrences === mathsOccurrences) return;
+        }
+        issues.push(`Line ${lineNum}: "${word}" — ${reason}`);
+      }
+    });
+  });
+
+  // Structural Validation
+  const section = getSectionName(moduleName);
+  const patterns = RULES.idPatterns;
+
+  for (let ex = 1; ex <= 5; ex++) {
+    ['a', 'b'].forEach(part => {
+      const codeId = patterns.codeBlock.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const hintId = patterns.hintPara.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const outputId = patterns.outputBlock.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const answerId = patterns.answerBlock.replace('{section}', section).replace('{n}', ex).replace('{part}', part);
+      const dataEx = patterns.dataEx.replace('{n}', ex).replace('{part}', part);
+
+      if (!html.includes(`id="${codeId}"`)) issues.push(`Missing or incorrect ID for code block: ${codeId}`);
+      if (!html.includes(`id="${hintId}"`)) issues.push(`Missing or incorrect ID for hint para: ${hintId}`);
+      if (!html.includes(`id="${outputId}"`)) issues.push(`Missing or incorrect ID for output block: ${outputId}`);
+      if (!html.includes(`id="${answerId}"`)) issues.push(`Missing or incorrect ID for answer block: ${answerId}`);
+      if (!html.includes(`data-section="${section}"`)) issues.push(`Missing or incorrect data-section: ${section}`);
+      if (!html.includes(`data-ex="${dataEx}"`)) issues.push(`Missing or incorrect data-ex: ${dataEx}`);
+    });
+  }
+
+  return issues;
+}
+
 
 // --- BUILD HTML ---
 
@@ -302,12 +391,7 @@ ${specContent}
 === BUILD INSTRUCTIONS ===
 
 BRITISH ENGLISH ONLY — CRITICAL:
-- lessons (NOT periods)
-- colour (NOT color)
-- organise (NOT organize)
-- maths (NOT math)
-- children (NOT students or kids)
-- practise (NOT practice as a verb)
+${RULES.bannedWords.map(b => `- ${b.reason} (NOT ${b.word.trim()})`).join('\n')}
 
 PSEUDOCODE RULES — CRITICAL:
 - Exercise 1 Part A & Part B → SHOW pseudocode in a code-example div
@@ -332,11 +416,11 @@ EVERY PART must have ALL of these in order:
 - <pre class="answer-block"> with correct id
 
 CRITICAL ID PATTERN — NEVER BREAK THIS:
-- code block:   id="[section]-ex[N]-part-[a/b]"
-- hint button:  data-section="[section]" data-ex="[N]-part-[a/b]"
-- hint para:    id="[section]-hint[N]-part-[a/b]"
-- output block: id="[section]-output[N]-part-[a/b]"
-- answer block: id="[section]-answer[N]-part-[a/b]"
+- code block:   id="${RULES.idPatterns.codeBlock.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- hint button:  data-section="[section]" data-ex="${RULES.idPatterns.dataEx.replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- hint para:    id="${RULES.idPatterns.hintPara.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- output block: id="${RULES.idPatterns.outputBlock.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
+- answer block: id="${RULES.idPatterns.answerBlock.replace('{section}', '[section]').replace('{n}', '[N]').replace('{part}', '[a/b]')}"
 
 SECTION NAMES — EXACT — READ THIS VERY CAREFULLY:
 - variables        (Module 1)
@@ -494,21 +578,38 @@ async function main() {
   while (attempt < MAX_ATTEMPTS) {
     attempt++;
     console.log(`\n🔄 Attempt ${attempt} of ${MAX_ATTEMPTS}`);
-    console.log(`   ✍️  Building HTML...`);
 
-    try {
-      html = await buildHTML(moduleName, foundationContent, goldStandard, specContent, helperContent);
-    } catch (e) {
-      console.log(`   ❌ Build error: ${e.message}`);
-      await sleep(DELAY_BETWEEN_ATTEMPTS);
-      continue;
+    // If file exists, skip build and just audit/validate the existing file
+    const folder = MODULE_FOLDER_MAP[moduleName];
+    const indexPath = path.join(MODULES_DIR, folder, 'index.html');
+    if (fs.existsSync(indexPath)) {
+      console.log(`   📄 File exists, skipping build and performing audit...`);
+      html = fs.readFileSync(indexPath, 'utf8');
+    } else {
+      console.log(`   ✍️  Building HTML...`);
+      try {
+        html = await buildHTML(moduleName, foundationContent, goldStandard, specContent, helperContent);
+      } catch (e) {
+        console.log(`   ❌ Build error: ${e.message}`);
+        await sleep(DELAY_BETWEEN_ATTEMPTS);
+        continue;
+      }
     }
 
-    console.log(`   🔍 Validating...`);
-    try {
-      validationResult = await validateHTML(html, moduleName);
-    } catch (e) {
-      validationResult = `FAIL: Validation error — ${e.message}`;
+    console.log(`   🔍 Programmatic Auditing...`);
+    const auditIssues = programmaticAudit(html, moduleName);
+    if (auditIssues.length > 0) {
+      validationResult = `FAIL: Programmatic audit found ${auditIssues.length} issue(s):\n   ` + auditIssues.join('\n   ');
+      console.log(`\n❌ Programmatic Audit FAILED:`);
+      console.log(validationResult);
+    } else {
+      console.log(`   ✅ Programmatic Audit PASSED`);
+      console.log(`   🔍 AI Validating...`);
+      try {
+        validationResult = await validateHTML(html, moduleName);
+      } catch (e) {
+        validationResult = `FAIL: AI Validation error — ${e.message}`;
+      }
     }
 
     if (validationResult.includes('PASS: All blocks passed')) {
